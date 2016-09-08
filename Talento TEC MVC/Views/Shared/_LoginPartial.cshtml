@@ -16,7 +16,59 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
+        <li><p class="navbar-text">¿Tiene una cuenta?</p></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <b>Login</b><span class="caret"></span></a>
+            <!-- ----------------------------------------------------------------------------- -->
+            <ul id="login-dp" class="dropdown-menu">
+                <li>
+                    <div class="col-md-12">
+                        <!-- Form inicio de sesion -->
+                        <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                            <div class="form-group">
+                                <label class="sr-only" for="input-username">Nombre de Usuario</label>
+                                <input type="email" class="form-control" id="input_username" placeholder="Usuario" required />
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="input-password">Contraseña</label>
+                                <input type="password" class="form-control" id="input_password" placeholder="Contraseña" />
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" /> No cerrar sesión
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                            </div>
+                            <div class="help-block text-right">
+                                <a href="#">¿Olvidaste la contraseña?</a>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="bottom text-center">
+                        ¿No tiene una cuenta?
+                        <a class="btn btn-primary btn-block" href="sites/Registro/MainRegistro.aspx" role="button">Registrate</a>
+                    </div>
+                    <!--
+                    <div class="bottom text-center">
+                        ¿No tienes una cuenta? <a href="#">Registrate</a>
+                    </div>-->
+
+                </li>
+            </ul>
+            <!-- ----------------------------------------------------------------------------- -->
+        </li>
+        <!-- <li><a href="#">Login</a></li>
+
+            Aca debe ir el menu donde no se inicia sesion sino se tienen las herramientas
+
+            -->
+    </ul>
+    <!--
+    <ul class="nav navbar-nav navbar-right">
         <li>@Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
+    -->
 }
