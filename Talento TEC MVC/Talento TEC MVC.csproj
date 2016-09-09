@@ -230,9 +230,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="images\firma-TEC-jpg-blanco.png" />
     <Content Include="images\Talento TEC.png" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />

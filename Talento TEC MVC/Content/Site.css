@@ -2565,3 +2565,6 @@ body {
     /*dropdown "centrada" */
     left: 42% ;
 } 
+.form-horizontal .control-label{
+    text-align:left
+}
