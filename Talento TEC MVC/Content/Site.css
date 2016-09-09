@@ -1,6 +1,6 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -28,7 +28,7 @@ textarea {
     border-color: #C1272D;
     border-radius: 0;
     vertical-align: middle;
-    top:-50px;
+    top:0px;
 }
 
     .navbar-default .navbar-brand {
@@ -2437,7 +2437,7 @@ button.close {
 }
 
 .navbar-second {
-    top: -70px;
+    top: -20px;
     min-height: 72px;
 
 }
@@ -2517,13 +2517,15 @@ html {
 
 body {
     /* Margin bottom by footer height */
-    margin-bottom: 60px;
+    margin-bottom:60px;
 }
 
 .footer {
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
     width: 100%;
+    left: 0px;
+    /*width: 100%;*/
     /* Set the fixed height of the footer here */
     height: 50px;
     background-color: #140E39;
@@ -2554,4 +2556,8 @@ body {
 .progress-bar-info {
     background-color: #fff;
     color: #d1d1d1;
-}								
+}					
+.jumbotron{
+    background-color:#fff;
+
+}

@@ -20,11 +20,23 @@ namespace Talento_TEC_MVC.Controllers
             return View();
         }
 
+        public ActionResult Dates()
+        {
+            return View();
+        }
+        public ActionResult UserTerms()
+        {
+            return View();
+        }
+
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            
 
             return View();
         }
+
+
+
     }
 }

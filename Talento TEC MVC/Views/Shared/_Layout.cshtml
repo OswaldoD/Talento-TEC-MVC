@@ -63,11 +63,18 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+        
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4"><a href="@Url.Action("UserTerms","Home")"><p class="text-white">Términos de Uso</p></a></div>
+                    <div class="col-md-4"><a href="@Url.Action("Dates","Home")"><p class="text-white">Fechas Importantes</p></a></div>
+                    <div class="col-md-4"><a href="@Url.Action("Contact","Home")"><p class="text-white">Contáctenos</p></a></div>
+                </div> 
+            </div>
+            <p class="text-white">&copy; @DateTime.Now.Year - Tecnológico de Costa Rica</p>
         </footer>
     </div>
 
