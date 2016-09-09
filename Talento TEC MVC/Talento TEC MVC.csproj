@@ -289,11 +289,12 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Dates.cshtml" />
     <Content Include="Views\Home\UserTerms.cshtml" />
+    <Content Include="Views\TalentoTEC\Estudiante.cshtml" />
+    <Content Include="Views\TalentoTEC\Empresa.cshtml" />
+    <Content Include="Views\TalentoTEC\Graduado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Talento TEC\" />
-    <Folder Include="Views\TalentoTEC\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

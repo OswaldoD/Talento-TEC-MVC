@@ -8,11 +8,27 @@ namespace Talento_TEC_MVC.Controllers
 {
     public class TalentoTECController : Controller
     {
+        /* Personalizadas */
+        public ActionResult Estudiante()
+        {
+            return View();
+        }
+        public ActionResult Empresa()
+        {
+            return View();
+        }
+        public ActionResult Graduado()
+        {
+            return View();
+        }
+
         // GET: TalentoTEC
         public ActionResult Index()
         {
             return View();
         }
+
+
 
         // GET: TalentoTEC/Details/5
         public ActionResult Details(int id)

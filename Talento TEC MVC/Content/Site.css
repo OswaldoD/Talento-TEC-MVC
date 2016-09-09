@@ -2561,3 +2561,7 @@ body {
     background-color:#fff;
 
 }
+.dropdown-menu-center{
+    /*dropdown "centrada" */
+    left: 42% ;
+} 
