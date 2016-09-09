@@ -208,6 +208,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\TalentoTECController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -292,6 +293,11 @@
     <Content Include="Views\TalentoTEC\Estudiante.cshtml" />
     <Content Include="Views\TalentoTEC\Empresa.cshtml" />
     <Content Include="Views\TalentoTEC\Graduado.cshtml" />
+    <Content Include="Views\Registro\RegistroEleccion.cshtml" />
+    <Content Include="Views\Registro\registro_inicial_empresa.cshtml" />
+    <Content Include="Views\Registro\descripcion_empresa.cshtml" />
+    <Content Include="Views\Registro\credenciales_empresa.cshtml" />
+    <Content Include="Views\Registro\finalizar_empresa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

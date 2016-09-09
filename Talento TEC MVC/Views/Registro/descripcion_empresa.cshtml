@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewBag.Title = "Descripción Empresa";
+}
+<div class="progress">
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 20%">
+        Paso 1: Elección de cuenta
+    </div>
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 20%">
+        Paso 2: Información inicial
+    </div>
+    <div class="progress-bar progress-bar-danger" role="progressbar" style="width: 20%">
+        Paso 3: Descripción empresa
+    </div>
+    <div class="progress-bar progress-bar-info" role="progressbar" style="width: 20%">
+        Paso 4: Inicio de sesión
+    </div>
+    <div class="progress-bar progress-bar-info" role="progressbar" style="width: 20%">
+        Paso 5: Finalizar
+    </div>
+</div>
+<!-- Texto de Bienvenida -->
+<h1>Registro de Empresas</h1>
+<h3>Descripción de la empresa</h3>
+<br />
+<p>Ingrese o modifique los datos de referencia de su empresa para poder acceder a los servicios de Talento TEC.</p>
+
+<p>Los campos con un asterisco (*) denotan que son campos obligatorios de ingresar.</p>
+<li role="presentation" class="divider-line"></li>
+
+<form class="form-horizontal" role="form" method="post" action="#" accept-charset="UTF-8" id="form_1">
+    <!-- Informacion inicial -->
+    <p><b></b></p>
+    <div class="form-group">
+        <div class="container">
+            <label class="control-label" for="descripcion_actividades"> Para el TEC es importante conocer su empresa. Por favor, ingrese a continuaciòn una descripción de las actividades que desarrolla su empresa  (*) </label>
+            <textarea required="required" class="form-control" rows="7"  id="descripcion_actividades" placeholder="Ingrese texto"></textarea>
+        </div>
+    </div>
+    <!--
+    <div class="form-group">
+        <div class="container">
+            <label class="control-label" for="descripcion_empresa"> Para las ofertas que se publiquen, por favor escriba una descripción breve de su empresa  (*) </label>
+            <textarea required="required" class="form-control" rows="4" cols="50" id="descripcion_empresa" placeholder="Ingrese texto"></textarea>
+        </div>
+    </div>
+        -->
+    <li role="presentation" class="divider-line"></li>
+    <div class="form-group">
+        <div class="container">
+            <label class="control-label " for="razon_social">Sector productivo: indique el o los sectores productivos en los cuales su empresa realiza sus actividades  (*)</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-6 col-md-4" for="pais">Sector productivo  (*)</label>
+        <div class="col-xs-6 col-md-4">
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sector 1 <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu_pais">
+                        <li role="presentation"><a role="menuitem" href="#">Sector 1</a></li>
+                        <li role="presentation"><a role="menuitem" href="#">Sector 2</a></li>
+                        <li role="presentation"><a role="menuitem" href="#">Sector 3</a></li>
+                    </ul>
+                    <button type="button" class="btn btn-default btn-md">Agregar</button>
+                </div>
+            </div>
+            <!--
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li> -->
+            <!-- <input required="required" type="text" class="form-control" id="pais" placeholder="" />-->
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="container">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Sector</th>
+                            <th>Descripción</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Sector 1</td>
+                            <td>Corresponde al primer sector</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="container">
+            <label class="control-label" for="otro_sector"> Otro sector (especifíque) </label>
+            <textarea class="form-control" rows="4" id="otro_sector" placeholder="Ingrese la descripción de otro sector"></textarea>
+        </div>
+
+    </div>
+    <!-- ---------------------------------------------------------------------------------------------------------------------- -->
+    <!-- ---------------------------------------------------------------------------------------------------------------------- -->
+    <!-- Persona de contacto -->
+    <div class="form-group">
+        <!-- Espacio para situar los botones -->
+        <label class="control-label col-md-1" for="tel_contacto"></label>
+        <label class="control-label col-md-1" for="tel_contacto"></label>
+        <label class="control-label col-md-1" for="tel_contacto"></label>
+        <!------------------------------------------------------------------->
+        <button type="button" class="btn btn-primary col-md-1">Anterior</button>
+
+        <label class="control-label col-md-1" for="tel_contacto"></label>
+
+        <!-- Este es el verdadero boton esta desactivado para no conectarlo
+            <button type="submit" class="btn btn-primary btn-md col-md-1">Continuar</button> -->
+        <button type="button" class="btn btn-primary btn-md col-md-1">Siguiente</button>
+        <a href="@Url.Action("credenciales_empresa","Registro")">pass</a>
+    </div>
+</form>
