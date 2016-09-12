@@ -50,7 +50,7 @@ namespace Talento_TEC_MVC.Models
     {
         [Required]
         [Display(Name = "Correo electrónico")]
-        [EmailAddress]
+        [DataType(DataType.Text)]
         public string Email { get; set; }
 
         [Required]

@@ -9,6 +9,11 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Talento_TEC_MVC.Models;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Web.Script.Serialization;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Talento_TEC_MVC.Controllers
 {
@@ -75,6 +80,7 @@ namespace Talento_TEC_MVC.Controllers
 
             // No cuenta los errores de inicio de sesión para el bloqueo de la cuenta
             // Para permitir que los errores de contraseña desencadenen el bloqueo de la cuenta, cambie a shouldLockout: true
+            /*
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
@@ -88,7 +94,33 @@ namespace Talento_TEC_MVC.Controllers
                 default:
                     ModelState.AddModelError("", "Intento de inicio de sesión no válido.");
                     return View(model);
+            }*/
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://talentotec-api.azurewebsites.net/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var inicio = new LoginType() { username = model.Email, password = model.Password};
+                
+                HttpResponseMessage response = await client.PostAsJsonAsync("api/login", inicio);
+
+                var json = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode){
+
+                    // LoginInfo info = new JavaScriptSerializer().Deserialize<List<LoginInfo>>(json);
+
+                    IEnumerable<LoginInfo> info = JsonConvert.DeserializeObject<IEnumerable<LoginInfo>>(json);
+                    //JsonConvert.DeserializeObject<IEnumerable<LoginInfo>>(json);
+
+
+
+                    Response.Write(info.ElementAt(0).ID_Usuario);
+                }
             }
+           // Response.Write(model.Email);
+
+            return View(model);
         }
 
         //
