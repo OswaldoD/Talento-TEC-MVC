@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
-namespace Talento_TEC_MVC.Models.registro.empresa
+namespace Talento_TEC_MVC.Models
 {
     public class Registro_Inicial_Empresa
     {

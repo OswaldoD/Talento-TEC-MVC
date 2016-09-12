@@ -220,7 +220,7 @@
     <Compile Include="Models\LoginStart.cs" />
     <Compile Include="Models\LoginType.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\registro\empresa\Registro_Inicial_Empresa.cs" />
+    <Compile Include="Models\Registro_Inicial_Empresa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -306,6 +306,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\actions\" />
+    <Folder Include="Models\registro\empresa\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
