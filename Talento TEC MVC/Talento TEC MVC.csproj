@@ -208,6 +208,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginNavBarController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\TalentoTECController.cs" />
@@ -217,6 +218,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginInfo.cs" />
+    <Compile Include="Models\LoginNavBar.cs" />
     <Compile Include="Models\LoginStart.cs" />
     <Compile Include="Models\LoginType.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
