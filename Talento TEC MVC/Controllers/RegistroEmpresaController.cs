@@ -24,14 +24,15 @@ namespace Talento_TEC_MVC.Controllers
         }
 
         // GET: RegistroEmpresa/Create
-        public ActionResult Create()
+      /*  public ActionResult Create()
         {
             Response.Write("Hola");
             return View();
-        }
-
+        }*/
+        /*
         // POST: RegistroEmpresa/Create
         [HttpPost]
+        [AllowAnonymous]
         public void Create(FormCollection collection)
         {
             try
@@ -44,9 +45,10 @@ namespace Talento_TEC_MVC.Controllers
             {
                // return View();
             }
-        }
+        }*/
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Info_Inicial_Empresa(Info_Inicial_Empresa model, string returnUrl)
         {
             Response.Write("Holas");
