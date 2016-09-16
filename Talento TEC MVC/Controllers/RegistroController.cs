@@ -67,17 +67,17 @@ namespace Talento_TEC_MVC.Controllers
 
         // POST: Registro/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public void Create(FormCollection collection)
         {
             try
             {
                 // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                Response.Write("Hola");
+                //return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                //return View();
             }
         }
 

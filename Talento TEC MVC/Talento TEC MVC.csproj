@@ -206,21 +206,26 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EmpresaController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
+    <Compile Include="Controllers\RegistroEmpresaController.cs" />
     <Compile Include="Controllers\TalentoTECController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\empresa\NuevaOferta.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginInfo.cs" />
     <Compile Include="Models\LoginStart.cs" />
     <Compile Include="Models\LoginType.cs" />
+    <Compile Include="Models\login\LoginView.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Registro_Inicial_Empresa.cs" />
+    <Compile Include="Models\registro\empresa\Info_Inicial_Empresa.cs" />
+    <Compile Include="Models\registro\empresa\registro_completo_empresa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -302,11 +307,15 @@
     <Content Include="Views\Registro\descripcion_empresa.cshtml" />
     <Content Include="Views\Registro\credenciales_empresa.cshtml" />
     <Content Include="Views\Registro\finalizar_empresa.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\RegistroEmpresa\Info_Inicial_Empresa.cshtml" />
+    <Content Include="Views\Shared\_LayoutEmpresa.cshtml" />
+    <Content Include="Views\Empresa\index_empresa.cshtml" />
+    <Content Include="Views\Empresa\agregar_oferta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\actions\" />
-    <Folder Include="Models\registro\empresa\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

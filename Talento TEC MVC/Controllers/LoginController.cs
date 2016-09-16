@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Talento_TEC_MVC.Models;
+using Talento_TEC_MVC.Models.login;
 
 namespace Talento_TEC_MVC.Controllers.actions
 {
@@ -46,10 +47,10 @@ namespace Talento_TEC_MVC.Controllers.actions
             try
             {
                 // TODO: Add insert logic here
-                Console.WriteLine(loginStart.input_username);
+                Response.Write(loginStart.input_username);
 
                 //return RedirectToAction("Index");
-                return View("Contact");
+                return View();
             }
             catch
             {
