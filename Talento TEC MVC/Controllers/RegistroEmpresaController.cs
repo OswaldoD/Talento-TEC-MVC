@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -21,7 +23,6 @@ namespace Talento_TEC_MVC.Controllers
         // GET
         public ActionResult Info_Inicial_Empresa()
         {
-
             return View();
         }
 
@@ -29,62 +30,66 @@ namespace Talento_TEC_MVC.Controllers
         /* Método para extraer el formulario de empresa Información Inicial */
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Info_Inicial_Empresa(Info_Inicial_Empresa model, string returnUrl)
+        public ActionResult Info_Inicial_Empresa(Info_Inicial_Empresa model)
         {
             if (!ModelState.IsValid)
             {
-               
-                Response.Write(model.paisEmpresa.ToString());
                 return View(model);
             }
             else
             {
                 // Información inicial de la empresa
-                informacion_empresa.nombreEmpresa = model.nombreEmpresa;
-                informacion_empresa.cedulaJurídica = model.cedula;
-                informacion_empresa.direccion = model.direccion;
-                informacion_empresa.provincia = model.ciudad;
-                informacion_empresa.nombrePais = model.paisEmpresa.ToString();
-                informacion_empresa.telefonoEmpresa = model.telefono;
-                informacion_empresa.URL_Empresa = model.pagina_web;
-                informacion_empresa.nombreContactoEmpresa = model.nombre_contacto;
-                informacion_empresa.puestoContacto = model.cargo_contacto;
-                informacion_empresa.emailContacto = model.email_contacto;
-                informacion_empresa.telefonoContacto = model.tel_contacto;
+                Session["nombreEmpresa"] = model.nombreEmpresa;
+                Session["cedulaJurídica"] = model.cedula;
+                Session["direccion"] = model.direccion;
+                Session["provincia"] = model.ciudad;
+                Session["nombrePais"] = model.paisEmpresa.ToString();
+                Session["telefonoEmpresa"] = model.telefono;
+                Session["URL_Empresa"] = model.pagina_web;
+                Session["nombreContactoEmpresa"] = model.nombre_contacto;
+                Session["puestoContacto"] = model.cargo_contacto;
+                Session["emailContacto"] = model.email_contacto;
+                Session["telefonoContacto"] = model.tel_contacto;
 
-                return View("descripcionEmpresa");
+                return RedirectToAction("descripcionEmpresa", "RegistroEmpresa");
+                //return View("descripcionEmpresa");
             }
         }
 
         public ActionResult descripcionEmpresa()
         {
-            return View();
+            return View("descripcionEmpresa");
         }
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult descripcionEmpresa(DescripcionEmpresa model, string returnUrl)
+        public ActionResult descripcionEmpresa(DescripcionEmpresa model)
         {
+            Response.Write(ModelState.IsValid);
+
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
             else
             {
-                informacion_empresa.descripcionActividades = model.descripcionEmpresa;
-                informacion_empresa.nombreSectores = model.sectores.ToString();
-                return View("credenciales_empresa");
+                Session["descripcionActividades"] = model.descripcionEmpresa;
+                Session["nombreSectores"] = model.sectores.ToString(); ;
+
+                return RedirectToAction("credenciales_empresa", "RegistroEmpresa");
+
+               // return View("credenciales_empresa");
             }
         }
 
         public ActionResult credenciales_empresa()
         {
-            return View();
+            return View("credenciales_empresa");
         }
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult credenciales_empresa(credenciales_empresa model, string returnUrl)
+        public ActionResult credenciales_empresa(credenciales_empresa model)
         {
             if (!ModelState.IsValid)
             {
@@ -92,15 +97,48 @@ namespace Talento_TEC_MVC.Controllers
             }
             else
             {
-                informacion_empresa.nombreUsuario = model.nombreUsuario;
-                informacion_empresa.passwordUsuario = model.contrasenna;
+                Session["nombreUsuario"] = model.nombreUsuario;
+                Session["passwordUsuario"] = model.contrasenna;
 
-                return View();
+               // return View("finalizar_empresa");
+                return RedirectToAction("finalizar_empresa", "RegistroEmpresa");
+
             }
         }
 
         public ActionResult finalizar_empresa()
         {
+            Response.Write("????");
+
+            return View("finalizar_empresa");
+        }
+
+        [HttpPost] 
+        [AllowAnonymous]
+        public ActionResult finalizar_empresa(string returnUrl)
+        {
+            Response.Write("agregar empresa");
+            Response.Write(Session["nombreEmpresa"]);
+            /*
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://talentotec-api.azurewebsites.net/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                // informacion_empresa es la var que entra 
+
+                HttpResponseMessage response = await client.PostAsJsonAsync("api/login", informacion_empresa);
+
+                var json_respuesta = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    Response.Write("exito");
+                }
+
+            }*/
+           // return RedirectToAction("Index", "Home");
+
             return View("finalizar_empresa");
         }
 

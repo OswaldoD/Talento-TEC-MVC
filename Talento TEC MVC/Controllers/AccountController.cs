@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Talento_TEC_MVC.Models;
+using Talento_TEC_MVC.Models.login;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web.Script.Serialization;
@@ -66,8 +67,16 @@ namespace Talento_TEC_MVC.Controllers
             return View();
         }
 
-        //
         // POST: /Account/Login
+        /*
+         * Este método conecta a post de la api de azure 
+         * Con nombre usuario y contraseña obtiene id de empresa y tipo de cuenta
+         * 
+         * Con Id y tipo de cuenta obtiene nombre de la empresa
+         * 
+         * Se almacena en Session Id, tipo cuenta y nombre empresa  
+         *   
+         */
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -77,50 +86,52 @@ namespace Talento_TEC_MVC.Controllers
             {
                 return View(model);
             }
-
-            // No cuenta los errores de inicio de sesión para el bloqueo de la cuenta
-            // Para permitir que los errores de contraseña desencadenen el bloqueo de la cuenta, cambie a shouldLockout: true
-            /*
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+            else
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Intento de inicio de sesión no válido.");
-                    return View(model);
-            }*/
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("http://talentotec-api.azurewebsites.net/");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("http://talentotec-api.azurewebsites.net/");
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var inicio = new LoginType() { username = model.Email, password = model.Password};
-                
-                HttpResponseMessage response = await client.PostAsJsonAsync("api/login", inicio);
+                    var inicio = new LoginType() { username = model.Email, password = model.Password };
 
-                var json = await response.Content.ReadAsStringAsync();
-                if (response.IsSuccessStatusCode){
+                    HttpResponseMessage response = await client.PostAsJsonAsync("api/login", inicio);
 
-                    // LoginInfo info = new JavaScriptSerializer().Deserialize<List<LoginInfo>>(json);
+                    var json = await response.Content.ReadAsStringAsync();
+                    if (response.IsSuccessStatusCode)
+                    {
 
-                    IEnumerable<LoginInfo> info = JsonConvert.DeserializeObject<IEnumerable<LoginInfo>>(json);
-                    //JsonConvert.DeserializeObject<IEnumerable<LoginInfo>>(json);
+                        IEnumerable<LoginInfo> info = JsonConvert.DeserializeObject<IEnumerable<LoginInfo>>(json);
 
+                        Session["ID"] = info.ElementAt(0).ID_Usuario;
+                        Session["TipoCuenta"] = info.ElementAt(0).Tipo_Cuenta;
 
+                        // obtenemos informacion extra 
 
-                    Response.Write(info.ElementAt(0).ID_Usuario);
+                        var obtieneNombre = new getNombreEmpresa()
+                        {
+                            ID = info.ElementAt(0).ID_Usuario,
+                            tipoCuenta = info.ElementAt(0).Tipo_Cuenta
+                        };
+
+                        HttpResponseMessage nombreRespuesta = await client.PostAsJsonAsync("api/login", obtieneNombre);
+
+                        var jsonNombre = await nombreRespuesta.Content.ReadAsStringAsync();
+
+                        IEnumerable<nombreEmpresa> nombreEmpresa = JsonConvert.DeserializeObject<IEnumerable<nombreEmpresa>>(json);
+
+                        Session["nombre"] = nombreEmpresa.ElementAt(0).nombre_empresa;
+
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        return View(model);
+                        // error de inicio
+                    }
                 }
             }
-           // Response.Write(model.Email);
-
-            return View(model);
         }
 
         //

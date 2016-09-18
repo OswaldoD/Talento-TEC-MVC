@@ -25,23 +25,24 @@
 <h3>Finalización</h3>
 <br />
 <p>Su registro ha sido exitoso. Recibirá una notificación en el correo electrónico proporcionado cuando su inscripción sea autorizada.</p>
-<form class="form-horizontal" role="form" method="post" action="RegistroEmpresa2.aspx" accept-charset="UTF-8" id="form_1">
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-offset-5 col-md-10" >
+                <input type="submit" value="Finalizar" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
     <!-- Informacion inicial -->
-    <div class="form-group">
+   <!-- <div class="form-group"> -->
         <!-- Espacio para situar los botones -->
-        <label class="control-label col-md-1" for="tel_contacto"></label>
-        <label class="control-label col-md-1" for="tel_contacto"></label>
-        <label class="control-label col-md-1" for="tel_contacto"></label>
-        <label class="control-label col-md-1" for="tel_contacto"></label>
 
-        <!------------------------------------------------------------------->
-
-        <label class="control-label col-md-1" for="tel_contacto"></label>
 
         <!-- Este es el verdadero boton esta desactivado para no conectarlo
             <button type="submit" class="btn btn-primary btn-md col-md-1">Continuar</button> -->
-        <button type="submit" class="btn btn-primary btn-md col-md-1" formaction="@Url.Action("Index","Home")">Finalizar</button>
-
-    </div>
-</form>
 <br />

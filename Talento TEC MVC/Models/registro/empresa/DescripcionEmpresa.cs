@@ -15,9 +15,8 @@ namespace Talento_TEC_MVC.Models.registro.empresa
         [DataType(DataType.MultilineText)]
         public string descripcionEmpresa { get; set; }
 
-        [Required]
+        
         [Display(Name = "Sector productivo  (*)")]
-        [DataType(DataType.Text)]
         public sectoresProducticos sectores { get; set; }
 
         //Sector productivo: indique el o los sectores productivos en los cuales su empresa realiza sus actividades  (*)
@@ -27,15 +26,9 @@ namespace Talento_TEC_MVC.Models.registro.empresa
             return new List<SelectListItem>
             {
                 new SelectListItem {Text="Sin sectores", Value="sector1" }
-                //new SelectListItem { Text = "Panamá", Value = "Panamá" },
-                //new SelectListItem { Text = "Nicaragua", Value = "Nicaragua" }
-
             };
         }
     }
 
-    public enum sectoresProducticos
-    {
-        sector1
-    }
+    public enum sectoresProducticos { sector1 }
 }
