@@ -226,6 +226,8 @@
     <Compile Include="Models\LoginType.cs" />
     <Compile Include="Models\login\LoginView.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\registro\empresa\credenciales_empresa.cs" />
+    <Compile Include="Models\registro\empresa\DescripcionEmpresa.cs" />
     <Compile Include="Models\registro\empresa\Info_Inicial_Empresa.cs" />
     <Compile Include="Models\registro\empresa\registro_completo_empresa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -314,6 +316,9 @@
     <Content Include="Views\Shared\_LayoutEmpresa.cshtml" />
     <Content Include="Views\Empresa\index_empresa.cshtml" />
     <Content Include="Views\Empresa\agregar_oferta.cshtml" />
+    <Content Include="Views\RegistroEmpresa\descripcionEmpresa.cshtml" />
+    <Content Include="Views\RegistroEmpresa\credenciales_empresa.cshtml" />
+    <Content Include="Views\RegistroEmpresa\finalizar_empresa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

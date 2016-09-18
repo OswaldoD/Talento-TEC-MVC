@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace Talento_TEC_MVC.Models.registro.empresa
 {
@@ -12,8 +13,8 @@ namespace Talento_TEC_MVC.Models.registro.empresa
         [Required]
         [Display(Name = "Nombre comercial de la empresa  (*)")]
         [DataType(DataType.Text)]
-        public string nombre { get; set; }
-        
+        public string nombreEmpresa { get; set; }
+
         [Required]
         [Display(Name = "Cédula jurídica o identificación  (*)")]
         [DataType(DataType.Text)]
@@ -32,12 +33,11 @@ namespace Talento_TEC_MVC.Models.registro.empresa
         [Required]
         [Display(Name = "Ciudad  (*)")]
         [DataType(DataType.Text)]
-        public string nombreEmpresa { get; set; }
+        public string ciudad { get; set; }
 
-        [Required]
+
         [Display(Name = "País  (*)")]
-        [DataType(DataType.Text)]
-        public string pais { get; set; }
+        public paisesB paisEmpresa { get; set; }
 
         [Required]
         [Display(Name = "Teléfono  (*)")]
@@ -75,6 +75,17 @@ namespace Talento_TEC_MVC.Models.registro.empresa
         [Display(Name = "Teléfono  (*)")]
         [DataType(DataType.Text)]
         public string tel_contacto { get; set; }
- 
+
+        public static List<SelectListItem> getPaisesValues()
+        {
+            return new List<SelectListItem>
+            {
+                new SelectListItem {Text="Costa Rica", Value="Costa_Rica" },
+                new SelectListItem { Text = "Panamá", Value = "Panamá" },
+                new SelectListItem { Text = "Nicaragua", Value = "Nicaragua" }
+
+            };
+        }
     }
+    public enum paisesB { Costa_Rica, Panamá, Nicaragua }
 }
