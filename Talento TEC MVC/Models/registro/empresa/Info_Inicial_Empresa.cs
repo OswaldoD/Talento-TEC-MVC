@@ -50,7 +50,7 @@ namespace Talento_TEC_MVC.Models.registro.empresa
         public string email { get; set; }
 
         [Required]
-        [Display(Name = "Página web  (*)")]
+        [Display(Name = "Página web")]
         [DataType(DataType.Text)]
         public string pagina_web { get; set; }
 

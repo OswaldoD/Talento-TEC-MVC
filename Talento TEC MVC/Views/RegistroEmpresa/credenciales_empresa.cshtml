@@ -39,32 +39,32 @@
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.nombreUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.nombreUsuario, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.LabelFor(model => model.nombreUsuario, htmlAttributes: new { @class = "control-label col-xs-6 col-md-4" })
+            <div class="col-xs-6 col-md-4">
+                @Html.EditorFor(model => model.nombreUsuario, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nombre de usuario significativo a la empresa", @required = "required" } })
                 @Html.ValidationMessageFor(model => model.nombreUsuario, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.contrasenna, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.contrasenna, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.LabelFor(model => model.contrasenna, htmlAttributes: new { @class = "control-label col-xs-6 col-md-4" })
+            <div class="col-xs-6 col-md-4">
+                @Html.EditorFor(model => model.contrasenna, new { htmlAttributes = new { @class = "form-control", @placeholder="Digite la contraseña", @required="required" } })
                 @Html.ValidationMessageFor(model => model.contrasenna, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.comprobarContrasenna, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.comprobarContrasenna, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.LabelFor(model => model.comprobarContrasenna, htmlAttributes: new { @class = "control-label col-xs-6 col-md-4" })
+            <div class="col-xs-6 col-md-4">
+                @Html.EditorFor(model => model.comprobarContrasenna, new { htmlAttributes = new { @class = "form-control", @placeholder="Digite de nuevo la contraseña", @required = "required" } })
                 @Html.ValidationMessageFor(model => model.comprobarContrasenna, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Siguiente" class="btn btn-default" />
+            <div class="col-md-offset-5 col-md-10">
+                <input type="submit" value="Siguiente" class="btn btn-primary" />
             </div>
         </div>
     </div>

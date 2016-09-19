@@ -7,6 +7,14 @@
 
             Layout = "~/Views/Shared/_LayoutEmpresa.cshtml";
         }
+        else if(Session["TipoCuenta"].ToString() == "Graduado")
+        {
+            // layout de graduado
+        }
+        else
+        {
+            // layout de estudiante
+        }
 
     }
     else
