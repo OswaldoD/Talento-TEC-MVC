@@ -49,7 +49,7 @@ namespace Talento_TEC_MVC.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Correo electrónico")]
+        [Display(Name = "Nombre de usuario")]
         [DataType(DataType.Text)]
         public string Email { get; set; }
 

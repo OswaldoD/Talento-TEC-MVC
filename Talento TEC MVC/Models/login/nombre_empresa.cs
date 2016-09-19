@@ -5,8 +5,9 @@ using System.Web;
 
 namespace Talento_TEC_MVC.Models.login
 {
-    public class nombreEmpresa
+    public class nombre_empresa
     {
-        public string nombre_empresa { get; set; }
+        public int ID { get; set; }
+        public string nombreEmpresa { get; set; }
     }
 }

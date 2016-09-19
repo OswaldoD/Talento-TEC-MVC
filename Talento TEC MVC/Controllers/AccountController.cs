@@ -28,7 +28,7 @@ namespace Talento_TEC_MVC.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -40,9 +40,9 @@ namespace Talento_TEC_MVC.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -101,29 +101,31 @@ namespace Talento_TEC_MVC.Controllers
                     var json = await response.Content.ReadAsStringAsync();
                     if (response.IsSuccessStatusCode)
                     {
-
                         IEnumerable<LoginInfo> info = JsonConvert.DeserializeObject<IEnumerable<LoginInfo>>(json);
 
                         Session["ID"] = info.ElementAt(0).ID_Usuario;
                         Session["TipoCuenta"] = info.ElementAt(0).Tipo_Cuenta;
 
-                        // obtenemos informacion extra 
+                        var obtieneNombre = new getNombreEmpresa() { Id = Int32.Parse(Session["ID"].ToString()), TipoCuenta = Session["TipoCuenta"].ToString() };
 
-                        var obtieneNombre = new getNombreEmpresa()
-                        {
-                            ID = info.ElementAt(0).ID_Usuario,
-                            tipoCuenta = info.ElementAt(0).Tipo_Cuenta
-                        };
-
-                        HttpResponseMessage nombreRespuesta = await client.PostAsJsonAsync("api/login", obtieneNombre);
+                        HttpResponseMessage nombreRespuesta = await client.PostAsJsonAsync("api/login_info", obtieneNombre);
 
                         var jsonNombre = await nombreRespuesta.Content.ReadAsStringAsync();
+                        if (nombreRespuesta.IsSuccessStatusCode)
+                        {
+                            IEnumerable<nombre_empresa> nombre = JsonConvert.DeserializeObject<IEnumerable<nombre_empresa>>(jsonNombre);
 
-                        IEnumerable<nombreEmpresa> nombreEmpresa = JsonConvert.DeserializeObject<IEnumerable<nombreEmpresa>>(json);
-
-                        Session["nombre"] = nombreEmpresa.ElementAt(0).nombre_empresa;
-
+                            Session["nombre"] = nombre.LastOrDefault().nombreEmpresa;
+                            //   Response.Write(Session["nombre"]);
+                        }
+                        else
+                        {
+                            // error?
+                            //  Response.Write("error de conexion");
+                        }
+                        // return View();
                         return RedirectToAction("Index", "Home");
+                        //  }
                     }
                     else
                     {
@@ -163,7 +165,7 @@ namespace Talento_TEC_MVC.Controllers
             // Si un usuario introduce códigos incorrectos durante un intervalo especificado de tiempo, la cuenta del usuario 
             // se bloqueará durante un período de tiempo especificado. 
             // Puede configurar el bloqueo de la cuenta en IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -198,8 +200,8 @@ namespace Talento_TEC_MVC.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // Para obtener más información sobre cómo habilitar la confirmación de cuenta y el restablecimiento de contraseña, visite http://go.microsoft.com/fwlink/?LinkID=320771
                     // Enviar correo electrónico con este vínculo
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

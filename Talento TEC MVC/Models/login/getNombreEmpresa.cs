@@ -7,8 +7,8 @@ namespace Talento_TEC_MVC.Models.login
 {
     public class getNombreEmpresa
     {
-        public int ID { get; set; }
-        public string tipoCuenta { get; set; } 
+        public int Id { get; set; }
+        public string TipoCuenta { get; set; } 
 
     }
 }

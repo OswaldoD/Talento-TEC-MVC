@@ -207,7 +207,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EmpresaController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginNavBarController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -226,7 +225,7 @@
     <Compile Include="Models\LoginType.cs" />
     <Compile Include="Models\login\getNombreEmpresa.cs" />
     <Compile Include="Models\login\LoginView.cs" />
-    <Compile Include="Models\login\nombreEmpresa.cs" />
+    <Compile Include="Models\login\nombre_empresa.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\registro\empresa\credenciales_empresa.cs" />
     <Compile Include="Models\registro\empresa\DescripcionEmpresa.cs" />
@@ -313,7 +312,6 @@
     <Content Include="Views\Registro\descripcion_empresa.cshtml" />
     <Content Include="Views\Registro\credenciales_empresa.cshtml" />
     <Content Include="Views\Registro\finalizar_empresa.cshtml" />
-    <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\RegistroEmpresa\Info_Inicial_Empresa.cshtml" />
     <Content Include="Views\Shared\_LayoutEmpresa.cshtml" />
     <Content Include="Views\Empresa\index_empresa.cshtml" />
