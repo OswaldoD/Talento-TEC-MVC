@@ -14,7 +14,6 @@
                 <h4>Use sus credenciales para iniciar sesión.</h4>
                 <li role="presentation" class="divider-line"></li>
 
-              
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
                     @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
@@ -50,13 +49,6 @@
                     <a class="btn btn-primary col-xs-6 col-xs-offset-0 col-sm-4 " role="button" href=@Url.Action("RegistroEleccion", "Registro")>Registrate</a>
 
                 </div>
-                <div class="form-group">
-
-                </div>
-
-
-
-
 
                     @* Habilite esta opción después de habilitar la confirmación de la cuenta para la función de restablecimiento de contraseña
                         <p>

@@ -40,7 +40,7 @@
         <div class="form-group">
             <div class="container">
                 @Html.LabelFor(model => model.descripcionEmpresa)
-                @Html.EditorFor(model => model.descripcionEmpresa, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.descripcionEmpresa, new { htmlAttributes = new { @class = "form-control", @rows="7" } })
                 @Html.ValidationMessageFor(model => model.descripcionEmpresa, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -60,7 +60,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Siguiente" class="btn btn-primary" />
             </div>
         </div>
     </div>

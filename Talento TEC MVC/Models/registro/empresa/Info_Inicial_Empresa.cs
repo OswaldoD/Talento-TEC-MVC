@@ -27,7 +27,7 @@ namespace Talento_TEC_MVC.Models.registro.empresa
 
         [Required]
         [Display(Name = "Dirección  (*)")]
-        [DataType(DataType.Text)]
+        [DataType(DataType.MultilineText)]
         public string direccion { get; set; }
 
         [Required]
