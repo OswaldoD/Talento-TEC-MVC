@@ -12,7 +12,7 @@ namespace Talento_TEC_MVC.Controllers
 {
     public class RegistroEmpresaController : Controller
     {
-        public registro_completo_empresa informacion_empresa = new registro_completo_empresa(); // este será el json a enviar
+        public registro_completo_empresa informacion_empresa; // este será el json a enviar
 
         // GET: RegistroEmpresa
         public ActionResult Index()
@@ -45,10 +45,11 @@ namespace Talento_TEC_MVC.Controllers
                 Session["provincia"] = model.ciudad;
                 Session["nombrePais"] = model.paisEmpresa.ToString();
                 Session["telefonoEmpresa"] = model.telefono;
+                Session["emailEmpresa"] = model.email;
                 Session["URL_Empresa"] = model.pagina_web;
                 Session["nombreContactoEmpresa"] = model.nombre_contacto;
-                Session["puestoContacto"] = model.cargo_contacto;
                 Session["emailContacto"] = model.email_contacto;
+                Session["puestoContacto"] = model.cargo_contacto;
                 Session["telefonoContacto"] = model.tel_contacto;
 
                 return RedirectToAction("descripcionEmpresa", "RegistroEmpresa");
@@ -77,8 +78,7 @@ namespace Talento_TEC_MVC.Controllers
                 Session["nombreSectores"] = model.sectores.ToString(); ;
 
                 return RedirectToAction("credenciales_empresa", "RegistroEmpresa");
-
-               // return View("credenciales_empresa");
+                // return View("credenciales_empresa");
             }
         }
 
@@ -99,8 +99,7 @@ namespace Talento_TEC_MVC.Controllers
             {
                 Session["nombreUsuario"] = model.nombreUsuario;
                 Session["passwordUsuario"] = model.contrasenna;
-
-               // return View("finalizar_empresa");
+                // return View("finalizar_empresa");
                 return RedirectToAction("finalizar_empresa", "RegistroEmpresa");
 
             }
@@ -108,18 +107,16 @@ namespace Talento_TEC_MVC.Controllers
 
         public ActionResult finalizar_empresa()
         {
-            Response.Write("????");
-
             return View("finalizar_empresa");
         }
 
-        [HttpPost] 
+        [HttpPost]
         [AllowAnonymous]
-        public ActionResult finalizar_empresa(string returnUrl)
+        public async Task<ActionResult> finalizar_empresa(string returnUrl)
         {
             Response.Write("agregar empresa");
             Response.Write(Session["nombreEmpresa"]);
-            /*
+
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://talentotec-api.azurewebsites.net/");
@@ -128,29 +125,41 @@ namespace Talento_TEC_MVC.Controllers
 
                 // informacion_empresa es la var que entra 
 
-                HttpResponseMessage response = await client.PostAsJsonAsync("api/login", informacion_empresa);
+                informacion_empresa = new registro_completo_empresa()
+                {
+                    nombreEmpresa = Session["nombreEmpresa"].ToString(),
+                    cedulaJurídica = Session["cedulaJurídica"].ToString(),
+                    direccion = Session["direccion"].ToString(),
+                    provincia = Session["provincia"].ToString(),
+                    nombrePais = Session["nombrePais"].ToString(),
+                    telefonoEmpresa = Session["telefonoEmpresa"].ToString(),
+                    emailEmpresa = Session["emailEmpresa"].ToString(),
+                    URL_Empresa = Session["URL_Empresa"].ToString(),
+                    nombreContactoEmpresa = Session["nombreContactoEmpresa"].ToString(),
+                    emailContacto = Session["emailContacto"].ToString(),
+                    puestoContacto = Session["puestoContacto"].ToString(),
+                    telefonoContacto = Session["telefonoContacto"].ToString(),
+                    descripcionActividades = Session["descripcionActividades"].ToString(),
+                    nombreUsuario = Session["nombreUsuario"].ToString(),
+                    passwordUsuario = Session["passwordUsuario"].ToString(),
+                    nombreSectores = Session["nombreSectores"].ToString()
+                };
+
+                HttpResponseMessage response = await client.PostAsJsonAsync("api/Add_Enterprise", informacion_empresa);
 
                 var json_respuesta = await response.Content.ReadAsStringAsync();
                 if (response.IsSuccessStatusCode)
                 {
-                    Response.Write("exito");
+                    Session.Abandon(); // eliminamos todos los archivos de session
+                    return RedirectToAction("Index", "Home");
+                    //Response.Write("exito");
                 }
-
-            }*/
-           // return RedirectToAction("Index", "Home");
-
-            return View("finalizar_empresa");
+                else
+                {
+                    return View();
+                }
+            }
+            // return View("finalizar_empresa");
         }
-
-
-
-        /*
-        [HttpPost]
-        public async Task<ActionResult> Next(Info_Inicial_Empresa model, string returnUrl)
-        {
-            Response.Write("Hola");
-            return View(model);
-        }*/
-        
     }
 }

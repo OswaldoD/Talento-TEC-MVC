@@ -31,7 +31,7 @@ namespace Talento_TEC_MVC.Models.registro.empresa
         public string direccion { get; set; }
 
         [Required]
-        [Display(Name = "Ciudad  (*)")]
+        [Display(Name = "Provincia  (*)")]
         [DataType(DataType.Text)]
         public string ciudad { get; set; }
 

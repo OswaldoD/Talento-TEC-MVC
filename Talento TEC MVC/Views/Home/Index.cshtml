@@ -1,9 +1,18 @@
 ﻿@{
+    if (Session["TipoCuenta"] != null)
+    {
+        ViewBag.SubTitle = "Bienvenido " + Session["nombre"].ToString();
+    }
+    else
+    {
+        ViewBag.SubTitle = "Bienvenido a Talento TEC";
+
+    }
     ViewBag.Title = "Inicio";
 }
 
 <!--<div class="jumbotron"> -->
-    <h1>Bienvenido a Talento TEC</h1>
+    <h1>@ViewBag.SubTitle</h1>
     <br />
     <img src="~/images/Talento TEC.png" class="img-thumbnail center-block" />
     <br />

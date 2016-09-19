@@ -103,8 +103,8 @@ namespace Talento_TEC_MVC.Controllers
                     {
                         IEnumerable<LoginInfo> info = JsonConvert.DeserializeObject<IEnumerable<LoginInfo>>(json);
 
-                        Session["ID"] = info.ElementAt(0).ID_Usuario;
-                        Session["TipoCuenta"] = info.ElementAt(0).Tipo_Cuenta;
+                        Session["ID"] = info.LastOrDefault().ID_Usuario;
+                        Session["TipoCuenta"] = info.LastOrDefault().Tipo_Cuenta;
 
                         var obtieneNombre = new getNombreEmpresa() { Id = Int32.Parse(Session["ID"].ToString()), TipoCuenta = Session["TipoCuenta"].ToString() };
 

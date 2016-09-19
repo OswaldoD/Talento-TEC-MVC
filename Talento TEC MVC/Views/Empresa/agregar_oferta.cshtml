@@ -2,19 +2,17 @@
 
 @{
     ViewBag.Title = "agregar_oferta";
-    Layout = "~/Views/Shared/_LayoutEmpresa.cshtml";
 }
 
 <h1>Agregar nueva oferta</h1>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
 
         <h4>Información de la oferta laboral</h4>
-        <hr />
         <p>Ingrese o modifique los datos de la oferta laboral que desea agregar</p>
         <p>Los campos con un asterisco (*) denotan que son campos obligatorios de ingresar.</p>
         <li role="presentation" class="divider-line"></li>
@@ -23,7 +21,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.nombreEmpresa, htmlAttributes: new { @class = "control-label col-xs-6 col-md-4" })
             <div class="col-xs-6 col-md-4">
-                @Html.EditorFor(model => model.nombreEmpresa, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.nombreEmpresa, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                 @Html.ValidationMessageFor(model => model.nombreEmpresa, "", new { @class = "text-danger" })
             </div>
 
@@ -38,7 +36,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.nombrePuesto, htmlAttributes: new { @class = "control-label col-xs-6 col-md-4" })
             <div class="col-xs-6 col-md-4">
-                @Html.EditorFor(model => model.nombrePuesto, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.nombrePuesto, new { htmlAttributes = new { @class = "form-control", @placeholder="Puesto a publicar", @required="required" } })
                 @Html.ValidationMessageFor(model => model.nombrePuesto, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -46,7 +44,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.descripcionPuesto, htmlAttributes: new { @class = "control-label col-xs-6 col-md-4" })
             <div class="col-xs-6 col-md-4">
-                @Html.EditorFor(model => model.descripcionPuesto, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.descripcionPuesto, new { htmlAttributes = new { @class = "form-control", @rows="7", @placeholder="Descripción del puesto a publicar", @required="required" } })
                 @Html.ValidationMessageFor(model => model.descripcionPuesto, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -54,7 +52,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.requisitosPuesto, htmlAttributes: new { @class = "control-label col-xs-6 col-md-4" })
             <div class="col-xs-6 col-md-4">
-                @Html.EditorFor(model => model.requisitosPuesto, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.requisitosPuesto, new { htmlAttributes = new { @class = "form-control", @rows="7", @placeholder="Requerimientos del puesto a plublicar", @required="required"  } })
                 @Html.ValidationMessageFor(model => model.requisitosPuesto, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -62,7 +60,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.montoMensual, htmlAttributes: new { @class = "control-label col-xs-6 col-md-4" })
             <div class="col-xs-6 col-md-4">
-                @Html.EditorFor(model => model.montoMensual, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.montoMensual, new { htmlAttributes = new { @class = "form-control", @placeholder="Sin decimales", @required = "required" } })
                 @Html.ValidationMessageFor(model => model.montoMensual, "", new { @class = "text-danger" })
             </div>
 
@@ -88,7 +86,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.nombreContacto, htmlAttributes: new { @class = "control-label col-xs-6 col-md-4" })
             <div class="col-xs-6 col-md-4">
-                @Html.EditorFor(model => model.nombreContacto, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.nombreContacto, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nombre completo", @required="required" } })
                 @Html.ValidationMessageFor(model => model.nombreContacto, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -96,7 +94,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.emailContacto, htmlAttributes: new { @class = "control-label col-xs-6 col-md-4" })
             <div class="col-xs-6 col-md-4">
-                @Html.EditorFor(model => model.emailContacto, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.emailContacto, new { htmlAttributes = new { @class = "form-control", @placeholder="email@email.com", @required="required"} })
                 @Html.ValidationMessageFor(model => model.emailContacto, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -104,18 +102,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.telContacto, htmlAttributes: new { @class = "control-label col-xs-6 col-md-4" })
             <div class="col-xs-6 col-md-4">
-                @Html.EditorFor(model => model.telContacto, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.telContacto, new { htmlAttributes = new { @class = "form-control", @placeholder= "Digite el número de teléfono sin guiones ni paréntesis", @required = "required" } })
                 @Html.ValidationMessageFor(model => model.telContacto, "", new { @class = "text-danger" })
             </div>
         </div>
-        <!--
-        <div class="form-group">
-            @Html.LabelFor(model => model.adjuntarArchivo, htmlAttributes: new { @class = "control-label col-xs-6 col-md-4" })
-            <div class="col-xs-6 col-md-4">
-                @Html.EditorFor(model => model.adjuntarArchivo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.adjuntarArchivo, "", new { @class = "text-danger" })
-            </div>
-        </div> -->
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
