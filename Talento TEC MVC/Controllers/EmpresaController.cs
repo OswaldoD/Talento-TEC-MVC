@@ -32,6 +32,8 @@ namespace Talento_TEC_MVC.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> agregar_oferta(NuevaOferta model)
         {
+            Response.Write("Im here");
+
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://talentotec-api.azurewebsites.net/");
@@ -46,8 +48,8 @@ namespace Talento_TEC_MVC.Controllers
                     RequisitosPuesto = model.requisitosPuesto,
                     montoSalario = float.Parse(model.montoMensual),
                     nombreTipoMoneda = "Colones", // desde boton
-                    fechaInicioOferta = model.fechaInicio,
-                    fechaFinalOferta = model.fechaFin,
+                    fechaInicioOferta = model.fechaInicio.ToString(),
+                    fechaFinalOferta = model.fechaFin.ToString(),
                     nombreTipoOferta = "Graduado", // desde boton
                     nombreContacto = model.nombreContacto,
                     emailContacto = model.emailContacto,
@@ -69,6 +71,13 @@ namespace Talento_TEC_MVC.Controllers
                 }
                 else
                 {
+                    Response.Write("error\n");
+                    Response.Write(nuevaOferta.montoSalario+ "\n");
+
+                    Response.Write(nuevaOferta.fechaInicioOferta+"\n");
+                    Response.Write(nuevaOferta.carrerasProfesionales + "\n");
+
+
                     return View(model);
                 }
 
