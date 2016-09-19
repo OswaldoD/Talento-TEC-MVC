@@ -25,10 +25,10 @@ namespace Talento_TEC_MVC.Models.registro.empresa
         {
             return new List<SelectListItem>
             {
-                new SelectListItem {Text="Sin sectores", Value="sector1" }
+                new SelectListItem {Text="No Presenta Sectores", Value="No_Presenta_Sectores" }
             };
         }
     }
 
-    public enum sectoresProducticos { sector1 }
+    public enum sectoresProducticos { No_Presenta_Sectores }
 }

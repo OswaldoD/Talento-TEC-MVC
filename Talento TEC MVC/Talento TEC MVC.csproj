@@ -217,6 +217,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\empresa\AgregaOferta.cs" />
     <Compile Include="Models\empresa\NuevaOferta.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginInfo.cs" />
@@ -314,10 +315,11 @@
     <Content Include="Views\Registro\finalizar_empresa.cshtml" />
     <Content Include="Views\RegistroEmpresa\Info_Inicial_Empresa.cshtml" />
     <Content Include="Views\Shared\_LayoutEmpresa.cshtml" />
-    <Content Include="Views\Empresa\agregar_oferta.cshtml" />
     <Content Include="Views\RegistroEmpresa\descripcionEmpresa.cshtml" />
     <Content Include="Views\RegistroEmpresa\credenciales_empresa.cshtml" />
     <Content Include="Views\RegistroEmpresa\finalizar_empresa.cshtml" />
+    <Content Include="Views\Empresa\agregar_oferta.cshtml" />
+    <Content Include="Views\Empresa\oferta_agregada.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

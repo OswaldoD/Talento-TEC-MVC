@@ -66,7 +66,7 @@ namespace Talento_TEC_MVC.Controllers
         [AllowAnonymous]
         public ActionResult descripcionEmpresa(DescripcionEmpresa model)
         {
-            Response.Write(ModelState.IsValid);
+            //Response.Write(ModelState.IsValid);
 
             if (!ModelState.IsValid)
             {
@@ -114,8 +114,8 @@ namespace Talento_TEC_MVC.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> finalizar_empresa(string returnUrl)
         {
-            Response.Write("agregar empresa");
-            Response.Write(Session["nombreEmpresa"]);
+            //Response.Write("agregar empresa");
+          //  Response.Write(Session["nombreEmpresa"]);
 
             using (var client = new HttpClient())
             {
@@ -128,7 +128,7 @@ namespace Talento_TEC_MVC.Controllers
                 informacion_empresa = new registro_completo_empresa()
                 {
                     nombreEmpresa = Session["nombreEmpresa"].ToString(),
-                    cedulaJurídica = Session["cedulaJurídica"].ToString(),
+                    cedulaJuridica = Session["cedulaJurídica"].ToString(),
                     direccion = Session["direccion"].ToString(),
                     provincia = Session["provincia"].ToString(),
                     nombrePais = Session["nombrePais"].ToString(),

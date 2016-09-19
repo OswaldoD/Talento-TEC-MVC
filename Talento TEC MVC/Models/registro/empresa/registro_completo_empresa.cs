@@ -9,7 +9,7 @@ namespace Talento_TEC_MVC.Models.registro.empresa
     {
         public string nombreEmpresa { get; set; }
 
-        public string cedulaJurídica { get; set; }
+        public string cedulaJuridica { get; set; }
 
         public string direccion { get; set; }
 
