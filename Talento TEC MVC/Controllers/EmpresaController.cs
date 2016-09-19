@@ -37,7 +37,7 @@ namespace Talento_TEC_MVC.Controllers
                 client.BaseAddress = new Uri("http://talentotec-api.azurewebsites.net/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
+                
                 // informacion de la oferta
                 AgregaOferta nuevaOferta = new AgregaOferta()
                 {
@@ -45,15 +45,15 @@ namespace Talento_TEC_MVC.Controllers
                     descripcionPuesto = model.descripcionPuesto,
                     RequisitosPuesto = model.requisitosPuesto,
                     montoSalario = float.Parse(model.montoMensual),
-                    nombreTipoMoneda = "", // desde boton
+                    nombreTipoMoneda = "Colones", // desde boton
                     fechaInicioOferta = model.fechaInicio,
                     fechaFinalOferta = model.fechaFin,
-                    nombreTipoOferta = "", // desde boton
+                    nombreTipoOferta = "Graduado", // desde boton
                     nombreContacto = model.nombreContacto,
                     emailContacto = model.emailContacto,
                     telefonoContacto = model.telContacto,
-                    estadoOferta = "", // desde boton
-                    estadoConfidencialidad = "", // desde boton
+                    estadoOferta = "Publicada", // desde boton
+                    estadoConfidencialidad = "Inactiva", // desde boton
                     cantidadPlazas = Int32.Parse(model.cantidadPlazas),
                     carrerasProfesionales = model.carreraOferta.ToString() + ", " + model.especialidadOferta.ToString() // agregar mas carreras
                 };
@@ -79,6 +79,13 @@ namespace Talento_TEC_MVC.Controllers
         {
             return View();
         }
+
+        public ActionResult ver_ofertas()
+        {
+            return View();
+        }
+
+
 
     }
 }
