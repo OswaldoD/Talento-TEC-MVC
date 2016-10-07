@@ -212,6 +212,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\RegistroEmpresaController.cs" />
+    <Compile Include="Controllers\RegistroGraduadoController.cs" />
     <Compile Include="Controllers\TalentoTECController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -232,6 +233,8 @@
     <Compile Include="Models\registro\empresa\DescripcionEmpresa.cs" />
     <Compile Include="Models\registro\empresa\Info_Inicial_Empresa.cs" />
     <Compile Include="Models\registro\empresa\registro_completo_empresa.cs" />
+    <Compile Include="Models\registro\graduado\datos_personales.cs" />
+    <Compile Include="Models\registro\graduado\informacion_contacto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -324,6 +327,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\actions\" />
+    <Folder Include="Views\RegistroGraduado\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
