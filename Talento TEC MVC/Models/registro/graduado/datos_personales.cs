@@ -59,8 +59,5 @@ namespace Talento_TEC_MVC.Models.registro.graduado
         [DataType(DataType.Text)]
         public string carne { get; set; }
 
-
-
-
     }
 }
