@@ -9,6 +9,12 @@ namespace Talento_TEC_MVC.Models.empresa
 {
     public class NuevaOferta
     {
+        /*
+         1 - Graduado
+         2 - Practica
+         3 - Pasantia
+             
+             */
       //  [Required]
         [Display(Name = "Nombre de la empresa  (*)")]
         [DataType(DataType.Text)]

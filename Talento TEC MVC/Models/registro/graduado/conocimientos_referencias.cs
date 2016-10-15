@@ -19,11 +19,6 @@ namespace Talento_TEC_MVC.Models.registro.graduado
         public string nombreRef { get; set; }
 
         [Required]
-        [Display(Name = "Grado académico")]
-        [DataType(DataType.Text)]
-        public string gradoRef { get; set; }
-
-        [Required]
         [Display(Name = "Puesto")]
         [DataType(DataType.Text)]
         public string puestoRef { get; set; }

@@ -26,6 +26,11 @@ namespace Talento_TEC_MVC.Controllers
             return View();
         }
 
+        public ActionResult datos_personales()
+        {
+            return View();
+        }
+
         // POST: RegistroGraduado/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)

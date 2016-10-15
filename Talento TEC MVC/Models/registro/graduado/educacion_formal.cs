@@ -26,7 +26,7 @@ namespace Talento_TEC_MVC.Models.registro.graduado
         [Required]
         [Display(Name = "Título obtenido")]
         [DataType(DataType.Text)]
-        public string titulo { get; set; }
+        public string nombreTitulo { get; set; }
 
         [Required]
         [Display(Name = "Grado")]
