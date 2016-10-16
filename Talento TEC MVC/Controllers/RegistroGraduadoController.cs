@@ -31,6 +31,32 @@ namespace Talento_TEC_MVC.Controllers
             return View();
         }
 
+        public ActionResult informacion_contacto()
+        {
+            return View();
+
+        }
+
+        public ActionResult conocimientos_referencias()
+        {
+            return View();
+        }
+
+        public ActionResult dominio_idioma()
+        {
+            return View();
+        }
+
+        public ActionResult educacion_formal()
+        {
+            return View();
+        }
+
+        public ActionResult experiencia_laboral()
+        {
+            return View();
+        }
+
         // POST: RegistroGraduado/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)

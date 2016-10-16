@@ -327,11 +327,16 @@
     <Content Include="Views\RegistroEmpresa\finalizar_empresa.cshtml" />
     <Content Include="Views\Empresa\agregar_oferta.cshtml" />
     <Content Include="Views\Empresa\oferta_agregada.cshtml" />
+    <Content Include="Views\RegistroGraduado\datos_personales.cshtml" />
+    <Content Include="Views\RegistroGraduado\informacion_contacto.cshtml" />
+    <Content Include="Views\RegistroGraduado\conocimientos_referencias.cshtml" />
+    <Content Include="Views\RegistroGraduado\dominio_idioma.cshtml" />
+    <Content Include="Views\RegistroGraduado\educacion_formal.cshtml" />
+    <Content Include="Views\RegistroGraduado\experiencia_laboral.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\actions\" />
-    <Folder Include="Views\RegistroGraduado\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
