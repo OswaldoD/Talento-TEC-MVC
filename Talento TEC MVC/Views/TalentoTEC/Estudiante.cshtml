@@ -20,8 +20,30 @@
         <span class="caret"></span>
     </button>
     <ul class="dropdown-menu dropdown-menu-center" role="menu" aria-labelledby="menu1">
-        <li role="presentation"><a role="menuitem"><a href="#">Escuela de Ingeniería en Computación</a></li>
-        <li><a href="#">Escuela de Administración de Empresas</a></li>
+        <li id="computacion" onclick="showSchoolInfo('computacion')"><a href="#">Escuela de Ingeniería en Computación</a></li>
+        <li id="administracion"><a href="#">Escuela de Administración de Empresas</a></li>
         <li><a href="#">Escuela de Ingeniería en Computadores</a></li>
     </ul>
 </div>
+
+<script>
+
+
+    
+    function showSchoolInfo(idElement) {
+        var x = document.getElementById(idElement).innerText;
+        console.log(x);
+        jQuery.get("", function (data, response) {
+            console.log("vamo a conectarno");
+        })
+        //x.value
+        /*
+        if (!event.target.matches('dropdown-toggle')) {
+            print("GOA");
+        }*/
+
+
+
+    }
+    
+</script>

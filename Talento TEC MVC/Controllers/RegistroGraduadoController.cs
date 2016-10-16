@@ -3,32 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Talento_TEC_MVC.Models.registro.graduado;
 
 namespace Talento_TEC_MVC.Controllers
 {
     public class RegistroGraduadoController : Controller
     {
-        // GET: RegistroGraduado
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: RegistroGraduado/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: RegistroGraduado/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
 
         public ActionResult datos_personales()
         {
             return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult datos_personales(datos_personales model)
+        {
+            return RedirectToAction("informacion_contacto", "registrograduado");
+
         }
 
         public ActionResult informacion_contacto()
@@ -37,14 +29,11 @@ namespace Talento_TEC_MVC.Controllers
 
         }
 
-        public ActionResult conocimientos_referencias()
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult informacion_contacto(informacion_contacto model)
         {
-            return View();
-        }
-
-        public ActionResult dominio_idioma()
-        {
-            return View();
+            return RedirectToAction("educacion_formal","registrograduado");
         }
 
         public ActionResult educacion_formal()
@@ -52,69 +41,48 @@ namespace Talento_TEC_MVC.Controllers
             return View();
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult educacion_formal(educacion_formal model)
+        {
+            return RedirectToAction("dominio_idioma", "registrograduado");
+        }
+
+        public ActionResult dominio_idioma()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult dominio_idioma(dominio_idioma model)
+        {
+            return RedirectToAction("experiencia_laboral", "registrograduado");
+        }
+
         public ActionResult experiencia_laboral()
         {
             return View();
         }
 
-        // POST: RegistroGraduado/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [AllowAnonymous]
+        public ActionResult experiencia_laboral(experiencia_laboral model)
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("conocimientos_referencias", "registrograduado");
         }
 
-        // GET: RegistroGraduado/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult conocimientos_referencias()
         {
             return View();
         }
 
-        // POST: RegistroGraduado/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [AllowAnonymous]
+        public ActionResult conocimientos_referencias(conocimientos_referencias model)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("", "");
         }
 
-        // GET: RegistroGraduado/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: RegistroGraduado/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

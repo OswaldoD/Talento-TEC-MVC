@@ -212,6 +212,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\RegistroEmpresaController.cs" />
+    <Compile Include="Controllers\RegistroEstudianteController.cs" />
     <Compile Include="Controllers\RegistroGraduadoController.cs" />
     <Compile Include="Controllers\TalentoTECController.cs" />
     <Compile Include="Global.asax.cs">
@@ -333,6 +334,12 @@
     <Content Include="Views\RegistroGraduado\dominio_idioma.cshtml" />
     <Content Include="Views\RegistroGraduado\educacion_formal.cshtml" />
     <Content Include="Views\RegistroGraduado\experiencia_laboral.cshtml" />
+    <Content Include="Views\RegistroEstudiante\datos_personales.cshtml" />
+    <Content Include="Views\RegistroEstudiante\informacion_contacto.cshtml" />
+    <Content Include="Views\RegistroEstudiante\educacion_formal.cshtml" />
+    <Content Include="Views\RegistroEstudiante\dominio_idioma.cshtml" />
+    <Content Include="Views\RegistroEstudiante\experiencia_laboral.cshtml" />
+    <Content Include="Views\RegistroEstudiante\conocimientos_referencias.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
