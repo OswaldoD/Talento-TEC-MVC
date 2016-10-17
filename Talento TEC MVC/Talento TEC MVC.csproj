@@ -258,8 +258,8 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
-    <None Include="Properties\PublishProfiles\TalentoTEC %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\TalentoTEC.pubxml" />
+    <None Include="Properties\PublishProfiles\talentotec - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\talentotec - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -340,6 +340,7 @@
     <Content Include="Views\RegistroEstudiante\dominio_idioma.cshtml" />
     <Content Include="Views\RegistroEstudiante\experiencia_laboral.cshtml" />
     <Content Include="Views\RegistroEstudiante\conocimientos_referencias.cshtml" />
+    <Content Include="Views\RegistroGraduado\finalizar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

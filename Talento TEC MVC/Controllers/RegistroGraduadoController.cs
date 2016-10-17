@@ -81,8 +81,19 @@ namespace Talento_TEC_MVC.Controllers
         [AllowAnonymous]
         public ActionResult conocimientos_referencias(conocimientos_referencias model)
         {
-            return RedirectToAction("", "");
+            return RedirectToAction("finalizar", "registrograduado");
         }
 
+        public ActionResult finalizar()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult finalizar(string Url)
+        {
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

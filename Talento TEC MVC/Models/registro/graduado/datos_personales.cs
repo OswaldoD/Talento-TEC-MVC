@@ -10,12 +10,12 @@ namespace Talento_TEC_MVC.Models.registro.graduado
     public class datos_personales
     {
         [Required]
-        [Display(Name = "Primer Apellido")]
+        [Display(Name = "Primer apellido")]
         [DataType(DataType.Text)]
         public string primerApellido { get; set; }
 
         [Required]
-        [Display(Name = "Segundo Apellido")]
+        [Display(Name = "Segundo apellido")]
         [DataType(DataType.Text)]
         public string segundoApellido { get; set; }
 
@@ -25,22 +25,22 @@ namespace Talento_TEC_MVC.Models.registro.graduado
         public string nombreGraduado { get; set; }
 
         [Required]
-        [Display(Name = "Fecha de Nacimiento")]
+        [Display(Name = "Fecha de nacimiento")]
         [DataType(DataType.Text)]
         public string fechaNacimiento { get; set; }
 
         [Required]
-        [Display(Name = "País de Nacimiento")]
+        [Display(Name = "País de nacimiento")]
         [DataType(DataType.Text)]
         public string paisNacimiento { get; set; }
 
         [Required]
-        [Display(Name = "nacionalidad")]
+        [Display(Name = "Nacionalidad")]
         [DataType(DataType.Text)]
         public string nacionalidad { get; set; }
 
         [Required]
-        [Display(Name = "Tipo de Identificación")]
+        [Display(Name = "Tipo de identificación")]
         [DataType(DataType.Text)]
         public string tipoID { get; set; }
 
