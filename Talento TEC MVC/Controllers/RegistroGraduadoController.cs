@@ -19,9 +19,9 @@ namespace Talento_TEC_MVC.Controllers
         [AllowAnonymous]
         public ActionResult datos_personales(datos_personales model)
         {
-            Response.Write(model.fechaNacimiento);
-            return View();
-            //return RedirectToAction("informacion_contacto", "registrograduado");
+            //Response.Write(model.fechaNacimiento);
+            //return View();
+            return RedirectToAction("informacion_contacto", "registrograduado");
 
         }
 
