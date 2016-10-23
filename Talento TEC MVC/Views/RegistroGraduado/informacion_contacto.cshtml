@@ -51,9 +51,11 @@
                 @Html.EditorFor(model => model.paisResidencia, new { htmlAttributes = new { @class = "form-control", @type="hidden" } })
                 @Html.ValidationMessageFor(model => model.paisResidencia, "", new { @class = "text-danger" })
 			<div class="col-xs-6 col-sm-4">
-				<div class="annoDiv">
-					<select id="annoSelect" class="col-md-5" onclick="setFechaNacimiento()">
-						<option value="anno" default selected>-año-</option>
+				<div class="paisDiv">
+					<select id="paisSelect" class="col-md-5" onclick="">
+						<option value="costa_rica" default selected>Costa Rica</option>
+						<option value="mexico">México</option>
+						<option value="panama">Panamá</option>
 					</select>
 				</div>
             </div>
@@ -116,10 +118,12 @@
 }
 
 <script>
+/*
     var option = document.getElementById("annoSelect");
     for (i = 1940; i < 2017; i++) {
         option.appendChild(new Option(i.toString(), i.toString()));
         console.log(i);
     }
+*/
 
 </script>
