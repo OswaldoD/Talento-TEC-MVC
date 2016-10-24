@@ -48,9 +48,16 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.idioma, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
-            <div class="col-xs-6 col-sm-4">
-                @Html.EditorFor(model => model.idioma, new { htmlAttributes = new { @class = "form-control" } })
+            
+                @Html.EditorFor(model => model.idioma, new { htmlAttributes = new { @class = "form-control", @type="hidden" } })
                 @Html.ValidationMessageFor(model => model.idioma, "", new { @class = "text-danger" })
+			<div class="col-xs-6 col-sm-4">
+				<div class="idiomas">
+					<select id="idiomasSelect" class="col-md-5" onclick="setFechaNacimiento()">
+						<option value="idiomas" default selected>-- idiomas --</option>
+					</select>
+				</div>
+
             </div>
         </div>
 
@@ -79,8 +86,8 @@
 				<div class="nivelEscritura">
 					<select id="escrituraSelect" class="col-md-5" onclick="setFechaNacimiento()">
 						<option value="basico" default selected>Básico</option>
-						<option value="intermedio" default selected>Intermedio</option>
-						<option value="avanzado" default selected>Avanzado</option>
+						<option value="intermedio">Intermedio</option>
+						<option value="avanzado">Avanzado</option>
 					</select>
 				</div>
 
@@ -96,8 +103,8 @@
 				<div class="nivelEscritura">
 					<select id="escrituraSelect" class="col-md-5" onclick="setFechaNacimiento()">
 						<option value="basico" default selected>Básico</option>
-						<option value="intermedio" default selected>Intermedio</option>
-						<option value="avanzado" default selected>Avanzado</option>
+						<option value="intermedio">Intermedio</option>
+						<option value="avanzado">Avanzado</option>
 					</select>
 				</div>
             </div>

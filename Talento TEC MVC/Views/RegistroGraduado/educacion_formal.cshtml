@@ -71,9 +71,15 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.annoGraduacion, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
-            <div class="col-xs-6 col-sm-4">
-                @Html.EditorFor(model => model.annoGraduacion, new { htmlAttributes = new { @class = "form-control" } })
+            
+                @Html.EditorFor(model => model.annoGraduacion, new { htmlAttributes = new { @class = "form-control", @type="hidden" } })
                 @Html.ValidationMessageFor(model => model.annoGraduacion, "", new { @class = "text-danger" })
+			<div class="col-xs-6 col-sm-4">
+				<div class="annoGraduDiv">
+					<select id="annoGraduSelect" class="col-md-3" onclick="setFechaNacimiento()">
+						<option value="anno" default selected>-año-</option>
+					</select>
+				</div>
             </div>
         </div>
 
@@ -87,9 +93,20 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.grado, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
-            <div class="col-xs-6 col-sm-4">
-                @Html.EditorFor(model => model.grado, new { htmlAttributes = new { @class = "form-control" } })
+            
+                @Html.EditorFor(model => model.grado, new { htmlAttributes = new { @class = "form-control", @type="hidden" } })
                 @Html.ValidationMessageFor(model => model.grado, "", new { @class = "text-danger" })
+			<div class="col-xs-6 col-sm-4">
+				<div class="gradoDiv">
+					<select id="gradoSelect" class="col-md-5" onclick="setFechaNacimiento()">
+						<option value="grado" default selected>-- grado --</option>
+						<option value="tecnico_superior">Técnico Superior</option>
+						<option value="bachiller">Bachiller</option>
+						<option value="licenciatura">Licenciatura</option>
+						<option value="maestria">Maestría</option>
+						<option value="doctorado">Doctorado</option>
+					</select>
+				</div>
             </div>
         </div>
 
@@ -105,11 +122,11 @@
 
 
 <script>
-/*
-    var option = document.getElementById("annoSelect");
+
+    var option = document.getElementById("annoGraduDiv");
     for (i = 1940; i < 2017; i++) {
         option.appendChild(new Option(i.toString(), i.toString()));
         console.log(i);
     }
-	*/
+	
 </script>
