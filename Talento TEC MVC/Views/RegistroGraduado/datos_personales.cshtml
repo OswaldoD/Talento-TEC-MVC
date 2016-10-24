@@ -78,46 +78,46 @@
             @Html.ValidationMessageFor(model => model.fechaNacimiento, "", new { @class = "text-danger" })
 
             <div class="col-xs-6 col-sm-4">
-            <div class="diaDiv">
-                <select id="diaSelect" class="col-md-3" onclick="setDiaNacimiento()">
-                    <option value="dia" default selected>-dia-</option>
+                <div class="diaDiv">
+                    <select id="diaSelect" class="col-md-3" onclick="setDiaNacimiento()">
+                        <option value="dia" default selected>- dia -</option>
 
-                </select>
-            </div>
-            <div class="mesDiv">
-                <select id="mesSelect" class="col-md-3" onclick="setMesNacimiento()">
-                    <option value="mes" default selected>-mes-</option>
-                    <option value="ene">enero</option>
-                    <option value="feb">febrero</option>
-                    <option value="mar">marzo</option>
-                    <option value="abr">abril</option>
-                    <option value="may">mayo</option>
-                    <option value="jun">junio</option>
-                    <option value="jul">julio</option>
-                    <option value="ago">agosto</option>
-                    <option value="sep">septiembre</option>
-                    <option value="oct">octubre</option>
-                    <option value="nov">noviembre</option>
-                    <option value="dec">diciembre</option>
-                </select>
-            </div>
-            <div class="annoDiv">
-                <select id="annoSelect" class="col-md-3" onclick="setFechaNacimiento()">
-                    <option value="anno" default selected>-año-</option>
-                </select>
+                    </select>
+                </div>
+                <div class="mesDiv">
+                    <select id="mesSelect" class="col-md-3" onclick="setMesNacimiento()">
+                        <option value="mes" default selected>- mes -</option>
+                        <option value="ene">enero</option>
+                        <option value="feb">febrero</option>
+                        <option value="mar">marzo</option>
+                        <option value="abr">abril</option>
+                        <option value="may">mayo</option>
+                        <option value="jun">junio</option>
+                        <option value="jul">julio</option>
+                        <option value="ago">agosto</option>
+                        <option value="sep">septiembre</option>
+                        <option value="oct">octubre</option>
+                        <option value="nov">noviembre</option>
+                        <option value="dec">diciembre</option>
+                    </select>
+                </div>
+                <div class="annoDiv">
+                    <select id="annoSelect" class="col-md-3" onclick="setFechaNacimiento()">
+                        <option value="anno" default selected>- año -</option>
+                    </select>
+                </div>
             </div>
         </div>
-            </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.paisNacimiento, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
-            
-                @Html.EditorFor(model => model.paisNacimiento, new { htmlAttributes = new { @class = "form-control", @type="hidden" } })
-                @Html.ValidationMessageFor(model => model.paisNacimiento, "", new { @class = "text-danger" })
+
+            @Html.EditorFor(model => model.paisNacimiento, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.ValidationMessageFor(model => model.paisNacimiento, "", new { @class = "text-danger" })
             <div class="col-xs-6 col-sm-4">
                 <div class="paisNacimiento">
                     <select id="paisSelect" class="col-md-5" onclick="">
-                        <option value="pais" default selected>-pais-</option>
+                        <option value="pais" default selected>-- pais --</option>
                         <option value="costa_rica">Costa Rica</option>
                     </select>
                 </div>
@@ -127,12 +127,12 @@
         <div class="form-group">
             @Html.LabelFor(model => model.nacionalidad, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
 
-            @Html.EditorFor(model => model.nacionalidad, new { htmlAttributes = new { @class = "form-control", @type="hidden" } })
+            @Html.EditorFor(model => model.nacionalidad, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
             @Html.ValidationMessageFor(model => model.nacionalidad, "", new { @class = "text-danger" })
             <div class="col-xs-6 col-sm-4">
                 <div class="nacionalidadMenu">
                     <select id="nacionalidadSelect" class="col-md-5" onclick="">
-                        <option value="nacionalidad" default selected>-nacionalidad-</option>
+                        <option value="nacionalidad" default selected>- nacionalidad -</option>
                         <option value="costarricense">costarricense</option>
 
                     </select>
@@ -142,9 +142,9 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.tipoID, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
-            
-                @Html.EditorFor(model => model.tipoID, new { htmlAttributes = new { @class = "form-control", @type="hidden" } })
-                @Html.ValidationMessageFor(model => model.tipoID, "", new { @class = "text-danger" })
+
+            @Html.EditorFor(model => model.tipoID, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.ValidationMessageFor(model => model.tipoID, "", new { @class = "text-danger" })
             <div class="col-xs-6 col-sm-4">
                 <form>
                     <input type="radio" name="tipoid" value="cedula_identidad" /> Cédula de Identidad &nbsp;&nbsp;
@@ -163,9 +163,9 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.sexo, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
-            
-                @Html.EditorFor(model => model.sexo, new { htmlAttributes = new { @class = "form-control", @type="hidden" } })
-                @Html.ValidationMessageFor(model => model.sexo, "", new { @class = "text-danger" })
+
+            @Html.EditorFor(model => model.sexo, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.ValidationMessageFor(model => model.sexo, "", new { @class = "text-danger" })
 
             <div class="col-xs-6 col-sm-4">
                 <form>
@@ -207,8 +207,8 @@
         option.appendChild(new Option(i.toString(), i.toString()));
         console.log(i);
     }
-   
-    
+
+
     function setDiaNacimiento() {
         var $select = $('.diaDiv option:selected').val();
         diaNacim = $select;
@@ -222,10 +222,10 @@
     }
 
     function setFechaNacimiento() {
-      //  var n = document.getElementById('fechaSelect').selectedIndex;
+        //  var n = document.getElementById('fechaSelect').selectedIndex;
         var $select = $('.annoDiv option:selected').val();
         //$select.selected;
-       // console.log("Selected: " + $select);
+        // console.log("Selected: " + $select);
 
         var x = document.getElementById('fechaNacimiento');
         x.setAttribute("value", diaNacim + "-" + mesNacim + "-" + $select);

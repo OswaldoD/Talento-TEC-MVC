@@ -39,74 +39,74 @@
 
 <li role="presentation" class="divider-line"></li>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.idioma, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
-            
-                @Html.EditorFor(model => model.idioma, new { htmlAttributes = new { @class = "form-control", @type="hidden" } })
-                @Html.ValidationMessageFor(model => model.idioma, "", new { @class = "text-danger" })
-			<div class="col-xs-6 col-sm-4">
-				<div class="idiomas">
-					<select id="idiomasSelect" class="col-md-5" onclick="setFechaNacimiento()">
-						<option value="idiomas" default selected>-- idiomas --</option>
-					</select>
-				</div>
+
+            @Html.EditorFor(model => model.idioma, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.ValidationMessageFor(model => model.idioma, "", new { @class = "text-danger" })
+            <div class="col-xs-6 col-sm-4">
+                <div class="idiomas">
+                    <select id="idiomasSelect" class="col-md-5" onclick="setFechaNacimiento()">
+                        <option value="idiomas" default selected>-- idiomas --</option>
+                    </select>
+                </div>
 
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.nivelLectura, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
-            
-                @Html.EditorFor(model => model.nivelLectura, new { htmlAttributes = new { @class = "form-control", @type="hidden" } })
-                @Html.ValidationMessageFor(model => model.nivelLectura, "", new { @class = "text-danger" })
-			<div class="col-xs-6 col-sm-4">
-				<div class="nivelLectura">
-					<select id="lecturaSelect" class="col-md-5" onclick="setFechaNacimiento()">
-						<option value="basico" default selected>Básico</option>
-						<option value="intermedio">Intermedio</option>
-						<option value="avanzado">Avanzado</option>
-					</select>
-				</div>
+
+            @Html.EditorFor(model => model.nivelLectura, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.ValidationMessageFor(model => model.nivelLectura, "", new { @class = "text-danger" })
+            <div class="col-xs-6 col-sm-4">
+                <div class="nivelLectura">
+                    <select id="lecturaSelect" class="col-md-5" onclick="setFechaNacimiento()">
+                        <option value="basico" default selected>Básico</option>
+                        <option value="intermedio">Intermedio</option>
+                        <option value="avanzado">Avanzado</option>
+                    </select>
+                </div>
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.nivelEscritura, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
-            
-                @Html.EditorFor(model => model.nivelEscritura, new { htmlAttributes = new { @class = "form-control", @type="hidden" } })
-                @Html.ValidationMessageFor(model => model.nivelEscritura, "", new { @class = "text-danger" })
-			<div class="col-xs-6 col-sm-4">
-				<div class="nivelEscritura">
-					<select id="escrituraSelect" class="col-md-5" onclick="setFechaNacimiento()">
-						<option value="basico" default selected>Básico</option>
-						<option value="intermedio">Intermedio</option>
-						<option value="avanzado">Avanzado</option>
-					</select>
-				</div>
+
+            @Html.EditorFor(model => model.nivelEscritura, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.ValidationMessageFor(model => model.nivelEscritura, "", new { @class = "text-danger" })
+            <div class="col-xs-6 col-sm-4">
+                <div class="nivelEscritura">
+                    <select id="escrituraSelect" class="col-md-5" onclick="setFechaNacimiento()">
+                        <option value="basico" default selected>Básico</option>
+                        <option value="intermedio">Intermedio</option>
+                        <option value="avanzado">Avanzado</option>
+                    </select>
+                </div>
 
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.nivelOral, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
-            
-                @Html.EditorFor(model => model.nivelOral, new { htmlAttributes = new { @class = "form-control", @type="hidden" } })
-                @Html.ValidationMessageFor(model => model.nivelOral, "", new { @class = "text-danger" })
-			<div class="col-xs-6 col-sm-4">
-				<div class="nivelEscritura">
-					<select id="escrituraSelect" class="col-md-5" onclick="setFechaNacimiento()">
-						<option value="basico" default selected>Básico</option>
-						<option value="intermedio">Intermedio</option>
-						<option value="avanzado">Avanzado</option>
-					</select>
-				</div>
+
+            @Html.EditorFor(model => model.nivelOral, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.ValidationMessageFor(model => model.nivelOral, "", new { @class = "text-danger" })
+            <div class="col-xs-6 col-sm-4">
+                <div class="nivelEscritura">
+                    <select id="escrituraSelect" class="col-md-5" onclick="setFechaNacimiento()">
+                        <option value="basico" default selected>Básico</option>
+                        <option value="intermedio">Intermedio</option>
+                        <option value="avanzado">Avanzado</option>
+                    </select>
+                </div>
             </div>
         </div>
 

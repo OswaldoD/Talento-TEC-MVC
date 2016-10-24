@@ -39,7 +39,7 @@
 
 <li role="presentation" class="divider-line"></li>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
@@ -47,66 +47,66 @@
         <div class="form-group">
             @Html.LabelFor(model => model.institucion, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
             <div class="col-xs-6 col-sm-4">
-                @Html.EditorFor(model => model.institucion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.institucion, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nombre de la institución" } })
                 @Html.ValidationMessageFor(model => model.institucion, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.paisTitulo, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
-            
-                @Html.EditorFor(model => model.paisTitulo, new { htmlAttributes = new { @class = "form-control", @type="hidden" } })
-                @Html.ValidationMessageFor(model => model.paisTitulo, "", new { @class = "text-danger" })
-			<div class="col-xs-6 col-sm-4">
-				<div class="paisDiv">
-					<select id="paisSelect" class="col-md-5" onclick="">
-						<option value="costa_rica" default selected>Costa Rica</option>
-						<option value="mexico">México</option>
-						<option value="panama">Panamá</option>
-					</select>
-				</div>
+
+            @Html.EditorFor(model => model.paisTitulo, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.ValidationMessageFor(model => model.paisTitulo, "", new { @class = "text-danger" })
+            <div class="col-xs-6 col-sm-4">
+                <div class="paisDiv">
+                    <select id="paisSelect" class="col-md-5" onclick="">
+                        <option value="costa_rica" default selected>Costa Rica</option>
+                        <option value="mexico">México</option>
+                        <option value="panama">Panamá</option>
+                    </select>
+                </div>
             </div>
 
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.annoGraduacion, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
-            
-                @Html.EditorFor(model => model.annoGraduacion, new { htmlAttributes = new { @class = "form-control", @type="hidden" } })
-                @Html.ValidationMessageFor(model => model.annoGraduacion, "", new { @class = "text-danger" })
-			<div class="col-xs-6 col-sm-4">
-				<div class="annoGraduDiv">
-					<select id="annoGraduSelect" class="col-md-3" onclick="setFechaNacimiento()">
-						<option value="anno" default selected>-año-</option>
-					</select>
-				</div>
+
+            @Html.EditorFor(model => model.annoGraduacion, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.ValidationMessageFor(model => model.annoGraduacion, "", new { @class = "text-danger" })
+            <div class="col-xs-6 col-sm-4">
+                <div class="annoGraduDiv">
+                    <select id="annoGraduSelect" class="col-md-5" onclick="setFechaNacimiento()">
+                        <option value="anno" default selected>-- año --</option>
+                    </select>
+                </div>
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.nombreTitulo, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
             <div class="col-xs-6 col-sm-4">
-                @Html.EditorFor(model => model.nombreTitulo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.nombreTitulo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nombre del título" } })
                 @Html.ValidationMessageFor(model => model.nombreTitulo, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.grado, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
-            
-                @Html.EditorFor(model => model.grado, new { htmlAttributes = new { @class = "form-control", @type="hidden" } })
-                @Html.ValidationMessageFor(model => model.grado, "", new { @class = "text-danger" })
-			<div class="col-xs-6 col-sm-4">
-				<div class="gradoDiv">
-					<select id="gradoSelect" class="col-md-5" onclick="setFechaNacimiento()">
-						<option value="grado" default selected>-- grado --</option>
-						<option value="tecnico_superior">Técnico Superior</option>
-						<option value="bachiller">Bachiller</option>
-						<option value="licenciatura">Licenciatura</option>
-						<option value="maestria">Maestría</option>
-						<option value="doctorado">Doctorado</option>
-					</select>
-				</div>
+
+            @Html.EditorFor(model => model.grado, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.ValidationMessageFor(model => model.grado, "", new { @class = "text-danger" })
+            <div class="col-xs-6 col-sm-4">
+                <div class="gradoDiv">
+                    <select id="gradoSelect" class="col-md-5" onclick="setFechaNacimiento()">
+                        <option value="grado" default selected>-- grado --</option>
+                        <option value="tecnico_superior">Técnico Superior</option>
+                        <option value="bachiller">Bachiller</option>
+                        <option value="licenciatura">Licenciatura</option>
+                        <option value="maestria">Maestría</option>
+                        <option value="doctorado">Doctorado</option>
+                    </select>
+                </div>
             </div>
         </div>
 
@@ -128,5 +128,5 @@
         option.appendChild(new Option(i.toString(), i.toString()));
         console.log(i);
     }
-	
+
 </script>

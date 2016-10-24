@@ -20,7 +20,7 @@ namespace Talento_TEC_MVC.Models.registro.graduado
 
         [Required]
         [Display(Name = "Dirección exacta (*)")]
-        [DataType(DataType.Text)]
+        [DataType(DataType.MultilineText)]
         public string direccion { get; set; }
 
         [Required]
