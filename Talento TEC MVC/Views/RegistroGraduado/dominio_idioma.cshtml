@@ -112,6 +112,33 @@
 
         <div class="form-group">
             <div class="col-md-offset-5 col-xs-6 col-sm-4">
+                <input type="button" value="agregar" onclick="addTitle()" class="btn btn-default" />
+                <!--<button onclick="addTitle()">Agregar</button>-->
+            </div>
+        </div>
+
+
+        <li role="presentation" class="divider-line"></li>
+
+        <br />
+
+        <div class="table-responsive">
+            <table class="table" id="titleTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Idioma</th>
+                        <th>Nivel Lectura</th>
+                        <th>Nivel Escritura</th>
+                        <th>Nivel Oral</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-5 col-xs-6 col-sm-4">
                 <input type="submit" value="Siguiente" class="btn btn-primary" />
             </div>
         </div>

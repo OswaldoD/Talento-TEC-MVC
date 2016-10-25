@@ -107,6 +107,34 @@
                 @Html.ValidationMessageFor(model => model.cargo, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-5 col-xs-6 col-sm-4">
+                <input type="button" value="agregar" onclick="addTitle()" class="btn btn-default" />
+                <!--<button onclick="addTitle()">Agregar</button>-->
+            </div>
+        </div>
+
+        <br />
+
+        <div class="table-responsive">
+            <table class="table" id="titleTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Empresa</th>
+                        <th>Cargo</th>
+                        <th>País</th>
+                        <th>Año inicio</th>
+                        <th>Año fin</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        <br />
+
         <li role="presentation" class="divider-line"></li>
 
         <div class="form-group">
@@ -156,6 +184,29 @@
             </div>
         </div>
 
+        <div class="form-group">
+            <div class="col-md-offset-5 col-xs-6 col-sm-4">
+                <input type="button" value="agregar" onclick="addTitle()" class="btn btn-default" />
+                <!--<button onclick="addTitle()">Agregar</button>-->
+            </div>
+        </div>
+
+        <br />
+
+        <div class="table-responsive">
+            <table class="table" id="titleTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Actividad</th>
+                        <th>País</th>
+                        <th>Año</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <br />
         <div class="form-group">
             <div class="col-md-offset-5 col-xs-6 col-sm-4">
                 <input type="submit" value="Siguiente" class="btn btn-primary" />
