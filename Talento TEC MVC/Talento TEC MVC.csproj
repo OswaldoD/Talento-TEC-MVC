@@ -341,6 +341,7 @@
     <Content Include="Views\RegistroEstudiante\experiencia_laboral.cshtml" />
     <Content Include="Views\RegistroEstudiante\conocimientos_referencias.cshtml" />
     <Content Include="Views\RegistroGraduado\finalizar.cshtml" />
+    <Content Include="Views\Shared\_LayoutGraduado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
