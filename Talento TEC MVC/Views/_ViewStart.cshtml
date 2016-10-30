@@ -12,11 +12,17 @@
             // layout de graduado
             Layout = "~/Views/Shared/_LayoutGraduado.cshtml";
         }
-        else
+        else if(Session["TipoCuenta"].ToString() == "Practicante")
         {
             // layout de estudiante
             // Layout = 
         }
+		else if(Session["TipoCuenta"].ToString() == "Admin")
+		{
+			// layout de administrador
+			// Layout = 
+
+		}
 
     }
     else
