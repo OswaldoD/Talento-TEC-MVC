@@ -210,7 +210,6 @@
     <Compile Include="Controllers\EmpresaController.cs" />
     <Compile Include="Controllers\GraduadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LoginNavBarController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\RegistroEmpresaController.cs" />
@@ -345,12 +344,12 @@
     <Content Include="Views\RegistroGraduado\finalizar.cshtml" />
     <Content Include="Views\Shared\_LayoutGraduado.cshtml" />
     <Content Include="Views\RegistroEstudiante\finalizar.cshtml" />
+    <Content Include="Views\Graduado\ver_ofertas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\actions\" />
     <Folder Include="Views\Admin\" />
-    <Folder Include="Views\Graduado\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

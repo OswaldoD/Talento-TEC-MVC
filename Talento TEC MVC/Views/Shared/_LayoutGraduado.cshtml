@@ -68,35 +68,65 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ofertas Laborales<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Agregar Oferta", "agregar_oferta", "Empresa")</li>
-                            <li>@Html.ActionLink("Ver Ofertas", "ver_ofertas", "Empresa")</li>
+                            <li>@Html.ActionLink("Ver Ofertas", "ver_ofertas", "graduado")</li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Aplicantes<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Ver Aplicantes", "Estudiante", "TalentoTEC")</li>
-                        </ul>
-                    </li>
-                    <!-- <li><a href="sites/Talento TEC/MainTalentoTEC.aspx"> Talento TEC </a></li>      -->
                 </ul>
             </div>
         </div>
     </div>
     <div class="container">
         @RenderBody()
-
+        <!--
         <footer class="footer">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4"><a href="@Url.Action("UserTerms","Home")"><p class="text-white">Términos de Uso</p></a></div>
-                    <div class="col-md-4"><a href="@Url.Action("Dates","Home")"><p class="text-white">Fechas Importantes</p></a></div>
-                    <div class="col-md-4"><a href="@Url.Action("Contact","Home")"><p class="text-white">Contáctenos</p></a></div>
+                    <div class="col-md-4"><a href="Url.Action("UserTerms","Home")"><p class="text-white">Términos de Uso</p></a></div>
+                    <div class="col-md-4"><a href="Url.Action("Dates","Home")"><p class="text-white">Fechas Importantes</p></a></div>
+                    <div class="col-md-4"><a href="Url.Action("Contact","Home")"><p class="text-white">Contáctenos</p></a></div>
                 </div>
             </div>
-            <p class="text-white">&copy; @DateTime.Now.Year - Tecnológico de Costa Rica</p>
-        </footer>
+            <p class="text-white">&copy; DateTime.Now.Year - Tecnológico de Costa Rica</p>
+        </footer> -->
     </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-2 col-sm-2 col-md-2">
+                    <a class="contain_1" href="@Url.Action("UserTerms","Home")">
+                        <p class="text-white">Términos de Uso</p>
+                    </a>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2">
+                    <a href="@Url.Action("Dates","Home")">
+                        <p class="text-white">Fechas Importantes</p>
+                    </a>
+
+                </div>
+                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                    <a href="@Url.Action("Contact","Home")">
+                        <p class="text-white">Acerca de</p>
+                    </a>
+                </div>
+                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                    <a href="@Url.Action("Contact","Home")">
+                        <p class="text-white">Contáctenos</p>
+                    </a>
+                </div>
+                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                    <a href="@Url.Action("Contact","Home")">
+                        <p class="text-white">Ayuda</p>
+                    </a>
+                </div>
+                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                    <a href="@Url.Action("Contact","Home")">
+                        <p class="text-white">&copy;@DateTime.Now.Year - TEC</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
