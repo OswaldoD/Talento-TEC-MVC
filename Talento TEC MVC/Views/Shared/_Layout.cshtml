@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Talento TEC</title>
@@ -19,7 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-              <!--  @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" }) -->
+                <!--  @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" }) -->
             </div>
             <div class="navbar-collapse collapse navbar-red-collapse">
 
@@ -65,38 +65,75 @@
     </div>
     <div class="container">
         @RenderBody()
-        
-        <footer class="footer">
-		<div class="container">
-			<div class="footer-header">
+
+
+    </div>
+    <!--
+    <footer class="footer">
+        <div class="container">
+            <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".footer-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                < Logo TEC
             </div>
-			<div class="footer-collapse collapse">
-            
-                            <li>@Html.ActionLink("Estudiante", "Estudiante", "TalentoTEC")</li>
-							<li>@Html.ActionLink("Estudiante", "Estudiante", "TalentoTEC")</li>
-<li>@Html.ActionLink("Estudiante", "Estudiante", "TalentoTEC")</li>
-<li>@Html.ActionLink("Estudiante", "Estudiante", "TalentoTEC")</li>
+            <div classs="footer-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="Url.Action("UserTerms","Home")">Términos de Uso</a> </li>
+                    <li><a href="Url.Action("Dates","Home")"><p class="text-white">Fechas Importantes</p></a></li>
+                    <li><a href="Url.Action("Contact","Home")"><p class="text-white">Acerca de</p></a></li>
+                    <li><a href="Url.Action("Contact","Home")"><p class="text-white">Contáctenos</p></a></li>
+                    <li><a href="Url.Action("Contact","Home")"><p class="text-white">Ayuda</p></a></li>
+                    <li><p class="text-white">&copy;DateTime.Now.Year-Tecnológico de Costa Rica</p></li>
+                </ul>
 
-                <!--
-                    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><a href="@Url.Action("UserTerms","Home")"><p class="text-white">Términos de Uso</p></a></div>
-                    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><a href="@Url.Action("Dates","Home")"><p class="text-white">Fechas Importantes</p></a></div>
-                    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><a href="@Url.Action("Contact","Home")"><p class="text-white">Acerca de</p></a></div>
-                    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><a href="@Url.Action("Contact","Home")"><p class="text-white">Contáctenos</p></a></div>
-                    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><a href="@Url.Action("Contact","Home")"><p class="text-white">Ayuda</p></a></div>
-                    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"><a href="@Url.Action("Contact","Home")"><p class="text-white">&copy;@DateTime.Now.Year-TEC</p></a></div>
-					-->
-            
-            
-			</div>
-            
-        </footer>
-    </div>
+            </div>
+
+
+        </div>
+    </footer>
+        -->
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-2 col-sm-2 col-md-2">
+                    <a class="contain_1" href="@Url.Action("UserTerms","Home")">
+                        <p class="text-white">Términos de Uso</p>
+                    </a>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2">
+                    <a href="@Url.Action("Dates","Home")">
+                        <p class="text-white">Fechas Importantes</p>
+                    </a>
+
+                </div>
+                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                    <a href="@Url.Action("Contact","Home")">
+                        <p class="text-white">Acerca de</p>
+                    </a>
+                </div>
+                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                    <a href="@Url.Action("Contact","Home")">
+                        <p class="text-white">Contáctenos</p>
+                    </a>
+                </div>
+                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                    <a href="@Url.Action("Contact","Home")">
+                        <p class="text-white">Ayuda</p>
+                    </a>
+                </div>
+                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                    <a href="@Url.Action("Contact","Home")">
+                        <p class="text-white">&copy;@DateTime.Now.Year-TEC</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

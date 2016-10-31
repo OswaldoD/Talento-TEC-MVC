@@ -2517,18 +2517,19 @@ html {
 
 body {
     /* Margin bottom by footer height */
-    margin-bottom:60px;
+    margin-bottom: 60px;
 }
 
 .footer {
     position: absolute;
-    bottom: 10px;
+    bottom: 0px;
     width: 100%;
     left: 0px;
     /*width: 100%;*/
     /* Set the fixed height of the footer here */
-    height: 50px;
+    height: 60px;
     background-color: #140E39;
+    float: none;
 }
 
 .text-white {
@@ -2566,5 +2567,17 @@ body {
     left: 42% ;
 } 
 .form-horizontal .control-label{
-    text-align:left
+    text-align: left;
+}
+
+.footer ul li {
+    display: inline-block;
+}
+
+.footer ul li a {
+    display: inline-block;
+}
+
+.contain_1 {
+    display: inline-block
 }

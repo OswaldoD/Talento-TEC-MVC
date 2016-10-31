@@ -12,7 +12,7 @@
         2: Datos personales
     </div>
     <div class="progress-bar progress-bar-success" role="progressbar" style="width: 12.5%">
-        3: Información de contacto
+        3: Contacto
     </div>
     <div class="progress-bar progress-bar-success" role="progressbar" style="width: 12.5%">
         4: Educación formal
@@ -34,7 +34,6 @@
 <h1>Registro de Graduado</h1>
 <h3>Conocimientos y Referencias</h3>
 <br />
-<p>Ingrese sus datos personales para poder acceder a los servicios de Talento TEC</p>
 <p>Los campos con un asterisco (*) denotan que son campos obligatorios de ingresar</p>
 
 <li role="presentation" class="divider-line"></li>
@@ -50,16 +49,19 @@
         <div class="form-group">
             @Html.LabelFor(model => model.descripcionConocimientos, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
             <div class="col-xs-6 col-sm-4">
-                @Html.EditorFor(model => model.descripcionConocimientos, new { htmlAttributes = new { @class = "form-control", @rows = "7", @placeholder = "Descripción de sus conocimientos" } })
+                @Html.EditorFor(model => model.descripcionConocimientos, new { htmlAttributes = new { @class = "form-control", @rows = "8", @placeholder = "Ej: manejo de software, lenguajes de programación, herramientas tecnológicas, metodologías, entre otros" } })
                 @Html.ValidationMessageFor(model => model.descripcionConocimientos, "", new { @class = "text-danger" })
             </div>
         </div>
         <li role="presentation" class="divider-line"></li>
-
+        <h3>Referencias</h3>
+        <p>Indique el nombre de personas (preferiblemente que no sean familiares y que hayan ocupado una posición donde 
+        supervisaron su trabajo) que puedan dar referencias suyas con el propósito de contactarlas y poder tener un mejor 
+        conocimeinto de su persona y habilidades.</p>
         <div class="form-group">
             @Html.LabelFor(model => model.nombreRef, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
             <div class="col-xs-6 col-sm-4">
-                @Html.EditorFor(model => model.nombreRef, new { htmlAttributes = new { @class = "form-control", @placeholder = "nombre" } })
+                @Html.EditorFor(model => model.nombreRef, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nombre y apellidos" } })
                 @Html.ValidationMessageFor(model => model.nombreRef, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -87,6 +89,31 @@
                 @Html.ValidationMessageFor(model => model.telRef, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="form-group">
+            <div class="col-md-offset-5 col-xs-6 col-sm-4">
+                <input type="button" value="agregar" onclick="addTitle()" class="btn btn-default" />
+                <!--<button onclick="addTitle()">Agregar</button>-->
+            </div>
+        </div>
+        <li role="presentation" class="divider-line"></li>
+
+        <center><h3>Referencias</h3></center>
+
+        <div class="table-responsive">
+            <table class="table" id="titleTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Puesto</th>
+                        <th>Correo electrónico</th>
+                        <th>Teléfono</th>
+                        <th>Accion</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
 
         <div class="form-group">
             <div class="col-md-offset-5 col-xs-6 col-sm-4">
