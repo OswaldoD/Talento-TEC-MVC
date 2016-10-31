@@ -4,64 +4,184 @@
     ViewBag.Title = "educacion_formal";
 }
 
-<h2>educacion_formal</h2>
+<div class="progress">
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 12.5%">
+        1: Elección de cuenta
+    </div>
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 12.5%">
+        2: Datos personales
+    </div>
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 12.5%">
+        3: Contacto
+    </div>
+    <div class="progress-bar progress-bar-danger" role="progressbar" style="width: 12.5%">
+        4: Educación formal
+    </div>
+    <div class="progress-bar progress-bar-info" role="progressbar" style="width: 12.5%">
+        5: Idiomas
+    </div>
+    <div class="progress-bar progress-bar-info" role="progressbar" style="width: 12.5%">
+        6: Experiencia laboral
+    </div>
+    <div class="progress-bar progress-bar-info" role="progressbar" style="width: 12.5%">
+        7: Referencias
+    </div>
+    <div class="progress-bar progress-bar-info" role="progressbar" style="width: 12.5%">
+        8: Finalizar
+    </div>
+</div>
 
-@using (Html.BeginForm()) 
+<h1>Registro de Estudiante</h1>
+<h3>Educación Formal</h3>
+<br />
+<p>Información de los títulos obtenidos en instituciones académicas.</p>
+<p>Los campos con un asterisco (*) denotan que son campos obligatorios de ingresar</p>
+
+<li role="presentation" class="divider-line"></li>
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
     <div class="form-horizontal">
-        <h4>educacion_formal</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.institucion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.institucion, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.LabelFor(model => model.institucion, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+            <div class="col-xs-6 col-sm-4">
+                @Html.EditorFor(model => model.institucion, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nombre de la institución" } })
                 @Html.ValidationMessageFor(model => model.institucion, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.paisTitulo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.paisTitulo, new { htmlAttributes = new { @class = "form-control", @placeholder="Nombre de la institución" } })
-                @Html.ValidationMessageFor(model => model.paisTitulo, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.paisTitulo, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+
+            @Html.EditorFor(model => model.paisTitulo, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.ValidationMessageFor(model => model.paisTitulo, "", new { @class = "text-danger" })
+            <div class="col-xs-6 col-sm-4">
+                <div class="paisDiv">
+                    <select id="paisSelect" class="col-md-5" onclick="">
+                        <option value="costa_rica" default selected>Costa Rica</option>
+                        <option value="mexico">México</option>
+                        <option value="panama">Panamá</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.annoGraduacion, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+
+            @Html.EditorFor(model => model.annoGraduacion, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.ValidationMessageFor(model => model.annoGraduacion, "", new { @class = "text-danger" })
+            <div class="col-xs-6 col-sm-4">
+                <div class="annoGraduDiv">
+                    <select id="annoGraduSelect" class="col-md-5" onclick=" ">
+                        <option value="anno" default selected>-- año --</option>
+                    </select>
+                </div>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.annoGraduacion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.annoGraduacion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.annoGraduacion, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.nombreTitulo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.nombreTitulo, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.LabelFor(model => model.nombreTitulo, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+            <div class="col-xs-6 col-sm-4">
+                @Html.EditorFor(model => model.nombreTitulo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nombre del título" } })
                 @Html.ValidationMessageFor(model => model.nombreTitulo, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.grado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.grado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.grado, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.grado, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+
+            @Html.EditorFor(model => model.grado, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.ValidationMessageFor(model => model.grado, "", new { @class = "text-danger" })
+            <div class="col-xs-6 col-sm-4">
+                <div class="gradoDiv">
+                    <select id="gradoSelect" class="col-md-6" onclick=" ">
+                        <option value="grado" default selected>-- grado --</option>
+                        <option value="tecnico_superior">Técnico Superior</option>
+                        <option value="bachiller">Bachiller</option>
+                        <option value="licenciatura">Licenciatura</option>
+                        <option value="maestria">Maestría</option>
+                        <option value="doctorado">Doctorado</option>
+                    </select>
+                </div>
             </div>
         </div>
 
+        <!-- *****************************************************************************************************  -->
+
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="col-md-offset-5 col-xs-6 col-sm-4">
+                <input type="button" value="agregar" onclick="addTitle()" class="btn btn-default" />
+                <!--<button onclick="addTitle()">Agregar</button>-->
+            </div>
+        </div>
+
+        <li role="presentation" class="divider-line"></li>
+
+
+        <center><h3>Títulos Obtenidos</h3></center>
+        <div class="table-responsive">
+            <table class="table" id="titleTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Institución</th>
+                        <th>País</th>
+                        <th>Título</th>
+                        <th>Grado</th>
+                        <th>Año Graduación</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        <!-- *****************************************************************************************************  -->
+
+        <div class="form-group">
+            <div class="col-md-offset-5 col-xs-6 col-sm-4">
+                <input type="submit" value="Siguiente" class="btn btn-primary" />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+
+
+<script>
+
+    var option = document.getElementById("annoGraduSelect");
+    for (i = 1940; i < 2017; i++) {
+        option.appendChild(new Option(i.toString(), i.toString()));
+        console.log(i);
+    }
+    var i = 1;
+    function addTitle() {
+        console.log("agregar")
+        var table = document.getElementById("titleTable");
+        var row = table.insertRow(i);
+        var cel1 = row.insertCell(0);
+        var cel2 = row.insertCell(1);
+        var cel3 = row.insertCell(2);
+        var cel4 = row.insertCell(3);
+        var cel5 = row.insertCell(4);
+        var cel6 = row.insertCell(5);
+        var cel7 = row.insertCell(6);
+
+
+        cel1.innerHTML = i;
+        cel2.innerHTML = "1";
+        cel3.innerHTML = "1";
+        cel4.innerHTML = "1";
+        cel5.innerHTML = "1";
+        cel6.innerHTML = "1";
+        cel7.innerHTML = "1";
+
+        i++;
+    }
+
+</script>

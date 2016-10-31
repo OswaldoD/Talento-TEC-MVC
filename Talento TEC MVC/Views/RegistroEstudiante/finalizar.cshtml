@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "finalizar";
+}
+
+<div class="progress">
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 12.5%">
+        1: Elección de cuenta
+    </div>
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 12.5%">
+        2: Datos personales
+    </div>
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 12.5%">
+        3: Contacto
+    </div>
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 12.5%">
+        4: Educación formal
+    </div>
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 12.5%">
+        5: Idiomas
+    </div>
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 12.5%">
+        6: Experiencia laboral
+    </div>
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 12.5%">
+        7: Referencias
+    </div>
+    <div class="progress-bar progress-bar-danger" role="progressbar" style="width: 12.5%">
+        8: Finalizar
+    </div>
+</div>
+
+<h1>Registro de Estudiante</h1>
+<h3>Finalización</h3>
+<br />
+<p>Su registro ha sido exitoso. </p>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-offset-5 col-md-10">
+                <input type="submit" value="Finalizar" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}

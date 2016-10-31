@@ -344,6 +344,7 @@
     <Content Include="Views\RegistroEstudiante\conocimientos_referencias.cshtml" />
     <Content Include="Views\RegistroGraduado\finalizar.cshtml" />
     <Content Include="Views\Shared\_LayoutGraduado.cshtml" />
+    <Content Include="Views\RegistroEstudiante\finalizar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

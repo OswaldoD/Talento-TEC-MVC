@@ -4,96 +4,220 @@
     ViewBag.Title = "experiencia_laboral";
 }
 
-<h2>experiencia_laboral</h2>
+<div class="progress">
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 12.5%">
+        1: Elección de cuenta
+    </div>
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 12.5%">
+        2: Datos personales
+    </div>
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 12.5%">
+        3: Contacto
+    </div>
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 12.5%">
+        4: Educación formal
+    </div>
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 12.5%">
+        5: Idiomas
+    </div>
+    <div class="progress-bar progress-bar-danger" role="progressbar" style="width: 12.5%">
+        6: Experiencia laboral
+    </div>
+    <div class="progress-bar progress-bar-info" role="progressbar" style="width: 12.5%">
+        7: Referencias
+    </div>
+    <div class="progress-bar progress-bar-info" role="progressbar" style="width: 12.5%">
+        8: Finalizar
+    </div>
+</div>
 
-@using (Html.BeginForm()) 
+<h1>Registro de Estudiante</h1>
+<h3>Experiencia Laboral</h3>
+<br />
+<p>Ingrese sus datos personales para poder acceder a los servicios de Talento TEC</p>
+<p>Los campos con un asterisco (*) denotan que son campos obligatorios de ingresar</p>
+
+<li role="presentation" class="divider-line"></li>
+
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>experiencia_laboral</h4>
-        <hr />
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.empresa, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.empresa, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.LabelFor(model => model.empresa, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+            <div class="col-xs-6 col-sm-4">
+                @Html.EditorFor(model => model.empresa, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nombre de la empresa" } })
                 @Html.ValidationMessageFor(model => model.empresa, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.paisEmpresa, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.paisEmpresa, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.paisEmpresa, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.paisEmpresa, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+
+            @Html.EditorFor(model => model.paisEmpresa, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.ValidationMessageFor(model => model.paisEmpresa, "", new { @class = "text-danger" })
+            <div class="col-xs-6 col-sm-4">
+                <div class="paisEmpresaDiv">
+                    <select id="paisEmpresaSelect" class="col-md-5" onclick="">
+                        <option value="costa_rica" default selected>Costa Rica</option>
+                        <option value="mexico">México</option>
+                        <option value="panama">Panamá</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.annoInicio, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+
+            @Html.EditorFor(model => model.annoInicio, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.ValidationMessageFor(model => model.annoInicio, "", new { @class = "text-danger" })
+            <div class="col-xs-6 col-sm-4">
+                <div class="annoInicioDiv">
+                    <select id="annoInicioSelect" class="col-md-5" onclick="setFechaNacimiento()">
+                        <option value="anno" default selected>-- año --</option>
+                    </select>
+                </div>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.annoInicio, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.annoInicio, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.annoInicio, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.annoFin, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+
+            @Html.EditorFor(model => model.annoFin, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.ValidationMessageFor(model => model.annoFin, "", new { @class = "text-danger" })
+            <div class="col-xs-6 col-sm-4">
+                <div class="annoFinDiv">
+                    <select id="annoFinSelect" class="col-md-5" onclick="setFechaNacimiento()">
+                        <option value="anno" default selected>-- año --</option>
+                    </select>
+                </div>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.annoFin, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.annoFin, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.annoFin, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.cargo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.cargo, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.LabelFor(model => model.cargo, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+            <div class="col-xs-6 col-sm-4">
+                @Html.EditorFor(model => model.cargo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nombre del cargo" } })
                 @Html.ValidationMessageFor(model => model.cargo, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.nombreActividad, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.nombreActividad, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="col-md-offset-5 col-xs-6 col-sm-4">
+                <input type="button" value="agregar" onclick="addTitle()" class="btn btn-default" />
+                <!--<button onclick="addTitle()">Agregar</button>-->
+            </div>
+        </div>
+        <li role="presentation" class="divider-line"></li>
+
+        <center><h3>Experiencia Laboral</h3></center>
+
+        <div class="table-responsive">
+            <table class="table" id="titleTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Empresa</th>
+                        <th>Cargo</th>
+                        <th>País</th>
+                        <th>Año inicio</th>
+                        <th>Año fin</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        <br />
+
+        <li role="presentation" class="divider-line"></li>
+
+        <h3>Cursos de capacitación</h3>
+        <div class="form-group">
+            @Html.LabelFor(model => model.nombreActividad, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+            <div class="col-xs-6 col-sm-4">
+                @Html.EditorFor(model => model.nombreActividad, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nombre del cargo" } })
                 @Html.ValidationMessageFor(model => model.nombreActividad, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.institucion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.institucion, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.LabelFor(model => model.institucion, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+            <div class="col-xs-6 col-sm-4">
+                @Html.EditorFor(model => model.institucion, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nombre de la institución" } })
                 @Html.ValidationMessageFor(model => model.institucion, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.paisCurso, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.paisCurso, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.paisCurso, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.paisCurso, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+
+            @Html.EditorFor(model => model.paisCurso, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.ValidationMessageFor(model => model.paisCurso, "", new { @class = "text-danger" })
+            <div class="col-xs-6 col-sm-4">
+                <div class="paisCursoDiv">
+                    <select id="paisCursoSelect" class="col-md-5" onclick="">
+                        <option value="costa_rica" default selected>Costa Rica</option>
+                        <option value="mexico">México</option>
+                        <option value="panama">Panamá</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.annoCurso, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+
+            @Html.EditorFor(model => model.annoCurso, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.ValidationMessageFor(model => model.annoCurso, "", new { @class = "text-danger" })
+            <div class="col-xs-6 col-sm-4">
+                <div class="annoCursoDiv">
+                    <select id="annoCursoSelect" class="col-md-5" onclick="setFechaNacimiento()">
+                        <option value="anno" default selected>-- año --</option>
+                    </select>
+                </div>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.annoCurso, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.annoCurso, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.annoCurso, "", new { @class = "text-danger" })
+            <div class="col-md-offset-5 col-xs-6 col-sm-4">
+                <input type="button" value="agregar" onclick="addTitle()" class="btn btn-default" />
+                <!--<button onclick="addTitle()">Agregar</button>-->
             </div>
         </div>
+        <li role="presentation" class="divider-line"></li>
 
+        <center><h3>Cursos</h3></center>
+
+        <div class="table-responsive">
+            <table class="table" id="titleTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Actividad</th>
+                        <th>País</th>
+                        <th>Año</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <br />
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="col-md-offset-5 col-xs-6 col-sm-4">
+                <input type="submit" value="Siguiente" class="btn btn-primary" />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+<script>
+
+</script>

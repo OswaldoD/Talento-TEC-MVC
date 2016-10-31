@@ -4,56 +4,141 @@
     ViewBag.Title = "dominio_idioma";
 }
 
-<h2>dominio_idioma</h2>
+<div class="progress">
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 12.5%">
+        1: Elección de cuenta
+    </div>
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 12.5%">
+        2: Datos personales
+    </div>
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 12.5%">
+        3: Contacto
+    </div>
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 12.5%">
+        4: Educación formal
+    </div>
+    <div class="progress-bar progress-bar-danger" role="progressbar" style="width: 12.5%">
+        5: Idiomas
+    </div>
+    <div class="progress-bar progress-bar-info" role="progressbar" style="width: 12.5%">
+        6: Experiencia laboral
+    </div>
+    <div class="progress-bar progress-bar-info" role="progressbar" style="width: 12.5%">
+        7: Referencias
+    </div>
+    <div class="progress-bar progress-bar-info" role="progressbar" style="width: 12.5%">
+        8: Finalizar
+    </div>
+</div>
 
-@using (Html.BeginForm()) 
+<h1>Registro de Estudiante</h1>
+<h3>Dominio de idioma</h3>
+<br />
+<p>Los campos con un asterisco (*) denotan que son campos obligatorios de ingresar</p>
+
+<li role="presentation" class="divider-line"></li>
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>dominio_idioma</h4>
-        <hr />
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.idioma, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.idioma, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.idioma, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.idioma, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+
+            @Html.EditorFor(model => model.idioma, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.ValidationMessageFor(model => model.idioma, "", new { @class = "text-danger" })
+            <div class="col-xs-6 col-sm-4">
+                <div class="idiomas">
+                    <select id="idiomasSelect" class="col-md-5" onclick="setFechaNacimiento()">
+                        <option value="idiomas" default selected>-- idiomas --</option>
+                    </select>
+                </div>
+
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.nivelLectura, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.nivelLectura, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.nivelLectura, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.nivelLectura, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+
+            @Html.EditorFor(model => model.nivelLectura, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.ValidationMessageFor(model => model.nivelLectura, "", new { @class = "text-danger" })
+            <div class="col-xs-6 col-sm-4">
+                <div class="nivelLectura">
+                    <select id="lecturaSelect" class="col-md-5" onclick="setFechaNacimiento()">
+                        <option value="basico" default selected>Básico</option>
+                        <option value="intermedio">Intermedio</option>
+                        <option value="avanzado">Avanzado</option>
+                    </select>
+                </div>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.nivelEscritura, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.nivelEscritura, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.nivelEscritura, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.nivelEscritura, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+
+            @Html.EditorFor(model => model.nivelEscritura, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.ValidationMessageFor(model => model.nivelEscritura, "", new { @class = "text-danger" })
+            <div class="col-xs-6 col-sm-4">
+                <div class="nivelEscritura">
+                    <select id="escrituraSelect" class="col-md-5" onclick="setFechaNacimiento()">
+                        <option value="basico" default selected>Básico</option>
+                        <option value="intermedio">Intermedio</option>
+                        <option value="avanzado">Avanzado</option>
+                    </select>
+                </div>
+
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.nivelOral, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.nivelOral, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.nivelOral, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.nivelOral, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+
+            @Html.EditorFor(model => model.nivelOral, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.ValidationMessageFor(model => model.nivelOral, "", new { @class = "text-danger" })
+            <div class="col-xs-6 col-sm-4">
+                <div class="nivelEscritura">
+                    <select id="escrituraSelect" class="col-md-5" onclick="setFechaNacimiento()">
+                        <option value="basico" default selected>Básico</option>
+                        <option value="intermedio">Intermedio</option>
+                        <option value="avanzado">Avanzado</option>
+                    </select>
+                </div>
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="col-md-offset-5 col-xs-6 col-sm-4">
+                <input type="button" value="agregar" onclick="addTitle()" class="btn btn-default" />
+                <!--<button onclick="addTitle()">Agregar</button>-->
+            </div>
+        </div>
+
+
+        <li role="presentation" class="divider-line"></li>
+
+        <center><h3>Idiomas</h3></center>
+        <div class="table-responsive">
+            <table class="table" id="titleTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Idioma</th>
+                        <th>Nivel Lectura</th>
+                        <th>Nivel Escritura</th>
+                        <th>Nivel Oral</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-5 col-xs-6 col-sm-4">
+                <input type="submit" value="Siguiente" class="btn btn-primary" />
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
