@@ -1,0 +1,40 @@
+﻿@model Talento_TEC_MVC.Models.admin.nueva_fecha
+
+@{
+    ViewBag.Title = "Información Fecha";
+}
+<h2>Administrador</h2>
+<h3>Información de la fecha importante</h3>
+<br />
+<li role="presentation" class="divider-line"></li>
+<br />
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.fecha, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+            <div class="col-xs-6 col-sm-4">
+                @Html.EditorFor(model => model.fecha, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.fecha, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.nombreActividad, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+            <div class="col-xs-6 col-sm-4">
+                @Html.EditorFor(model => model.nombreActividad, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nombreActividad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-5 col-xs-6 col-sm-4">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}

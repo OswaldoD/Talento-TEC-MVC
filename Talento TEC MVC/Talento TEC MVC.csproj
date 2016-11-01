@@ -220,6 +220,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\admin\new_email.cs" />
+    <Compile Include="Models\admin\nueva_fecha.cs" />
     <Compile Include="Models\empresa\AgregaOferta.cs" />
     <Compile Include="Models\empresa\NuevaOferta.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -346,11 +348,13 @@
     <Content Include="Views\RegistroEstudiante\finalizar.cshtml" />
     <Content Include="Views\Graduado\ver_ofertas.cshtml" />
     <Content Include="Views\Graduado\ver_oferta.cshtml" />
+    <Content Include="Views\Admin\add_date.cshtml" />
+    <Content Include="Views\Admin\info_date.cshtml" />
+    <Content Include="Views\Admin\new_email.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\actions\" />
-    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

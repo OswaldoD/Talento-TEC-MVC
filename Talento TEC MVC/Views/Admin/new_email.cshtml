@@ -1,0 +1,48 @@
+﻿@model Talento_TEC_MVC.Models.admin.new_email
+
+@{
+    ViewBag.Title = "new_email";
+}
+<h2>Administrador</h2>
+<h3>Enviar correo electrónico</h3>
+<br />
+<li role="presentation" class="divider-line"></li>
+<br />
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.destinatarios, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.destinatarios, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.destinatarios, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.asunto, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.asunto, new { htmlAttributes = new { @class = "form-control", @placeholder="Asunto del mensaje" } })
+                @Html.ValidationMessageFor(model => model.asunto, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.mensaje, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.mensaje, new { htmlAttributes = new { @class = "form-control",@rows="7", @placeholder="Contenido del mensaje" } })
+                @Html.ValidationMessageFor(model => model.mensaje, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-5 col-xs-6 col-sm-4">
+                <input type="submit" value="Enviar" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}

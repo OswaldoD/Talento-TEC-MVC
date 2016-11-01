@@ -1,0 +1,123 @@
+﻿@model Talento_TEC_MVC.Models.admin.nueva_fecha
+
+@{
+    ViewBag.Title = "Add Date";
+}
+<h2>Administrador</h2>
+<h3>Agregar fecha importante</h3>
+<br />
+<li role="presentation" class="divider-line"></li>
+<br />
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.fecha, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+
+            @Html.EditorFor(model => model.fecha, new { htmlAttributes = new { @class = "form-control", @type = "hidden", @id="dateImportant" } })
+            @Html.ValidationMessageFor(model => model.fecha, "", new { @class = "text-danger" })
+
+            <div class="col-xs-6 col-sm-4">
+                <div class="diaDiv">
+                    <select id="diaSelect" class="col-md-4" onclick="setDiaNacimiento()">
+                        <option value="dia" default selected>- dia -</option>
+
+                    </select>
+                </div>
+                <div class="mesDiv">
+                    <select id="mesSelect" class="col-md-4" onclick="setMesNacimiento()">
+                        <option value="mes" default selected>- mes -</option>
+                        <option value="ene">enero</option>
+                        <option value="feb">febrero</option>
+                        <option value="mar">marzo</option>
+                        <option value="abr">abril</option>
+                        <option value="may">mayo</option>
+                        <option value="jun">junio</option>
+                        <option value="jul">julio</option>
+                        <option value="ago">agosto</option>
+                        <option value="sep">septiembre</option>
+                        <option value="oct">octubre</option>
+                        <option value="nov">noviembre</option>
+                        <option value="dec">diciembre</option>
+                    </select>
+                </div>
+                <div class="annoDiv">
+                    <select id="annoSelect" class="col-md-4" onclick="setFechaNacimiento()">
+                        <option value="anno" default selected>- año -</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.nombreActividad, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+            <div class="col-xs-6 col-sm-4">
+                @Html.EditorFor(model => model.nombreActividad, new { htmlAttributes = new { @class = "form-control", @required="required", @placeholder="Fecha importante a agregar" } })
+                @Html.ValidationMessageFor(model => model.nombreActividad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-5 col-xs-6 col-sm-4">
+                <input type="submit" value="Agregar" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+
+    var diaNacim = "";
+    var mesNacim = "";
+
+    var option = document.getElementById("annoSelect");
+    for (i = 2014; i < 2020; i++) {
+        option.appendChild(new Option(i.toString(), i.toString()));
+        console.log(i);
+    }
+
+    var option = document.getElementById("diaSelect");
+    for (i = 1; i < 32; i++) {
+        option.appendChild(new Option(i.toString(), i.toString()));
+        console.log(i);
+    }
+
+
+    function setDiaNacimiento() {
+        var $select = $('.diaDiv option:selected').val();
+        diaNacim = $select;
+
+    }
+
+    function setMesNacimiento() {
+        var $select = $('.mesDiv option:selected').val();
+        mesNacim = $select;
+
+    }
+
+    function setFechaNacimiento() {
+        //  var n = document.getElementById('fechaSelect').selectedIndex;
+        var $select = $('.annoDiv option:selected').val();
+        //$select.selected;
+        // console.log("Selected: " + $select);
+
+        var x = document.getElementById('dateImportant');
+        x.setAttribute("value", diaNacim + "-" + mesNacim + "-" + $select);
+
+        console.log("here");
+    }
+
+    function nacionalidades() {
+
+    }
+
+
+
+
+
+
+</script>
