@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "ver_ofertas";
+    ViewBag.Title = "Ver Ofertas";
 }
 
 <h2>Ofertas publicadas</h2>
@@ -51,8 +51,8 @@
 <script>
     var i = 1;
     var yes = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span>";
-    var no = "<span class='glyphicon glyphicon-remove' aria-hidden='true'></span>";
-    var more = "<span class='glyphicon glyphicon-zoom-in' aria-hidden='true' onclick='moreClicked()'></span>";
+    var no = "<button type='button' class='btn btn-danger'> <span class='glyphicon glyphicon-remove' aria-hidden='true'></span> No aplicado </button>";
+    var more = "<button type='button' class='btn btn-info' onclick='offerClicked()'> <span class='glyphicon glyphicon-zoom-in' aria-hidden='true' onclick='offerClicked()'></span> Ver más </button>";
 
     function updateTable() {
         console.log("table");
@@ -125,8 +125,10 @@
         }
     }
 
-    function moreClicked() {
+    function offerClicked() {
         console.log("hola");
+        window.location = "ver_oferta";
+
     }
 
 </script>

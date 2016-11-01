@@ -103,6 +103,8 @@ namespace Talento_TEC_MVC.Controllers
                     {
                         IEnumerable<LoginInfo> info = JsonConvert.DeserializeObject<IEnumerable<LoginInfo>>(json);
 
+                        
+
                         Session["ID"] = info.LastOrDefault().ID_Usuario;
                         Session["TipoCuenta"] = info.LastOrDefault().Tipo_Cuenta;
 
@@ -121,7 +123,7 @@ namespace Talento_TEC_MVC.Controllers
                         else
                         {
                             // error?
-                            //  Response.Write("error de conexion");
+                              Response.Write("error de conexion");
                         }
                         // return View();
                         return RedirectToAction("Index", "Home");
@@ -129,7 +131,9 @@ namespace Talento_TEC_MVC.Controllers
                     }
                     else
                     {
+                        Response.Write("error en web?");
                         return View(model);
+
                         // error de inicio
                     }
                 }

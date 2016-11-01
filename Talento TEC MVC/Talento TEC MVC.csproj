@@ -345,6 +345,7 @@
     <Content Include="Views\Shared\_LayoutGraduado.cshtml" />
     <Content Include="Views\RegistroEstudiante\finalizar.cshtml" />
     <Content Include="Views\Graduado\ver_ofertas.cshtml" />
+    <Content Include="Views\Graduado\ver_oferta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

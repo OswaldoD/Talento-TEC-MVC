@@ -20,5 +20,10 @@ namespace Talento_TEC_MVC.Controllers
             Session["TipoCuenta"] = "Graduado";
             return View();
         }
+
+        public ActionResult ver_oferta()
+        {
+            return View();
+        }
     }
 }
