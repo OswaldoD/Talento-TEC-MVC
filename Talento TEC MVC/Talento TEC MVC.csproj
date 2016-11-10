@@ -222,6 +222,8 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\admin\new_email.cs" />
     <Compile Include="Models\admin\nueva_fecha.cs" />
+    <Compile Include="Models\admin\send_date.cs" />
+    <Compile Include="Models\admin\send_email.cs" />
     <Compile Include="Models\empresa\AgregaOferta.cs" />
     <Compile Include="Models\empresa\NuevaOferta.cs" />
     <Compile Include="Models\IdentityModels.cs" />

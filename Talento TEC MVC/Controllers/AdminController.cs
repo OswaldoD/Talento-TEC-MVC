@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Talento_TEC_MVC.Models.admin;
@@ -22,9 +25,42 @@ namespace Talento_TEC_MVC.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public ActionResult add_date(nueva_fecha model)
+        public async Task<ActionResult> add_date(nueva_fecha model)
         {
-            return View();
+            // Crear fecha
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            else
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("http://talentotec-api.azurewebsites.net/");
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    send_date date = new send_date()
+                    {
+                        fecha = "",
+                        nombreActividad = "",
+                        descripcionActividad = ""
+                    };
+
+                    HttpResponseMessage response = await client.PostAsJsonAsync("api/ ", date);
+
+                    var json_respuesta = await response.Content.ReadAsStringAsync();
+                    if (response.IsSuccessStatusCode)
+                    {
+                        Session.Abandon();
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        return View();
+                    }
+                }
+            }
         }
 
         public ActionResult info_date()
@@ -40,6 +76,7 @@ namespace Talento_TEC_MVC.Controllers
         [HttpPost]
         public ActionResult new_email(new_email model)
         {
+            // mandar correo
             return View();
         }
 

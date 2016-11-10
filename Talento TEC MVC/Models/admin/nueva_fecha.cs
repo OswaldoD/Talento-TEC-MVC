@@ -14,7 +14,11 @@ namespace Talento_TEC_MVC.Models.admin
         public string fecha { get; set; }
 
         [Display(Name = "Nombre Actividad (*): ")]
-        [DataType(DataType.MultilineText)]
+        [DataType(DataType.Text)]
         public string nombreActividad { get; set; }
+
+        [Display(Name = "Descripción Actividad (*): ")]
+        [DataType(DataType.MultilineText)]
+        public string descripcionActividad { get; set; }
     }
 }
