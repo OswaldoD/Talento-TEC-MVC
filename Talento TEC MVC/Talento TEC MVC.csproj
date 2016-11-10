@@ -243,6 +243,7 @@
     <Compile Include="Models\registro\graduado\educacion_formal.cs" />
     <Compile Include="Models\registro\graduado\experiencia_laboral.cs" />
     <Compile Include="Models\registro\graduado\informacion_contacto.cs" />
+    <Compile Include="Models\registro\graduado\registro_completo_graduado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
