@@ -112,13 +112,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.paisNacimiento, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
 
-            @Html.EditorFor(model => model.paisNacimiento, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.EditorFor(model => model.paisNacimiento, new { htmlAttributes = new { @class = "form-control", @type = "hidden", @id="paisNacimiento" } })
             @Html.ValidationMessageFor(model => model.paisNacimiento, "", new { @class = "text-danger" })
             <div class="col-xs-6 col-sm-4">
-                <div class="paisNacimiento">
-                    <select id="paisSelect" class="col-md-5" onclick="">
+                <div class="paisOptions">
+                    <select id="paisSelect" class="col-md-5" onclick="setPais()">
                         <option value="pais" default selected>-- pais --</option>
-                        <option value="costa_rica">Costa Rica</option>
+                        <option value="COSTA_RICA">Costa Rica</option>
                     </select>
                 </div>
             </div>
@@ -127,11 +127,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.nacionalidad, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
 
-            @Html.EditorFor(model => model.nacionalidad, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.EditorFor(model => model.nacionalidad, new { htmlAttributes = new { @class = "form-control", @type = "hidden", @id="nacionalidad" } })
             @Html.ValidationMessageFor(model => model.nacionalidad, "", new { @class = "text-danger" })
             <div class="col-xs-6 col-sm-4">
                 <div class="nacionalidadMenu">
-                    <select id="nacionalidadSelect" class="col-md-5" onclick="">
+                    <select id="nacionalidadSelect" class="col-md-5" onclick="setNacionalidad()">
                         <option value="nacionalidad" default selected>- nacionalidad -</option>
                         <option value="costarricense">costarricense</option>
 
@@ -143,12 +143,12 @@
         <div class="form-group">
             @Html.LabelFor(model => model.tipoID, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
 
-            @Html.EditorFor(model => model.tipoID, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.EditorFor(model => model.tipoID, new { htmlAttributes = new { @class = "form-control", @type = "hidden", @id="tipoID" } })
             @Html.ValidationMessageFor(model => model.tipoID, "", new { @class = "text-danger" })
             <div class="col-xs-6 col-sm-4">
                 <form>
-                    <input type="radio" name="tipoid" value="cedula_identidad" /> Cédula de Identidad &nbsp;&nbsp;
-                    <input type="radio" name="tipoid" value="pasaporte" /> Pasaporte
+                    <input type="radio" id="cedula" name="tipoid" value="cedula_identidad" onclick="tipoC()" /> Cédula de Identidad &nbsp;&nbsp;
+                    <input type="radio" id="pasaporte" name="tipoid" value="pasaporte" onclick="tipoP()" /> Pasaporte
                 </form>
             </div>
         </div>
@@ -164,13 +164,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.sexo, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
 
-            @Html.EditorFor(model => model.sexo, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.EditorFor(model => model.sexo, new { htmlAttributes = new { @class = "form-control", @type = "hidden", @id="genero" } })
             @Html.ValidationMessageFor(model => model.sexo, "", new { @class = "text-danger" })
 
             <div class="col-xs-6 col-sm-4">
                 <form>
-                    <input type="radio" name="gender" value="masculino" /> Masculino &nbsp;&nbsp;
-                    <input type="radio" name="gender" value="femenino" /> Femenino
+                    <input type="radio" id="masculino" name="gender" value="masculino" onclick="generoM()" /> Masculino &nbsp;&nbsp;
+                    <input type="radio" id="femenino" name="gender" value="femenino" onclick="generoF()" /> Femenino
                 </form>
             </div>
         </div>
@@ -233,11 +233,74 @@
         console.log("here");
     }
 
-    function nacionalidades() {
+    function setPais() {
+        var $select = $('.paisOptions option:selected').val();
+
+        var x = document.getElementById('paisNacimiento');
+        x.setAttribute("value", $select);
+
+        console.log("pais");
 
     }
 
+    function setNacionalidad() {
+        var $select = $('.nacionalidadMenu option:selected').val();
 
+        var x = document.getElementById('nacionalidad');
+        x.setAttribute("value", $select);
+
+        console.log("nacionalidad");
+    }
+
+    function tipoC() {
+        var c = document.getElementById("cedula");
+
+        if (c.checked) {
+            var p = document.getElementById("pasaporte");
+            p.checked = false;
+
+            var tipo = document.getElementById("tipoID");
+            tipo.setAttribute("value", "Cedula de identidad");
+        }
+    }
+
+    function tipoP() {
+        var p = document.getElementById("pasaporte");
+
+        if (p.checked) {
+            var c = document.getElementById("cedula");
+            c.checked = false;
+
+            var tipo = document.getElementById("tipoID");
+            tipo.setAttribute("value", "Cedula de identidad");
+        }
+    }
+
+    function generoM() {
+        var m = document.getElementById("masculino");
+
+        if(m.checked){
+            var f = document.getElementById("femenino");
+            f.checked = false;
+
+            var genero = document.getElementById("genero");
+            genero.setAttribute("value","Masculino");
+        }
+    }
+
+    function generoF() {
+        var f = document.getElementById("femenino");
+
+        if (f.checked) {
+            var m = document.getElementById("masculino");
+
+            m.checked = false;
+
+            var genero = document.getElementById("genero");
+            genero.setAttribute("value", "Femenino");
+        }
+
+    }
 
 
 

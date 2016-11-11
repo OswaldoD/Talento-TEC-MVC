@@ -12,19 +12,44 @@
 }
 
 <!--<div class="jumbotron"> -->
-    <h1>@ViewBag.SubTitle</h1>
-    <br />
-    <img src="~/images/Talento TEC.png" class="img-thumbnail center-block" />
-    <br />
-    <br />
+<h1>@ViewBag.SubTitle</h1>
+<br />
+<img src="~/images/Talento TEC.png" class="img-thumbnail center-block" />
+<br />
+<br />
 
-    <p>Talento TEC® es un punto de encuentro virtual en el que nuestros profesionales, 
-    los estudiantes de práctica profesional y los graduados tienen un espacio propicio 
-    para interrelacionarse con el sector industrial nacional e internacional.</p>
-    <br />
-    <p>Talento TEC® le garantiza al sector productivo el acceso a un bando de datos que
-    proporciona información sobre la oferta de graduados y de estudiantes de práctica 
-    profesional que han recivido una sólida formación académica para óptimos resultados. </p>
+<p>
+    Talento TEC® es un punto de encuentro virtual en el que nuestros profesionales,
+    los estudiantes de práctica profesional y los graduados tienen un espacio propicio
+    para interrelacionarse con el sector industrial nacional e internacional.
+</p>
+<br />
+<p>
+    Talento TEC® le garantiza al sector productivo el acceso a un bando de datos que
+    proporciona información sobre la oferta de graduados y de estudiantes de práctica
+    profesional que han recivido una sólida formación académica para óptimos resultados.
+</p>
 
-    <br />  
-   <!--</div>-->
+<br />
+<!--</div>-->
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            //url: "http://talentotec-api.azurewebsites.net/api/Careers",
+            url: "http://talentotec-api.azurewebsites.net/api/Get_Enterprise/1",
+            type: "GET",
+            dataType: 'jsonp',
+            beforeSend: function (request) {
+            request.setRequestHeader("Authorization", "Negotiate");
+        },
+        async: true,
+        }).then(function (data) {
+            
+            console.log(data);
+            //$('.greeting-id').append(data.id);
+            //$('.greeting-content').append(data.content);
+        });
+    });
+
+</script>

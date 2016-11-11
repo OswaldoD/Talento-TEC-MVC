@@ -47,14 +47,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.paisResidencia, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
 
-            @Html.EditorFor(model => model.paisResidencia, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.EditorFor(model => model.paisResidencia, new { htmlAttributes = new { @class = "form-control", @type = "hidden", @id="paisResidencia" } })
             @Html.ValidationMessageFor(model => model.paisResidencia, "", new { @class = "text-danger" })
             <div class="col-xs-6 col-sm-4">
                 <div class="paisDiv">
-                    <select id="paisSelect" class="col-md-5" onclick="">
-                        <option value="costa_rica" default selected>Costa Rica</option>
-                        <option value="mexico">México</option>
-                        <option value="panama">Panamá</option>
+                    <select id="paisSelect" class="col-md-5" onclick="setPais()">
+                        <option value="COSTA_RICA" default selected>Costa Rica</option>
+                        <option value="MEXICO">México</option>
+                        <option value="PANAMA">Panamá</option>
                     </select>
                 </div>
             </div>
@@ -63,12 +63,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.provincia, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
 
-            @Html.EditorFor(model => model.provincia, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.EditorFor(model => model.provincia, new { htmlAttributes = new { @class = "form-control", @type = "hidden", @id="provincia" } })
             @Html.ValidationMessageFor(model => model.provincia, "", new { @class = "text-danger" })
             <div class="col-xs-6 col-sm-4">
                 <div class="provinciaDiv">
-                    <select id="provinciaSelect" class="col-md-5" onclick="">
+                    <select id="provinciaSelect" class="col-md-5" onclick="setProvincia()">
                         <option value="provincia" default selected>-- provincia --</option>
+                        <option value="CARTAGO">Cartago</option>
+
 
                     </select>
                 </div>
@@ -124,12 +126,25 @@
 }
 
 <script>
-    /*
-        var option = document.getElementById("annoSelect");
-        for (i = 1940; i < 2017; i++) {
-            option.appendChild(new Option(i.toString(), i.toString()));
-            console.log(i);
-        }
-    */
+
+    function setPais() {
+        var $select = $('.paisDiv option:selected').val();
+
+        var x = document.getElementById('paisResidencia');
+        x.setAttribute("value", $select);
+
+        console.log("pais Residencia");
+
+    }
+
+    function setProvincia() {
+        var $select = $('.provinciaDiv option:selected').val();
+
+        var x = document.getElementById('provincia');
+        x.setAttribute("value", $select);
+
+        console.log("provincia");
+
+    }
 
 </script>
