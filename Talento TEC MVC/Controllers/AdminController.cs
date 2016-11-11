@@ -40,6 +40,7 @@ namespace Talento_TEC_MVC.Controllers
         [HttpPost]
         public ActionResult new_email(new_email model)
         {
+            
             return View();
         }
 
