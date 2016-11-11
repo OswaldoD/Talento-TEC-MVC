@@ -36,7 +36,8 @@
 <script>
     $(document).ready(function () {
         $.ajax({
-            url: "http://talentotec-api.azurewebsites.net/api/Careers",
+            //url: "http://talentotec-api.azurewebsites.net/api/Careers",
+            url: "http://talentotec-api.azurewebsites.net/api/Get_Enterprise/1",
             type: "GET",
             dataType: 'jsonp',
             beforeSend: function (request) {
@@ -44,6 +45,7 @@
         },
         async: true,
         }).then(function (data) {
+            
             console.log(data);
             //$('.greeting-id').append(data.id);
             //$('.greeting-content').append(data.content);
