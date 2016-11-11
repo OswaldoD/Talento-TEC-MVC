@@ -35,7 +35,7 @@ namespace Talento_TEC_MVC.Controllers
             {
                 Session["primerApellido"] = model.primerApellido;
                 Session["segundoApellido"] = model.segundoApellido;
-                Session["nombreGraduado"] = model.nombreGraduado;
+                Session["nombre"] = model.nombreGraduado;
                 Session["fechaNacimiento"] = model.fechaNacimiento;
                 Session["paisNacimiento"] = model.paisNacimiento;
                 Session["nacionalidad"] = model.nacionalidad;
@@ -136,6 +136,7 @@ namespace Talento_TEC_MVC.Controllers
             else
             {
                 Session["experienciaLaboral"] = model.empresa; // experiencia
+                Session["capacitaciones"] = model.nombreActividad; // capacitaciones
 
                 return RedirectToAction("conocimientos_referencias", "registroestudiante");
             }
@@ -183,29 +184,29 @@ namespace Talento_TEC_MVC.Controllers
 
                 registro_completo_graduado info_user = new registro_completo_graduado()
                 {
-                    primerApellido = Session["d"].ToString(),
-                    segundoApellido = Session["d"].ToString(),
-                    nombre = Session["d"].ToString(),
-                    fechaNacimiento = Session["d"].ToString(),
-                    paisNacimiento = Session["d"].ToString(),
-                    nacionalidad = Session["d"].ToString(),
-                    tipoIdentificacion = Session["d"].ToString(),
-                    identificacion = Session["d"].ToString(),
-                    genero = Session["d"].ToString(),
-                    carne = Session["d"].ToString(),
-                    paisResidencia = Session["d"].ToString(),
-                    provincia = Session["d"].ToString(),
-                    direccionExacta = Session["d"].ToString(),
-                    telefono = Session["d"].ToString(),
-                    email = Session["d"].ToString(),
-                    password = Session["d"].ToString(),
-                    infoTitulos = Session["d"].ToString(),
-                    infoIdiomas = Session["d"].ToString(),
-                    infoExperienciaLaboral = Session["d"].ToString(),
-                    infoCapacitaciones = Session["d"].ToString(),
-                    conocimientos = Session["d"].ToString(),
-                    infoReferencias = Session["d"].ToString(),
-                    tipoAplicante = Session["d"].ToString(),
+                    primerApellido = Session["primerApellido"].ToString(),
+                    segundoApellido = Session["segundoApellido"].ToString(),
+                    nombre = Session["nombre"].ToString(),
+                    fechaNacimiento = Session["fechaNacimiento"].ToString(),
+                    paisNacimiento = Session["paisNacimiento"].ToString(),
+                    nacionalidad = Session["nacionalidad"].ToString(),
+                    tipoIdentificacion = Session["tipoID"].ToString(),
+                    identificacion = Session["identificacion"].ToString(),
+                    genero = Session["genero"].ToString(),
+                    carne = Session["carne"].ToString(),
+                    paisResidencia = Session["paisResidencia"].ToString(),
+                    provincia = Session["provincia"].ToString(),
+                    direccionExacta = Session["direccion"].ToString(),
+                    telefono = Session["telefono"].ToString(),
+                    email = Session["email"].ToString(),
+                    password = Session["password"].ToString(),
+                    infoTitulos = Session["educacionFormal"].ToString(),
+                    infoIdiomas = Session["dominioIdioma"].ToString(),
+                    infoExperienciaLaboral = Session["experienciaLaboral"].ToString(),
+                    infoCapacitaciones = Session["capacitaciones"].ToString(),
+                    conocimientos = Session["conocimientos"].ToString(),
+                    infoReferencias = Session["referencias"].ToString(),
+                    tipoAplicante = "Estudiante",
                 };
 
                 HttpResponseMessage response = await client.PostAsJsonAsync("api/add_graduate", info_user);
