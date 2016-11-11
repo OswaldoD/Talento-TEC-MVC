@@ -47,7 +47,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.institucion, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
             <div class="col-xs-6 col-sm-4">
-                @Html.EditorFor(model => model.institucion, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nombre de la institución" } })
+                @Html.EditorFor(model => model.institucion, new { htmlAttributes = new { @class = "form-control", @id="nombreInstitucion", @placeholder = "Nombre de la institución" } })
                 @Html.ValidationMessageFor(model => model.institucion, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -55,14 +55,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.paisTitulo, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
 
-            @Html.EditorFor(model => model.paisTitulo, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.EditorFor(model => model.paisTitulo, new { htmlAttributes = new { @class = "form-control",@id="paisTitulo", @type = "hidden" } })
             @Html.ValidationMessageFor(model => model.paisTitulo, "", new { @class = "text-danger" })
             <div class="col-xs-6 col-sm-4">
                 <div class="paisDiv">
                     <select id="paisSelect" class="col-md-5" onclick="">
-                        <option value="costa_rica" default selected>Costa Rica</option>
-                        <option value="mexico">México</option>
-                        <option value="panama">Panamá</option>
+                        <option value="COSTA_RICA" default selected>Costa Rica</option>
+                        <option value="MEXICO">México</option>
+                        <option value="PANAMA">Panamá</option>
                     </select>
                 </div>
             </div>
@@ -72,7 +72,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.annoGraduacion, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
 
-            @Html.EditorFor(model => model.annoGraduacion, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.EditorFor(model => model.annoGraduacion, new { htmlAttributes = new { @class = "form-control",@id="annoGraduacion", @type = "hidden" } })
             @Html.ValidationMessageFor(model => model.annoGraduacion, "", new { @class = "text-danger" })
             <div class="col-xs-6 col-sm-4">
                 <div class="annoGraduDiv">
@@ -86,7 +86,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.nombreTitulo, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
             <div class="col-xs-6 col-sm-4">
-                @Html.EditorFor(model => model.nombreTitulo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nombre del título" } })
+                @Html.EditorFor(model => model.nombreTitulo, new { htmlAttributes = new { @class = "form-control",@id="nombreTitulo", @placeholder = "Nombre del título" } })
                 @Html.ValidationMessageFor(model => model.nombreTitulo, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -94,7 +94,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.grado, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
 
-            @Html.EditorFor(model => model.grado, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.EditorFor(model => model.grado, new { htmlAttributes = new { @class = "form-control", @id="grado", @type = "hidden" } })
             @Html.ValidationMessageFor(model => model.grado, "", new { @class = "text-danger" })
             <div class="col-xs-6 col-sm-4">
                 <div class="gradoDiv">
@@ -162,6 +162,24 @@
     var i = 1;
     function addTitle() {
         console.log("agregar")
+
+        var n = document.getElementById("nombreInstitucion");
+
+        var nameI = n.value; // nombre institución
+
+        var $p = $('.paisDiv option:selected').val();
+
+        var $anno = $('.annoGraduDiv option:selected').val();
+
+        var m = document.getElementById("nombreTitulo");
+        var nameT = n.value;
+
+        var $grade = $('.gradoDiv option:selected').val();
+
+
+
+
+
         var table = document.getElementById("titleTable");
         var row = table.insertRow(i);
         var cel1 = row.insertCell(0);
@@ -174,14 +192,16 @@
 
 
         cel1.innerHTML = i;
-        cel2.innerHTML = "1";
-        cel3.innerHTML = "1";
-        cel4.innerHTML = "1";
-        cel5.innerHTML = "1";
-        cel6.innerHTML = "1";
+        cel2.innerHTML = nameI;
+        cel3.innerHTML = $('.paisDiv option:selected').text();
+        cel4.innerHTML = nameT;
+        cel5.innerHTML = $('.gradoDiv option:selected').text();
+        cel6.innerHTML = $anno;
         cel7.innerHTML = "1";
 
         i++;
+
+        var sessionValue = '<%=Session["educacionFormal"] = ' + "e.e";
     }
 
 </script>
