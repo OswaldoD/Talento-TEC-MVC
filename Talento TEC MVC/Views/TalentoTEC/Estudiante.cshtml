@@ -14,36 +14,79 @@
 </p>
 <br />
 
-<div class="dropdown" align="center">
+<div class="dropdown" id="dwnSchools" align="center">
     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
         Seleccione una escuela
         <span class="caret"></span>
     </button>
-    <ul class="dropdown-menu dropdown-menu-center" role="menu" aria-labelledby="menu1">
-        <li id="computacion" onclick="showSchoolInfo('computacion')"><a href="#">Escuela de Ingeniería en Computación</a></li>
-        <li id="administracion"><a href="#">Escuela de Administración de Empresas</a></li>
-        <li><a href="#">Escuela de Ingeniería en Computadores</a></li>
+    <ul class="dropdown-menu dropdown-menu-center" role="menu" aria-labelledby="menu1" >
+        
     </ul>
 </div>
 
 <script>
 
 
+    $(document).ready(function () {
+        $.ajax({
+            url: "http://talentotec-api.azurewebsites.net/api/Schools",
+            type: "GET",
+            dataType: "text",
+            success: function (data) {
+                //  console.log(data);
+                var json = $.parseJSON(data);
+                for (var i = 0; i < json.length; i++) {
+                   // console.log(json[i]);
+                    //var txt = $("<li onclick='showSchoolInfo()'><a href='#'> </a></li>").text(json[i]);
+                    $("#dwnSchools ul").append(
+                        $("<li>").attr("id",i).attr("onclick","showSchoolInfo("+i+")").append(
+                        $("<a>").attr("href", "#").append(json[i])));
+
+
+                }
+               // console.log("data");
+               // console.log(json.length);
+            },
+            error: function (e1, e2, e3) {
+                console.log(e3 + " " + e2);
+            }
+        });
+    });
+
+
     
-    function showSchoolInfo(idElement) {
-        var x = document.getElementById(idElement).innerText;
-        console.log(x);
-        jQuery.get("", function (data, response) {
-            console.log("vamo a conectarno");
-        })
+    function showSchoolInfo(ID) {
+        //console.log("actions");
+        var p = $("#"+ID).text();
+        console.log(p);
+
+        // llamamos a la api
+        var school = {
+            nombreEscuela : p
+        }
+        $.ajax({
+            url: "http://talentotec-api.azurewebsites.net/api/Coordinators",
+            type: "POST",
+            dataType: "json",
+            data:school,
+            success: function (data) {
+                console.log(data.length);
+                //var json = $.parseJSON(data);
+                //console.log(json);
+            },
+            error: function (e1, e2, e3) {
+                console.log(e3 + " " + e2);
+            }
+        });
+
+       // var x = document.getElementById(idElement).innerText;
+       // console.log(x);
+
         //x.value
         /*
         if (!event.target.matches('dropdown-toggle')) {
             print("GOA");
         }*/
-
-
-
     }
     
 </script>
