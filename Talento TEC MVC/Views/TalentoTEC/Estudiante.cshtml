@@ -23,6 +23,13 @@
         
     </ul>
 </div>
+<br />
+<center><h4 id="titleSchool"></h4></center>
+<div class="table-responsive" >
+    <table class="table" id="coordinators">
+
+    </table>
+</div>
 
 <script>
 
@@ -36,16 +43,10 @@
                 //  console.log(data);
                 var json = $.parseJSON(data);
                 for (var i = 0; i < json.length; i++) {
-                   // console.log(json[i]);
-                    //var txt = $("<li onclick='showSchoolInfo()'><a href='#'> </a></li>").text(json[i]);
                     $("#dwnSchools ul").append(
                         $("<li>").attr("id",i).attr("onclick","showSchoolInfo("+i+")").append(
                         $("<a>").attr("href", "#").append(json[i])));
-
-
                 }
-               // console.log("data");
-               // console.log(json.length);
             },
             error: function (e1, e2, e3) {
                 console.log(e3 + " " + e2);
@@ -53,12 +54,10 @@
         });
     });
 
-
-    
     function showSchoolInfo(ID) {
         //console.log("actions");
         var p = $("#"+ID).text();
-        console.log(p);
+      //  console.log(p);
 
         // llamamos a la api
         var school = {
@@ -70,23 +69,45 @@
             dataType: "json",
             data:school,
             success: function (data) {
-                console.log(data.length);
-                //var json = $.parseJSON(data);
-                //console.log(json);
+                /*
+                EmailCoordinador
+                NombreCoordinador
+                TelefonoCoordinador
+                */
+                if (data.length != 0) {
+                    for (var i = 0; i < data.length; i++) {
+                        $('#coordinators tr').remove();
+                        initializeTable();
+                        $("#titleSchool").html(p);
+                        $("#coordinators").append("<tbody> <tr><td>" + data[i].NombreCoordinador + "</td>" +
+                                                  "<td>" + data[i].EmailCoordinador + "</td>" +
+                                                  "<td>" + data[i].TelefonoCoordinador + "</td></tr> </tbody>");
+                    }
+                }
+                else {
+                    $("#titleSchool").html("");
+                    $('#coordinators tr').remove();
+                }
             },
             error: function (e1, e2, e3) {
                 console.log(e3 + " " + e2);
             }
         });
+    }
 
-       // var x = document.getElementById(idElement).innerText;
-       // console.log(x);
-
-        //x.value
+    function initializeTable() {
         /*
-        if (!event.target.matches('dropdown-toggle')) {
-            print("GOA");
-        }*/
+                <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo electrónico</th>
+                <th>Teléfono</th>
+            </tr>
+        </thead>
+        */
+        $("#coordinators").append("<thead> <tr> <th>Nombre</th>"+
+                                  "<th>Correo electrónico</th>"+
+                                  "<th>Teléfono</th> </tr> </thead>");
     }
     
 </script>
