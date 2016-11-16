@@ -90,7 +90,7 @@ namespace Talento_TEC_MVC.Controllers
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("http://talentotec-api.azurewebsites.net/");
+                    client.BaseAddress = new Uri("https://talentotec-api.azurewebsites.net/");
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -117,13 +117,15 @@ namespace Talento_TEC_MVC.Controllers
                         {
                             IEnumerable<nombre_empresa> nombre = JsonConvert.DeserializeObject<IEnumerable<nombre_empresa>>(jsonNombre);
 
-                            Session["nombre"] = nombre.LastOrDefault().nombreEmpresa;
+                            Session["nombre"] = nombre.LastOrDefault().nombreUsuario;
                             //   Response.Write(Session["nombre"]);
                         }
                         else
                         {
                             // error?
-                              Response.Write("error de conexion");
+//                            Response.Write("error de conexion");
+                            return View(model);
+
                         }
                         // return View();
                         return RedirectToAction("Index", "Home");

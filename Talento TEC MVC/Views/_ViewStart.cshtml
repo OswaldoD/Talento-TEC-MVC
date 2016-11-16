@@ -1,28 +1,37 @@
 ﻿@{
     if (Session["TipoCuenta"] != null)
     {
+        // Layout de Empresa
         if (Session["TipoCuenta"].ToString() == "Empresa")
         {
 
 
             Layout = "~/Views/Shared/_LayoutEmpresa.cshtml";
         }
+        // Layout de Graduado
         else if(Session["TipoCuenta"].ToString() == "Graduado")
         {
             // layout de graduado
             Layout = "~/Views/Shared/_LayoutGraduado.cshtml";
         }
+        // Layout de Estudiante
         else if(Session["TipoCuenta"].ToString() == "Estudiante")
         {
             // layout de estudiante
             // Layout = 
         }
-		else if(Session["TipoCuenta"].ToString() == "Admin")
-		{
-			// layout de administrador
-			// Layout = 
+        // Layout de Administrador
+        else if(Session["TipoCuenta"].ToString() == "Administrador")
+        {
+            // layout de administrador
+            // Layout = 
 
-		}
+        }
+        // Layout de Super Administrador
+        else if(Session["TipoCuenta"].ToString() == "SAdministrador")
+        {
+            // super administrador
+        }
 
     }
     else

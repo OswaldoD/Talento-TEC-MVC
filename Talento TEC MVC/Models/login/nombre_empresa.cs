@@ -8,6 +8,6 @@ namespace Talento_TEC_MVC.Models.login
     public class nombre_empresa
     {
         public int ID { get; set; }
-        public string nombreEmpresa { get; set; }
+        public string nombreUsuario { get; set; }
     }
 }

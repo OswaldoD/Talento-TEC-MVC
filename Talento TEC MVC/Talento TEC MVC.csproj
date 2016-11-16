@@ -363,6 +363,7 @@
     <Content Include="Views\Admin\add_date.cshtml" />
     <Content Include="Views\Admin\info_date.cshtml" />
     <Content Include="Views\Admin\new_email.cshtml" />
+    <Content Include="Views\Empresa\ver_ofertas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

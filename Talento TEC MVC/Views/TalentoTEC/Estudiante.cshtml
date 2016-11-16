@@ -36,7 +36,7 @@
 
     $(document).ready(function () {
         $.ajax({
-            url: "http://talentotec-api.azurewebsites.net/api/Schools",
+            url: "https://talentotec-api.azurewebsites.net/api/Schools",
             type: "GET",
             dataType: "text",
             success: function (data) {
@@ -64,7 +64,7 @@
             nombreEscuela : p
         }
         $.ajax({
-            url: "http://talentotec-api.azurewebsites.net/api/Coordinators",
+            url: "https://talentotec-api.azurewebsites.net/api/Coordinators",
             type: "POST",
             dataType: "json",
             data:school,
