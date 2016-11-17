@@ -57,12 +57,10 @@
 
             @Html.EditorFor(model => model.paisTitulo, new { htmlAttributes = new { @class = "form-control",@id="paisTitulo", @type = "hidden" } })
             @Html.ValidationMessageFor(model => model.paisTitulo, "", new { @class = "text-danger" })
-            <div class="col-xs-6 col-sm-4">
+            <div class="col-xs-8 col-sm-8">
                 <div class="paisDiv">
                     <select id="paisSelect" class="col-md-5" onclick="">
                         <option value="COSTA_RICA" default selected>Costa Rica</option>
-                        <option value="MEXICO">México</option>
-                        <option value="PANAMA">Panamá</option>
                     </select>
                 </div>
             </div>
@@ -154,57 +152,71 @@
 
 <script>
 
+    $(document).ready(function () {
+        $.ajax({
+            url: "https://talentotec-api.azurewebsites.net/api/Countries",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    //<option value="PAIS_PAIS">pais pais</option>
+                    var raw_data = data[i].split("_");
+                    var formated_data = " ";
+                    for (var j = 0; j < raw_data.length; j++) {
+                        formated_data += raw_data[j] + " ";
+                    }
+
+                    $("#paisSelect").append("<option value='" + data[i] + "'>" +
+                        formated_data.toLowerCase().replace(/^[\u00C0-\u1FFF\u2C00-\uD7FF\w]|\s[\u00C0-\u1FFF\u2C00-\uD7FF\w]/g, function (letter) {
+                            return letter.toUpperCase();
+                        })
+                        + "</option>");
+                }
+            },
+            error: function (e1, e2, e3) {
+                console.log(e3 + " " + e2);
+            }
+        });
+    });
+
     var option = document.getElementById("annoGraduSelect");
-    for (i = 1940; i < 2017; i++) {
+    for (i = 1960; i < 2017; i++) {
         option.appendChild(new Option(i.toString(), i.toString()));
-        console.log(i);
+        //console.log(i);
     }
     var i = 1;
     function addTitle() {
         console.log("agregar")
 
-        var n = document.getElementById("nombreInstitucion");
-
-        var nameI = n.value; // nombre institución
+        var n = document.getElementById("nombreInstitucion").value;
 
         var $p = $('.paisDiv option:selected').val();
 
         var $anno = $('.annoGraduDiv option:selected').val();
 
-        var m = document.getElementById("nombreTitulo");
+        var m = document.getElementById("nombreTitulo").value;
         var nameT = n.value;
 
         var $grade = $('.gradoDiv option:selected').val();
 
 
-
-
-
-        var table = document.getElementById("titleTable");
-        var row = table.insertRow(i);
-        var cel1 = row.insertCell(0);
-        var cel2 = row.insertCell(1);
-        var cel3 = row.insertCell(2);
-        var cel4 = row.insertCell(3);
-        var cel5 = row.insertCell(4);
-        var cel6 = row.insertCell(5);
-        var cel7 = row.insertCell(6);
-
-
-        cel1.innerHTML = i;
-        cel2.innerHTML = nameI;
-        cel3.innerHTML = $('.paisDiv option:selected').text();
-        cel4.innerHTML = nameT;
-        cel5.innerHTML = $('.gradoDiv option:selected').text();
-        cel6.innerHTML = $anno;
-        cel7.innerHTML = "1";
+        $("#titleTable").append("<tbody><tr>" + "<td>" + i + "</td>"+
+                                                "<td>" + $("#nombreInstitucion").val() + "</td>" +
+                                                "<td>" + $('.paisDiv option:selected').text() + "</td>"+
+                                                "<td>" + $('#nombreTitulo').val() + "</td>" +
+                                                "<td>" + $('.gradoDiv option:selected').text() + "</td>" +
+                                                "<td>" + $('.annoGraduDiv option:selected').val() + "</td>"+
+                                                "<td>" + "eliminar" + "</td>"+
+                                                "</tr></tbody>");
 
         i++;
 
         var sessionValue = '<%=Session["educacionFormal"] = ' + "e.e";
 
-        n.value = "";
-        m.value = "";
+        // falta crear el string o guardarlo en sesion
+        // falta eliminar
+        $("#nombreInstitucion").val("");
+        $('#nombreTitulo').val("");
     }
 
 </script>

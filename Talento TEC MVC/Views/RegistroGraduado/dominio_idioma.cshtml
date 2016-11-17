@@ -52,7 +52,7 @@
             @Html.ValidationMessageFor(model => model.idioma, "", new { @class = "text-danger" })
             <div class="col-xs-6 col-sm-4">
                 <div class="idiomas">
-                    <select id="idiomasSelect" class="col-md-5" onclick="setFechaNacimiento()">
+                    <select id="idiomasSelect" class="col-md-5" onclick="">
                         <option value="idiomas" default selected>-- idiomas --</option>
                     </select>
                 </div>
@@ -67,7 +67,7 @@
             @Html.ValidationMessageFor(model => model.nivelLectura, "", new { @class = "text-danger" })
             <div class="col-xs-6 col-sm-4">
                 <div class="nivelLectura">
-                    <select id="lecturaSelect" class="col-md-5" onclick="setFechaNacimiento()">
+                    <select id="lecturaSelect" class="col-md-5" onclick="">
                         <option value="basico" default selected>Básico</option>
                         <option value="intermedio">Intermedio</option>
                         <option value="avanzado">Avanzado</option>
@@ -83,7 +83,7 @@
             @Html.ValidationMessageFor(model => model.nivelEscritura, "", new { @class = "text-danger" })
             <div class="col-xs-6 col-sm-4">
                 <div class="nivelEscritura">
-                    <select id="escrituraSelect" class="col-md-5" onclick="setFechaNacimiento()">
+                    <select id="escrituraSelect" class="col-md-5" onclick="">
                         <option value="basico" default selected>Básico</option>
                         <option value="intermedio">Intermedio</option>
                         <option value="avanzado">Avanzado</option>
@@ -99,8 +99,8 @@
             @Html.EditorFor(model => model.nivelOral, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
             @Html.ValidationMessageFor(model => model.nivelOral, "", new { @class = "text-danger" })
             <div class="col-xs-6 col-sm-4">
-                <div class="nivelEscritura">
-                    <select id="escrituraSelect" class="col-md-5" onclick="setFechaNacimiento()">
+                <div class="nivelOral">
+                    <select id="escrituraSelect" class="col-md-5" onclick="">
                         <option value="basico" default selected>Básico</option>
                         <option value="intermedio">Intermedio</option>
                         <option value="avanzado">Avanzado</option>
@@ -111,7 +111,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-5 col-xs-6 col-sm-4">
-                <input type="button" value="agregar" onclick="addTitle()" class="btn btn-default" />
+                <input type="button" value="agregar" onclick="addLanguage()" class="btn btn-default" />
                 <!--<button onclick="addTitle()">Agregar</button>-->
             </div>
         </div>
@@ -144,6 +144,36 @@
 }
 
 <script>
+    $(document).ready(function () {
+        $.ajax({
+            url: "https://talentotec-api.azurewebsites.net/api/Languages",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    //<option value="PAIS_PAIS">pais pais</option>
+                    $("#idiomasSelect").append("<option value='" + data[i] + "'>" + data[i] + "</option>");
+                }
+            },
+            error: function (e1, e2, e3) {
+                console.log(e3 + " " + e2);
+            }
+        });
+    });
+
+    var i = 1;
+    function addLanguage() {
+        $("#titleTable").append("<tbody><tr>" + "<td>" + i + "</td>" +
+                                                "<td>" + $('.idiomas option:selected').text() + "</td>" +
+                                                "<td>" + $('.nivelLectura option:selected').text() + "</td>" +
+                                                "<td>" + $('.nivelEscritura option:selected').text() + "</td>" +
+                                                "<td>" + $('.nivelOral option:selected').text() + "</td>" +
+                                                "<td>" + "eliminar" + "</td>" +
+                                                "</tr></tbody>");
+
+        i++;
+
+    }
 
 
 </script>

@@ -114,7 +114,7 @@
 
             @Html.EditorFor(model => model.paisNacimiento, new { htmlAttributes = new { @class = "form-control", @type = "hidden", @id="paisNacimiento" } })
             @Html.ValidationMessageFor(model => model.paisNacimiento, "", new { @class = "text-danger" })
-            <div class="col-xs-6 col-sm-4">
+            <div class="col-xs-8 col-sm-8">
                 <div class="paisOptions">
                     <select id="paisSelect" class="col-md-5" onclick="setPais()">
                         <option value="pais" default selected>-- pais --</option>
@@ -133,7 +133,7 @@
                 <div class="nacionalidadMenu">
                     <select id="nacionalidadSelect" class="col-md-5" onclick="setNacionalidad()">
                         <option value="nacionalidad" default selected>- nacionalidad -</option>
-                        <option value="costarricense">costarricense</option>
+                        
 
                     </select>
                 </div>
@@ -193,63 +193,104 @@
 
 <script>
 
-    var diaNacim = "";
-    var mesNacim = "";
+    $(document).ready(function () {
+        $.ajax({
+            url: "https://talentotec-api.azurewebsites.net/api/Nacionalities",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    //<option value="costarricense">costarricense</option>
+                    $("#nacionalidadSelect").append("<option value='" + data[i] + "'>" + data[i].toLowerCase() + "</option>");
+                }
+            },
+            error: function (e1, e2, e3) {
+                console.log(e3 + " " + e2);
+            }
+        });
+    });
+
+    $(document).ready(function () {
+        $.ajax({
+            url: "https://talentotec-api.azurewebsites.net/api/Countries",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    //<option value="PAIS_PAIS">pais pais</option>
+                    var raw_data = data[i].split("_");
+                    var formated_data = " ";
+                    for (var j = 0; j < raw_data.length; j++) {
+                        formated_data += raw_data[j] + " ";
+                    }
+                   
+                    $("#paisSelect").append("<option value='" +
+                        data[i] + "'>" +
+                        formated_data.toLowerCase().replace(/^[\u00C0-\u1FFF\u2C00-\uD7FF\w]|\s[\u00C0-\u1FFF\u2C00-\uD7FF\w]/g, function(letter) {
+                            return letter.toUpperCase();
+                        })
+                        + "</option>");
+                }
+            },
+            error: function (e1, e2, e3) {
+                console.log(e3 + " " + e2);
+            }
+        });
+    });
+
+    var diaNacim = " ";
+    var mesNacim = " ";
 
     var option = document.getElementById("annoSelect");
     for (i = 1940; i < 2017; i++) {
         option.appendChild(new Option(i.toString(), i.toString()));
-        console.log(i);
     }
 
     var option = document.getElementById("diaSelect");
     for (i = 1; i < 32; i++) {
         option.appendChild(new Option(i.toString(), i.toString()));
-        console.log(i);
     }
 
 
     function setDiaNacimiento() {
-        var $select = $('.diaDiv option:selected').val();
-        diaNacim = $select;
-
+        var select = $('.diaDiv option:selected').val();
+        diaNacim = select;
     }
 
     function setMesNacimiento() {
-        var $select = $('.mesDiv option:selected').val();
-        mesNacim = $select;
-
+        var select = $('.mesDiv option:selected').val();
+        mesNacim = select;
     }
 
     function setFechaNacimiento() {
         //  var n = document.getElementById('fechaSelect').selectedIndex;
-        var $select = $('.annoDiv option:selected').val();
+        var select = $('.annoDiv option:selected').val();
         //$select.selected;
         // console.log("Selected: " + $select);
 
         var x = document.getElementById('fechaNacimiento');
-        x.setAttribute("value", diaNacim + "-" + mesNacim + "-" + $select);
+        x.setAttribute("value", diaNacim + "-" + mesNacim + "-" + select);
 
         console.log("here");
     }
 
     function setPais() {
-        var $select = $('.paisOptions option:selected').val();
+        var select = $('.paisOptions option:selected').val();
 
         var x = document.getElementById('paisNacimiento');
-        x.setAttribute("value", $select);
+        x.setAttribute("value", select);
 
-        console.log("pais");
+        console.log(select);
 
     }
 
     function setNacionalidad() {
-        var $select = $('.nacionalidadMenu option:selected').val();
+        var select = $('.nacionalidadMenu option:selected').val();
 
         var x = document.getElementById('nacionalidad');
-        x.setAttribute("value", $select);
+        x.setAttribute("value", select);
 
-        console.log("nacionalidad");
+        console.log(select);
     }
 
     function tipoC() {
