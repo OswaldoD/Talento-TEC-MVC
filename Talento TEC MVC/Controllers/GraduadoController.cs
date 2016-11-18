@@ -18,6 +18,7 @@ namespace Talento_TEC_MVC.Controllers
         {
             Session["nombre"] = "Cuenta Prueba";
             Session["TipoCuenta"] = "Graduado";
+            Session["ID"] = 1;
             return View();
         }
 
