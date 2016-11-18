@@ -47,7 +47,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.institucion, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
             <div class="col-xs-6 col-sm-4">
-                @Html.EditorFor(model => model.institucion, new { htmlAttributes = new { @class = "form-control", @id="nombreInstitucion", @placeholder = "Nombre de la institución" } })
+                @Html.EditorFor(model => model.institucion, new { htmlAttributes = new { @class = "form-control", @id = "nombreInstitucion", @placeholder = "Nombre de la institución" } })
                 @Html.ValidationMessageFor(model => model.institucion, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -55,7 +55,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.paisTitulo, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
 
-            @Html.EditorFor(model => model.paisTitulo, new { htmlAttributes = new { @class = "form-control",@id="paisTitulo", @type = "hidden" } })
+            @Html.EditorFor(model => model.paisTitulo, new { htmlAttributes = new { @class = "form-control", @id = "paisTitulo", @type = "hidden" } })
             @Html.ValidationMessageFor(model => model.paisTitulo, "", new { @class = "text-danger" })
             <div class="col-xs-8 col-sm-8">
                 <div class="paisDiv">
@@ -70,7 +70,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.annoGraduacion, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
 
-            @Html.EditorFor(model => model.annoGraduacion, new { htmlAttributes = new { @class = "form-control",@id="annoGraduacion", @type = "hidden" } })
+            @Html.EditorFor(model => model.annoGraduacion, new { htmlAttributes = new { @class = "form-control", @id = "annoGraduacion", @type = "hidden" } })
             @Html.ValidationMessageFor(model => model.annoGraduacion, "", new { @class = "text-danger" })
             <div class="col-xs-6 col-sm-4">
                 <div class="annoGraduDiv">
@@ -84,7 +84,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.nombreTitulo, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
             <div class="col-xs-6 col-sm-4">
-                @Html.EditorFor(model => model.nombreTitulo, new { htmlAttributes = new { @class = "form-control",@id="nombreTitulo", @placeholder = "Nombre del título" } })
+                @Html.EditorFor(model => model.nombreTitulo, new { htmlAttributes = new { @class = "form-control", @id = "nombreTitulo", @placeholder = "Nombre del título" } })
                 @Html.ValidationMessageFor(model => model.nombreTitulo, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -92,17 +92,17 @@
         <div class="form-group">
             @Html.LabelFor(model => model.grado, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
 
-            @Html.EditorFor(model => model.grado, new { htmlAttributes = new { @class = "form-control", @id="grado", @type = "hidden" } })
+            @Html.EditorFor(model => model.grado, new { htmlAttributes = new { @class = "form-control", @id = "grado", @type = "hidden" } })
             @Html.ValidationMessageFor(model => model.grado, "", new { @class = "text-danger" })
             <div class="col-xs-6 col-sm-4">
                 <div class="gradoDiv">
                     <select id="gradoSelect" class="col-md-6" onclick=" ">
-                        <option value="grado" default selected>-- grado --</option>
-                        <option value="tecnico_superior">Técnico Superior</option>
-                        <option value="bachiller">Bachiller</option>
-                        <option value="licenciatura">Licenciatura</option>
-                        <option value="maestria">Maestría</option>
-                        <option value="doctorado">Doctorado</option>
+                        <option value="Grado" default selected>-- grado --</option>
+                        <option value="Tecnico Superior">Técnico Superior</option>
+                        <option value="Bachiller">Bachiller</option>
+                        <option value="Licenciatura">Licenciatura</option>
+                        <option value="Maestria">Maestría</option>
+                        <option value="Doctorado">Doctorado</option>
                     </select>
                 </div>
             </div>
@@ -119,7 +119,7 @@
 
         <li role="presentation" class="divider-line"></li>
 
-      
+
         <center><h3>Títulos Obtenidos</h3></center>
         <div class="table-responsive">
             <table class="table" id="titleTable">
@@ -146,9 +146,6 @@
         </div>
     </div>
 }
-
-
-
 
 <script>
 
@@ -185,38 +182,54 @@
         //console.log(i);
     }
     var i = 1;
+    var listaTitulo = [];
     function addTitle() {
-        console.log("agregar")
+        
+        if (($("#nombreInstitucion").val() != "") &&
+            ($('#nombreTitulo').val() != "") &&
+            ($('.annoGraduDiv option:selected').text() != "-- año --") &&
+            ($('.gradoDiv option:selected').text() != "-- grado --")) {
 
-        var n = document.getElementById("nombreInstitucion").value;
+            console.log("agregar")
 
-        var $p = $('.paisDiv option:selected').val();
+            $("#titleTable").append("<tbody><tr>" + "<td>" + i + "</td>" +
+                                                    "<td>" + $("#nombreInstitucion").val() + "</td>" +
+                                                    "<td>" + $('.paisDiv option:selected').text() + "</td>" +
+                                                    "<td>" + $('#nombreTitulo').val() + "</td>" +
+                                                    "<td>" + $('.gradoDiv option:selected').text() + "</td>" +
+                                                    "<td>" + $('.annoGraduDiv option:selected').val() + "</td>" +
+                                                    "<td>" + "eliminar" + "</td>" +
+                                                    "</tr></tbody>");
 
-        var $anno = $('.annoGraduDiv option:selected').val();
+            // falta crear el string o guardarlo en sesion
+            var title = {
+                id: i,
+                nombreInstitucion: $("#nombreInstitucion").val(),
+                pais: $('.paisDiv option:selected').val(),
+                nombreTitulo: $('#nombreTitulo').val(),
+                grado: $('.gradoDiv option:selected').val(),
+                annoGraduacion: $('.annoGraduDiv option:selected').val()
+            };
 
-        var m = document.getElementById("nombreTitulo").value;
-        var nameT = n.value;
+            listaTitulo.push(title);
 
-        var $grade = $('.gradoDiv option:selected').val();
+            i++;
 
+            //console.log(JSON.stringify(listaTitulo));
+            $("#paisTitulo").val(JSON.stringify(listaTitulo));
+//            sessionStorage.setItem("educacionFormal", JSON.stringify(listaTitulo));
+           // var sessionValue = '<%Session["educacionFormal"]=' + JSON.stringify(listaTitulo) + '%>';
+         //   console.log(sessionStorage.getItem("educacionFormal"));
+            
 
-        $("#titleTable").append("<tbody><tr>" + "<td>" + i + "</td>"+
-                                                "<td>" + $("#nombreInstitucion").val() + "</td>" +
-                                                "<td>" + $('.paisDiv option:selected').text() + "</td>"+
-                                                "<td>" + $('#nombreTitulo').val() + "</td>" +
-                                                "<td>" + $('.gradoDiv option:selected').text() + "</td>" +
-                                                "<td>" + $('.annoGraduDiv option:selected').val() + "</td>"+
-                                                "<td>" + "eliminar" + "</td>"+
-                                                "</tr></tbody>");
+            // falta eliminar
+            $("#nombreInstitucion").val("");
+            $('#nombreTitulo').val("");
+        }
+        else {
 
-        i++;
+        }
 
-        var sessionValue = '<%=Session["educacionFormal"] = ' + "e.e";
-
-        // falta crear el string o guardarlo en sesion
-        // falta eliminar
-        $("#nombreInstitucion").val("");
-        $('#nombreTitulo').val("");
     }
 
 </script>

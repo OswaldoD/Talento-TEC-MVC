@@ -4,8 +4,6 @@
         // Layout de Empresa
         if (Session["TipoCuenta"].ToString() == "Empresa")
         {
-
-
             Layout = "~/Views/Shared/_LayoutEmpresa.cshtml";
         }
         // Layout de Graduado
@@ -21,18 +19,18 @@
             // Layout = 
         }
         // Layout de Administrador
-        else if(Session["TipoCuenta"].ToString() == "Administrador")
+        else if(Session["TipoCuenta"].ToString() == "Admin")
         {
             // layout de administrador
             // Layout = 
-
+            Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
         }
         // Layout de Super Administrador
-        else if(Session["TipoCuenta"].ToString() == "SAdministrador")
+        else if(Session["TipoCuenta"].ToString() == "SAdmin")
         {
             // super administrador
+            Layout = "~/Views/Shared/_LayoutSAdmin.cshtml";
         }
-
     }
     else
     {

@@ -32,5 +32,9 @@ namespace Talento_TEC_MVC.Models.registro.graduado
         [Display(Name = "Teléfono (*)")]
         [DataType(DataType.Text)]
         public string telRef { get; set; }
+
+        [Display(Name = "Send")]
+        [DataType(DataType.Text)]
+        public string sendInfo { get; set; }
     }
 }

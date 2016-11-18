@@ -88,7 +88,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.annoFin, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
 
-            @Html.EditorFor(model => model.annoFin, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.EditorFor(model => model.annoFin, new { htmlAttributes = new { @class = "form-control",@id="annofin", @type = "hidden" } })
             @Html.ValidationMessageFor(model => model.annoFin, "", new { @class = "text-danger" })
             <div class="col-xs-6 col-sm-4">
                 <div class="annoFinDiv">
@@ -173,7 +173,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.annoCurso, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
 
-            @Html.EditorFor(model => model.annoCurso, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+            @Html.EditorFor(model => model.annoCurso, new { htmlAttributes = new { @class = "form-control",@id="annocurso", @type = "hidden" } })
             @Html.ValidationMessageFor(model => model.annoCurso, "", new { @class = "text-danger" })
             <div class="col-xs-6 col-sm-4">
                 <div class="annoCursoDiv">
@@ -264,6 +264,7 @@
     });
 
     var i = 1;
+    var listaExperience = [];
     function addExperience() {
         $("#experienceTable").append("<tbody><tr>" + "<td>" + i + "</td>" +
                                         "<td>" + $('#nombreEmpresa').val() + "</td>" +
@@ -274,12 +275,25 @@
                                         "<td>" + "eliminar" + "</td>" +
                                         "</tr></tbody>");
 
+        var experience = {
+            id: i,
+            empresa: $('#nombreEmpresa').val(),
+            cargo: $('#cargoAsign').val(),
+            pais: $('.paisEmpresaDiv option:selected').val(),
+            annoInicio: $('.annoInicioDiv option:selected').val(),
+            annoFin: $('.annoFinDiv option:selected').val()
+        };
+
+        listaExperience.push(experience);
+        $("#annofin").val(JSON.stringify(listaExperience));
+
         i++;
         $('#nombreEmpresa').val("");
         $('#cargoAsign').val("");
     }
 
     var j = 1;
+    listaCursos = [];
     function addCourse() {
         $("#courseTable").append("<tbody><tr>" + "<td>" + j + "</td>" +
                                         "<td>" + $('#nombreActividad').val() + "</td>" +
@@ -289,9 +303,22 @@
                                         "<td>" + "eliminar" + "</td>" +
                                         "</tr></tbody>");
 
+        var course = {
+            id: j,
+            nombreActividad: $('#nombreActividad').val(),
+            institucion: $('#nombreInstitucion').val(),
+            pais: $('.paisCursoDiv option:selected').val(),
+            anno: $('.annoCursoDiv option:selected').val(),
+        }
+
+        listaCursos.push(course);
+
+        $("#annocurso").val(JSON.stringif(listaCursos));
+
         j++;
         $('#nombreActividad').val("");
         $('#nombreInstitucion').val("");
+
     }
 
 </script>

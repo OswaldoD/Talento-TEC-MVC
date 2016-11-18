@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -75,6 +76,7 @@ namespace Talento_TEC_MVC.Controllers
 
         public ActionResult educacion_formal()
         {
+
             return View();
         }
 
@@ -88,9 +90,15 @@ namespace Talento_TEC_MVC.Controllers
             }
             else
             {
+                Session["educacionFormal"] = model.paisTitulo;
 
-                Session["educacionFormal"] = model.institucion; // vienen por aqui todos los datos
+                //Response.Write(model.paisTitulo);
 
+                // Response.Write(deserializeTitles(model.paisTitulo) );
+
+
+                //Session["educacionFormal"] = model.institucion; // vienen por aqui todos los datos
+                // return View(model);
                 return RedirectToAction("dominio_idioma", "registrograduado");
             }
         }
@@ -110,8 +118,9 @@ namespace Talento_TEC_MVC.Controllers
             }
             else
             {
-                Session["dominioIdioma"] = model.idioma; // idiomas
-
+                Session["infoIdiomas"] = model.nivelOral; // idiomas
+                //Response.Write( deserializeLanguages(Session["infoIdiomas"].ToString()) );
+                //return View(model);
                 return RedirectToAction("experiencia_laboral", "registrograduado");
             }
         }
@@ -131,9 +140,9 @@ namespace Talento_TEC_MVC.Controllers
             }
             else
             {
-                Session["experienciaLaboral"] = model.empresa; // experiencia
+                Session["infoExperienciaLaboral"] = model.annoFin; // experiencia
 
-                Session["capacitaciones"] = model.nombreActividad; // capacitaciones
+                Session["infoCapacitaciones"] = model.annoCurso; // capacitaciones
 
                 return RedirectToAction("conocimientos_referencias", "registrograduado");
             }
@@ -155,7 +164,7 @@ namespace Talento_TEC_MVC.Controllers
             else
             {
                 Session["conocimientos"] = model.descripcionConocimientos;
-                Session["referencias"] = model.nombreRef; //
+                Session["infoReferencias"] = model.sendInfo; //
 
 
                 return RedirectToAction("finalizar", "registrograduado");
@@ -196,12 +205,12 @@ namespace Talento_TEC_MVC.Controllers
                     telefono = Session["telefono"].ToString(),
                     email = Session["email"].ToString(),
                     password = Session["password"].ToString(),
-                    infoTitulos = "prueba",
-                    infoIdiomas = "prueba",
-                    infoExperienciaLaboral = "prueba",
-                    infoCapacitaciones = "prueba",
+                    infoTitulos = deserializeTitles(Session["educacionFormal"].ToString()),
+                    infoIdiomas = deserializeTitles(Session["infoIdiomas"].ToString()),
+                    infoExperienciaLaboral = deserializeExperience( Session["infoExperienciaLaboral"].ToString() ),
+                    infoCapacitaciones = deserializeCourses( Session["infoCapacitaciones"].ToString()),
                     conocimientos = Session["conocimientos"].ToString(),
-                    infoReferencias = "prueba",
+                    infoReferencias = deserializeReferences( Session["infoReferencias"].ToString() ),
                     tipoAplicante = "Graduado"
                 };
 
@@ -218,6 +227,98 @@ namespace Talento_TEC_MVC.Controllers
                     return View();
                 }
             }
+        }
+        /**
+         * Deserializa los titulos y los convierte a strings
+         */
+        public string deserializeTitles(string json)
+        {
+            string titles = "";
+            IEnumerable<Titles> titulos = JsonConvert.DeserializeObject<IEnumerable<Titles>>(json);
+            for (int i = 0; i < titulos.Count(); i++)
+            {
+                // nombreInstitucion,pais,nombreTitulo,grado,annoGraduacion,/
+                titles += titulos.ElementAt(i).nombreInstitucion + ",";
+                titles += titulos.ElementAt(i).pais + ",";
+                titles += titulos.ElementAt(i).nombreTitulo + ",";
+                titles += titulos.ElementAt(i).grado + ",";
+                titles += titulos.ElementAt(i).annoGraduacion + ",";
+                titles += "/";
+            }
+            return titles;
+        }
+        /**
+         * Deserializa los idiomas y los convierte a strings
+         */
+        public string deserializeLanguages(string json)
+        {
+            string languages = "";
+            IEnumerable<Languages> idiomas = JsonConvert.DeserializeObject<IEnumerable<Languages>>(json);
+            for (int i = 0; i < idiomas.Count(); i++)
+            {
+                // nombreInstitucion,pais,nombreTitulo,grado,annoGraduacion,/
+                languages += idiomas.ElementAt(i).idioma + ",";
+                languages += idiomas.ElementAt(i).nivelEscritura + ",";
+                languages += idiomas.ElementAt(i).nivelEscritura + ",";
+                languages += idiomas.ElementAt(i).nivelOral + ",";
+                languages += "/";
+            }
+            return languages;
+        }
+        /**
+         * Deserializa experiencia laboral y los convierte a strings
+         */
+        public string deserializeExperience(string json)
+        {
+            string experience = "";
+            IEnumerable<Experience> experiencia = JsonConvert.DeserializeObject<IEnumerable<Experience>>(json);
+            for (int i = 0; i < experiencia.Count(); i++)
+            {
+                // nombreInstitucion,pais,nombreTitulo,grado,annoGraduacion,/
+                experience += experiencia.ElementAt(i).empresa + ",";
+                experience += experiencia.ElementAt(i).cargo + ",";
+                experience += experiencia.ElementAt(i).pais + ",";
+                experience += experiencia.ElementAt(i).annoInicio + ",";
+                experience += experiencia.ElementAt(i).annoFin + ",";
+                experience += "/";
+            }
+            return experience;
+        }
+        /**
+         * Deserializa los cursos y los convierte a strings
+         */
+        public string deserializeCourses(string json)
+        {
+            string courses = "";
+            IEnumerable<Courses> cursos = JsonConvert.DeserializeObject<IEnumerable<Courses>>(json);
+            for (int i = 0; i < cursos.Count(); i++)
+            {
+                // nombreInstitucion,pais,nombreTitulo,grado,annoGraduacion,/
+                courses += cursos.ElementAt(i).nombreActividad + ",";
+                courses += cursos.ElementAt(i).institucion + ",";
+                courses += cursos.ElementAt(i).pais + ",";
+                courses += cursos.ElementAt(i).anno + ",";
+                courses += "/";
+            }
+            return courses;
+        }
+        /**
+         * Deserializa las referencias y los convierte a strings
+         */
+        public string deserializeReferences(string json)
+        {
+            string references = "";
+            IEnumerable<References> referencias = JsonConvert.DeserializeObject<IEnumerable<References>>(json);
+            for (int i = 0; i < referencias.Count(); i++)
+            {
+                // nombreInstitucion,pais,nombreTitulo,grado,annoGraduacion,/
+                references += referencias.ElementAt(i).nombreCompleto + ",";
+                references += referencias.ElementAt(i).puesto + ",";
+                references += referencias.ElementAt(i).email + ",";
+                references += referencias.ElementAt(i).telefono + ",";
+                references += "/";
+            }
+            return references;
         }
     }
 }
