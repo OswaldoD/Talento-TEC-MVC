@@ -119,7 +119,7 @@ namespace Talento_TEC_MVC.Controllers
             else
             {
                 Session["infoIdiomas"] = model.nivelOral; // idiomas
-                //Response.Write( deserializeLanguages(Session["infoIdiomas"].ToString()) );
+                Response.Write( deserializeLanguages(Session["infoIdiomas"].ToString()) );
                 //return View(model);
                 return RedirectToAction("experiencia_laboral", "registrograduado");
             }
@@ -143,6 +143,8 @@ namespace Talento_TEC_MVC.Controllers
                 Session["infoExperienciaLaboral"] = model.annoFin; // experiencia
 
                 Session["infoCapacitaciones"] = model.annoCurso; // capacitaciones
+                Response.Write(deserializeExperience(Session["infoExperienciaLaboral"].ToString()));
+                Response.Write(deserializeCourses(Session["infoCapacitaciones"].ToString()));
 
                 return RedirectToAction("conocimientos_referencias", "registrograduado");
             }
@@ -166,6 +168,7 @@ namespace Talento_TEC_MVC.Controllers
                 Session["conocimientos"] = model.descripcionConocimientos;
                 Session["infoReferencias"] = model.sendInfo; //
 
+                Response.Write(deserializeReferences(Session["infoReferencias"].ToString()));
 
                 return RedirectToAction("finalizar", "registrograduado");
             }
