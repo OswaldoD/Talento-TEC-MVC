@@ -18,7 +18,7 @@
 
 <div class="container">
     <div class="sectoresDiv">
-        <select id="sectoresSelect" class="col-md-5" onclick="updateTable()" style="display:none">
+        <select id="sectoresSelect" class="col-md-5" onclick="" style="display:none">
             <option value="sector" default selected>-- Sectores Productivos Disponibles --</option>
         </select>
     </div>
@@ -27,7 +27,7 @@
 <br />
 <div class="container">
     <div class="table-responsive">
-        <table class="table" id="offerTable">
+        <table class="table" id="enterpriseTable">
             <thead>
                 <tr>
                     <th>#</th>
@@ -44,7 +44,7 @@
         nombreEmpresa: ""
     }
 
-    var more = "<button type='button' class='btn btn-info' onclick='offerClicked()'> <span class='glyphicon glyphicon-zoom-in' aria-hidden='true' onclick='offerClicked()'></span> Ver más </button>";
+    var more = "<button type='button' class='btn btn-info' onclick='enterpriseClicked()'> <span class='glyphicon glyphicon-zoom-in' aria-hidden='true' onclick='enterpriseClicked()'></span> Ver empresa </button>";
 
 
     function getData() {
@@ -69,22 +69,31 @@
     }
 
     function createTable() {
-        $("#enterpriseTable").append("<thead> <tr> <th>#</th>" +
-                                    "<th> Nombre Empresa</th>"+
-                                    "<th>Acción</th> </tr> </thead>");
+        $("#enterpriseTable").append("<thead> <tr> <th> # </th>" +
+                                    "<th> Nombre Empresa </th>"+
+                                    "<th> Acción </th> </tr> </thead>");
     }
 
     function updateTable() {
-        $("#enterpriseTable").remove();
+        $("#enterpriseTable tr").remove();
         createTable();
+        /*
         var data = getData();
-        console.log(data);
-
+        console.log(data);*/
+        /*
         for (var i = 0; i < data.length; i++) {
             $("#enterpriseTable").append("<tbody><tr>" + "<td>" + i + "</td" +
                                                          "<td>" + data.NombreEmpresa + "</td>" +
                                                          "<td>" + more + "Ver Empresa" + "</td>" +
                                                          "</tr></tbody>");
+        }*/
+
+        for (var i = 0; i < 2; i++) {
+            $("#enterpriseTable").append("<tbody><tr>" + "<td>" + i+1 + "</td>" +
+                                                         "<td>" + "Ejemplo" + "</td>" +
+                                                         "<td>" + more + "</td>" +
+                                                         "</tr></tbody>");
+            console.log("?");
         }
 
     }
@@ -97,11 +106,16 @@
 
             var selection = document.getElementById("sectoresSelect");
             selection.setAttribute("style", "display:none");
+
+            updateTable();
             
         }
+        
     }
 
     function showSectors() {
+        $("#enterpriseTable tr").remove();
+
         var x = document.getElementById("seleccion");
         if (x.checked) {
             var y = document.getElementById("pendientes");
@@ -109,9 +123,16 @@
 
             var selection = document.getElementById("sectoresSelect");
             selection.setAttribute("style", "display:block");
+            /*
+            if ($('.sectoresSelect option:selected').val() != "sector") {
+                createTable();
+
+                updateTable();
+            }*/
         }
     }
 
-
-
+    function enterpriseClicked() {
+        window.location = 'see_enterprise';
+    }
 </script>

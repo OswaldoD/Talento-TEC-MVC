@@ -374,6 +374,7 @@
     <Content Include="Views\Shared\_LayoutSAdmin.cshtml" />
     <Content Include="Views\Admin\see_enterprise.cshtml" />
     <Content Include="Views\Admin\enterprises.cshtml" />
+    <Content Include="Views\Admin\show_dates.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

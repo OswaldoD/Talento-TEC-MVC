@@ -21,6 +21,12 @@ namespace Talento_TEC_MVC.Controllers
             return View();
         }
 
+        public ActionResult show_dates()
+        {
+            return View();
+        }
+
+
         public ActionResult add_date()
         {
             Session["nombre"] = "Cuenta Prueba Admin";

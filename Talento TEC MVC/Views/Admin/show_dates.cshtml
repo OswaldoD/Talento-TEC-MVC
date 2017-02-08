@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Ver fechas importantes";
+}
+
+<h2>Fechas importantes</h2>
+
+<p>Se presentan las fechas importantes</p>
+
+<li role="presentation" class="divider-line"></li>
+
+<form action="">
+    <div class="container">
+        <input type="radio" id="pendientes" name="pendientes" value="pendientes" onclick="pendiente()"> Pendientes de aprobar <br />
+        <!--<input type="radio" id="seleccion" name="seleccion" value="seleccion" onclick="showSectors()"> Según sector productivo-->
+    </div>
+</form>
+
+<br />
+<div class="container">
+    <div class="table-responsive">
+        <table class="table" id="dateTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th> Nombre </th>
+                    <th> Fecha </th>
+                    <th> Descripción </th>
+                    <th> Acción </th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<script>
+    function createTable() {
+        $("#dateTable").append("<thead> <tr> <th> # </th>" +
+                                            "<th> Nombre </th>" +
+                                            "<th> Fecha </th>" +
+                                            "<th> Descripción </th>"+
+                                            "<th> Acción </th>" +
+                                            "</tr> </thead>");
+    }
+
+    function updateTable() {
+        $("#dateTable tr").remove();
+
+        createTable();
+
+        for (var i = 0; i < 2; i++) {
+            $("#dateTable").append("<tbody><tr>" + "<td>"+i+"</td>"+
+                "<td>"+"Ejemplo"+"</td>"+
+                "<td>"+"2017"+"</td>"+
+                "<td>"+"Descripcion"+"</td>"+
+                "</tr></tbody>");
+        }
+    }
+</script>

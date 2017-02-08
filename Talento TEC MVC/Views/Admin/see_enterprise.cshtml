@@ -96,45 +96,51 @@
             </div>
         </div>
 
+        <li role="presentation" class="divider-line"></li>
         <div class="form-group">
-            @Html.LabelFor(model => model.nombreContacto, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
-            <div class="col-xs-6 col-sm-4">
-                @Html.EditorFor(model => model.nombreContacto, new { htmlAttributes = new { @class = "form-control", @id = "nombreContacto", @readonly = "readonly" } })
-                @Html.ValidationMessageFor(model => model.nombreContacto, "", new { @class = "text-danger" })
-            </div>
+            @Html.Label("Persona de contacto", new { @class = "control-label col-xs-6 col-sm-4" })
+
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.cargoContacto, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
-            <div class="col-xs-6 col-sm-4">
-                @Html.EditorFor(model => model.cargoContacto, new { htmlAttributes = new { @class = "form-control", @id = "cargoContacto", @readonly = "readonly" } })
-                @Html.ValidationMessageFor(model => model.cargoContacto, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.nombreContacto, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+                <div class="col-xs-6 col-sm-4">
+                    @Html.EditorFor(model => model.nombreContacto, new { htmlAttributes = new { @class = "form-control", @id = "nombreContacto", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.nombreContacto, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.telefonoContacto, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
-            <div class="col-xs-6 col-sm-4">
-                @Html.EditorFor(model => model.telefonoContacto, new { htmlAttributes = new { @class = "form-control", @id="telefonoContacto", @readonly = "readonly" } })
-                @Html.ValidationMessageFor(model => model.telefonoContacto, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.cargoContacto, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+                <div class="col-xs-6 col-sm-4">
+                    @Html.EditorFor(model => model.cargoContacto, new { htmlAttributes = new { @class = "form-control", @id = "cargoContacto", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.cargoContacto, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.emailContacto, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
-            <div class="col-xs-6 col-sm-4">
-                @Html.EditorFor(model => model.emailContacto, new { htmlAttributes = new { @class = "form-control", @id = "emailContacto", @readonly = "readonly" } })
-                @Html.ValidationMessageFor(model => model.emailContacto, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.telefonoContacto, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+                <div class="col-xs-6 col-sm-4">
+                    @Html.EditorFor(model => model.telefonoContacto, new { htmlAttributes = new { @class = "form-control", @id = "telefonoContacto", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.telefonoContacto, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-5 col-xs-6 col-sm-4 ">
-                <input type="button" value="Aceptar" onclick="aplicarOferta()" class="btn btn-lg btn-success" />
-                <input type="button" value="No Aceptar" onclick="noaplicarOferta()" class="btn btn-lg btn-danger" />
+            <div class="form-group">
+                @Html.LabelFor(model => model.emailContacto, htmlAttributes: new { @class = "control-label col-xs-6 col-sm-4" })
+                <div class="col-xs-6 col-sm-4">
+                    @Html.EditorFor(model => model.emailContacto, new { htmlAttributes = new { @class = "form-control", @id = "emailContacto", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.emailContacto, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-5 col-xs-6 col-sm-4 ">
+                    <input type="button" value="Aceptar" onclick="aplicarOferta()" class="btn btn-lg btn-success" />
+                    <input type="button" value="No Aceptar" onclick="noaplicarOferta()" class="btn btn-lg btn-danger" />
+                </div>
             </div>
         </div>
-    </div>
 }
 <!--
 <div>
@@ -144,7 +150,59 @@
 
 <script>
 
-    $(document).
+
+    $("#nombreEmpresa").val("Ejemplo");
+    $("#cedulaEmpresa").val("0000000");
+    $("#pais").val("Costa Rica");
+    $("#provincia").val("Cartago");
+    $("#direccion").val("Cartago");
+    $("#descripcion").val("Esto es un ejemplo");
+    $("#telefono").val("00000000");
+    $("#email").val("ejemplo@email.com");
+    $("#pagina_web").val("ejemplo.com");
+    $("#sectores_productivos").val("esto es un sector de ejemplo");
+    $("#nombreContacto").val("Un ejemplo de contacto");
+    $("#cargoContacto").val("un ejemplo de cargo");
+    $("#telefonoContacto").val("0000000");
+    $("#emailContacto").val("ejemplo2@email.com");
+    
+    var enterprise = {
+        nombreEmpresa: "",
+        cedulaEmpresa: "",
+        pais: "",
+        provincia: "",
+        direccion: "",
+        descripcion: "",
+        telefono: "",
+        email: "",
+        pagina_web: "",
+        sectores_productivos: "",
+        nombreContacto: "",
+        cargoContacto: "",
+        telefonoContacto: "",
+        emailContacto: ""
+    }
+    function getData() {
+        var importedData;
+
+        $(document).ready(function () {
+            $.ajax({
+                url: "https://talentotec-api.azurewebsites.net/api/Get_Enterprise/1",
+                type: "GET",
+                data: enterprise,
+                sucess: function (data) {
+                    for (var i = 0; i < data.lenght; i++) {
+                        console.log(data[i]);
+                    }
+                    importedData = data;
+                },
+                error: function (e1, e2, e3) {
+                    console.log(e3 + " " + e2);
+                }
+            });
+        });
+        return importedData;
+    }
 
 
 
