@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "enterprises";
+}
+
+<h2>Ver Empresas</h2>
+
+<p>Estimado(a) usuario: por favor indique el criterio de búsqueda para las empresas que desea ver</p>
+
+<li role="presentation" class="divider-line"></li>
+
+<form action="">
+    <div class="container">
+        <input type="radio" id="pendientes" name="pendientes" value="pendientes" onclick="pendiente()"> Pendientes de aprobar <br />
+        <input type="radio" id="seleccion" name="seleccion" value="seleccion" onclick="showSectors()"> Según sector productivo
+    </div>
+</form>
+
+<div class="container">
+    <div class="sectoresDiv">
+        <select id="sectoresSelect" class="col-md-5" onclick="updateTable()" style="display:none">
+            <option value="sector" default selected>-- Sectores Productivos Disponibles --</option>
+        </select>
+    </div>
+</div>
+
+<br />
+<div class="container">
+    <div class="table-responsive">
+        <table class="table" id="offerTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre Empresa</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<script>
+    var enterprise = {
+        nombreEmpresa: ""
+    }
+
+    var more = "<button type='button' class='btn btn-info' onclick='offerClicked()'> <span class='glyphicon glyphicon-zoom-in' aria-hidden='true' onclick='offerClicked()'></span> Ver más </button>";
+
+
+    function getData() {
+        var importedData;
+        $(document).ready(function () {
+            $.ajax({
+                url: "",
+                type: "GET",
+                data: enterprise,
+                dataType: "json",
+                success: function (data) {
+                    for (var i = 0; i < data.length; i++) {
+                        console.log(data[i]);
+                    }
+                    importedData = data;
+                },
+                error: function(e1, e2, e3){
+                    console.log(e3 + " " + e2);
+                }
+            })
+        })
+    }
+
+    function createTable() {
+        $("#enterpriseTable").append("<thead> <tr> <th>#</th>" +
+                                    "<th> Nombre Empresa</th>"+
+                                    "<th>Acción</th> </tr> </thead>");
+    }
+
+    function updateTable() {
+        $("#enterpriseTable").remove();
+        createTable();
+        var data = getData();
+        console.log(data);
+
+        for (var i = 0; i < data.length; i++) {
+            $("#enterpriseTable").append("<tbody><tr>" + "<td>" + i + "</td" +
+                                                         "<td>" + data.NombreEmpresa + "</td>" +
+                                                         "<td>" + more + "Ver Empresa" + "</td>" +
+                                                         "</tr></tbody>");
+        }
+
+    }
+
+    function pendiente(){
+        var x = document.getElementById("pendientes");
+        if (x.checked) {
+            var y = document.getElementById("seleccion");
+            y.checked = false;
+
+            var selection = document.getElementById("sectoresSelect");
+            selection.setAttribute("style", "display:none");
+            
+        }
+    }
+
+    function showSectors() {
+        var x = document.getElementById("seleccion");
+        if (x.checked) {
+            var y = document.getElementById("pendientes");
+            y.checked = false;
+
+            var selection = document.getElementById("sectoresSelect");
+            selection.setAttribute("style", "display:block");
+        }
+    }
+
+
+
+</script>

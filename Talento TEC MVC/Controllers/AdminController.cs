@@ -15,11 +15,17 @@ namespace Talento_TEC_MVC.Controllers
         // GET: Admin
         public ActionResult Index()
         {
+            Session["nombre"] = "Cuenta Prueba Admin";
+            Session["TipoCuenta"] = "Admin";
+            Session["ID"] = 1;
             return View();
         }
 
         public ActionResult add_date()
         {
+            Session["nombre"] = "Cuenta Prueba Admin";
+            Session["TipoCuenta"] = "SAdmin";
+            Session["ID"] = 1;
             return View();
         }
 
@@ -27,7 +33,7 @@ namespace Talento_TEC_MVC.Controllers
         [HttpPost]
         public async Task<ActionResult> add_date(nueva_fecha model)
         {
-            // Crear fecha
+            // Crear fecha importante
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -65,11 +71,13 @@ namespace Talento_TEC_MVC.Controllers
 
         public ActionResult info_date()
         {
+            // cambiar la fecha importante
             return View();
         }
 
         public ActionResult new_email()
         {
+            // mandar correo
             return View();
         }
         [AllowAnonymous]
@@ -77,6 +85,30 @@ namespace Talento_TEC_MVC.Controllers
         public ActionResult new_email(new_email model)
         {
             // mandar correo
+            return View();
+        }
+
+        public ActionResult enterprises()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult enterprises(string Url)
+        {
+            return View();
+        }
+
+        public ActionResult see_enterprise()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult see_enterprise(enterprise_info enterprise)
+        {
             return View();
         }
 

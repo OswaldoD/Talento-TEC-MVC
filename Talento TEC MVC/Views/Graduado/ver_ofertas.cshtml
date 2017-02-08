@@ -137,7 +137,7 @@
 
         var data = getData();
         console.log(data);
-        /*
+        
         var table = document.getElementById("offerTable");
         var row = table.insertRow(i);
         var cel1 = row.insertCell(0);
@@ -153,12 +153,13 @@
         cel3.innerHTML = "Encargado de Talento TEC";
         cel4.innerHTML = "20/nov/2016";
         cel5.innerHTML = no;
-        cel6.innerHTML = more;*/
+        cel6.innerHTML = more;
 
         i++;
     }
 
     function allClicked() {
+        i = 1;
         var x = document.getElementById("todas");
         if (x.checked) {
             var y = document.getElementById("seleccion");
@@ -177,6 +178,7 @@
     }
 
     function appliedClicked() {
+        i = 1;
         var x = document.getElementById("aplicadas");
         if (x.checked) {
             var y = document.getElementById("seleccion");
@@ -196,6 +198,7 @@
     }
 
     function showCarrers() {
+        i = 1;
         var x = document.getElementById("seleccion");
         if (x.checked) {
             var y = document.getElementById("todas");
@@ -208,11 +211,13 @@
 
             // carrera;
             offer.carreraSeleccionada = $('.carrerasDiv option:selected').val();
-           
-            // tipo de busqueda: carrera
-            offer.tipoBusqueda = 1;
+            if (offer.carreraSeleccionada != 'carrera'){
+                updateTable();
+                // tipo de busqueda: carrera
+                offer.tipoBusqueda = 1;
 
-            console.log("go");
+                console.log("go");
+            }
         }
     }
 
