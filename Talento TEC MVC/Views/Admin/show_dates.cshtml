@@ -34,6 +34,14 @@
 </div>
 
 <script>
+    var more = "<button type='button' class='btn btn-info' onclick='dateClicked()'> <span class='glyphicon glyphicon-zoom-in' aria-hidden='true' onclick='dateClicked()'></span> Ver fecha </button>";
+
+    function pendiente() {
+        if ($(".pendientes").click()) {
+            updateTable();
+        }
+    }
+
     function createTable() {
         $("#dateTable").append("<thead> <tr> <th> # </th>" +
                                             "<th> Nombre </th>" +
@@ -52,8 +60,12 @@
             $("#dateTable").append("<tbody><tr>" + "<td>"+i+"</td>"+
                 "<td>"+"Ejemplo"+"</td>"+
                 "<td>"+"2017"+"</td>"+
-                "<td>"+"Descripcion"+"</td>"+
+                "<td>" + "Descripcion" + "</td>" +
+                "<td>"+ more + "</td>"+
                 "</tr></tbody>");
         }
+    }
+    function dateClicked() {
+        window.location = "add_date"
     }
 </script>
