@@ -136,8 +136,8 @@
 
             <div class="form-group">
                 <div class="col-md-offset-5 col-xs-6 col-sm-4 ">
-                    <input type="button" value="Aceptar" onclick="aplicarOferta()" class="btn btn-lg btn-success" />
-                    <input type="button" value="No Aceptar" onclick="noaplicarOferta()" class="btn btn-lg btn-danger" />
+                    <input type="button" value="Aceptar" onclick="aceptarEmpresa()" class="btn btn-lg btn-success" />
+                    <input type="button" value="No Aceptar" onclick="rechazarEmpresa()" class="btn btn-lg btn-danger" />
                 </div>
             </div>
         </div>
@@ -150,6 +150,7 @@
 
 <script>
 
+    var IdEmpresa = sessionStorage.getItem("IdEmpresa");
 
     $("#nombreEmpresa").val("Ejemplo");
     $("#cedulaEmpresa").val("0000000");
@@ -187,12 +188,42 @@
 
         $(document).ready(function () {
             $.ajax({
-                url: "https://talentotec-api.azurewebsites.net/api/Get_Enterprise/1",
+                url: "https://talentotec-api.azurewebsites.net/api/Get_Enterprise/"+IdEmpresa,
                 type: "GET",
                 data: enterprise,
                 sucess: function (data) {
                     for (var i = 0; i < data.lenght; i++) {
                         console.log(data[i]);
+                        /*           NombreEmpresa 
+                                     CedulaJuridica 
+                                     Direccion 
+                                     PROVINCIA_EMPRESA 
+                                     Pais 
+                                     TelefonoEmpresa 
+                                     EmailEmpresa 
+                                     URL 
+                                     NombreContacto 
+                                     EmailContacto 
+                                     CargoContacto 
+                                     TelefonoContacto 
+                                     DescripcionActividades 
+                                     Sectores 
+                                     Usuario 
+                                     Contrasena */ 
+                        $("#nombreEmpresa").val(data[i].NompreEmpresa);
+                        $("#cedulaEmpresa").val(data[i].CedulaJuridica);
+                        $("#pais").val(data[i].Pais);
+                        $("#provincia").val(data[i].PROVINCIA_EMPRESA);
+                        $("#direccion").val(data[i].Direccion);
+                        $("#descripcion").val(data[i].DescripcionActividades);
+                        $("#telefono").val(data[i].TelefonoEmpresa);
+                        $("#email").val(data[i].EmailEmpresa);
+                        $("#pagina_web").val(data[i].URL);
+                        $("#sectores_productivos").val(data[i].Sectores);
+                        $("#nombreContacto").val(data[i].NombreContacto);
+                        $("#cargoContacto").val(data[i].CargoContacto);
+                        $("#telefonoContacto").val(data[i].TelefonoContacto);
+                        $("#emailContacto").val(data[i].EmailContacto);
                     }
                     importedData = data;
                 },
@@ -204,6 +235,46 @@
         return importedData;
     }
 
+    function aceptarEmpresa() {
+        var accept = {
+            IDEmpresa: 1,
+            NuevoEstado: "Activa"
+        }
+        changeStateEnterprise(accept);
 
+        parent.history.back();
+    }
+
+    function rechazarEmpresa() {
+        var accept = {
+            IDEmpresa: 1,
+            NuevoEstado: "Inactiva" // esto puede variar
+        }
+        changeStateEnterprise(accept);
+
+        parent.history.back();
+    }
+
+    function changeStateEnterprise(acceptData) {
+        var importedData;
+        $(document).ready(function () {
+            $.ajax({
+                url: "https://talentotec-api.azurewebsites.net/api/Change_State_Enterprise",
+                type: "POST",
+                data: acceptData,
+                dataType: "json",
+                success: function (data) {
+                    for (var i = 0; i < data.length; i++) {
+
+                    }
+                    importedData = data;
+                },
+                error: function (e1, e2, e3) {
+                    console.log(e3 + " " + e2);
+                }
+            });
+        });
+        return importedData;
+    }
 
 </script>

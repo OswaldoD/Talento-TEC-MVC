@@ -14,13 +14,6 @@ namespace Talento_TEC_MVC.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
         public ActionResult Dates()
         {
             return View();
@@ -30,10 +23,18 @@ namespace Talento_TEC_MVC.Controllers
             return View();
         }
 
+        public ActionResult About()
+        {
+            return View();
+        }
+
         public ActionResult Contact()
         {
-            
+            return View();
+        }
 
+        public ActionResult Help()
+        {
             return View();
         }
 
@@ -42,8 +43,5 @@ namespace Talento_TEC_MVC.Controllers
             Session.Abandon();
             return RedirectToAction("Index", "Home"); 
         }
-
-
-
     }
 }

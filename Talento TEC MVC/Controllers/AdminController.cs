@@ -29,8 +29,8 @@ namespace Talento_TEC_MVC.Controllers
 
         public ActionResult add_date()
         {
-            Session["nombre"] = "Cuenta Prueba Admin";
-            Session["TipoCuenta"] = "SAdmin";
+            Session["nombre"] = "Cuenta Prueba normal Admin";
+            Session["TipoCuenta"] = "Admin";
             Session["ID"] = 1;
             return View();
         }
@@ -54,12 +54,12 @@ namespace Talento_TEC_MVC.Controllers
 
                     send_date date = new send_date()
                     {
-                        fecha = "",
-                        nombreActividad = "",
-                        descripcionActividad = ""
+                        fecha = model.fecha,
+                        nombreActividad = model.nombreActividad,
+                        descripcionActividad = model.descripcionActividad
                     };
 
-                    HttpResponseMessage response = await client.PostAsJsonAsync("api/ ", date);
+                    HttpResponseMessage response = await client.PostAsJsonAsync("api/Add_Date", date);
 
                     var json_respuesta = await response.Content.ReadAsStringAsync();
                     if (response.IsSuccessStatusCode)

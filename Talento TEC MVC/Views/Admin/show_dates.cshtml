@@ -11,7 +11,8 @@
 
 <form action="">
     <div class="container">
-        <input type="radio" id="pendientes" name="pendientes" value="pendientes" onclick="pendiente()"> Pendientes de aprobar <br />
+        <input type="radio" id="activa" name="activa" value="activa" onclick="activate()"> Activas <br />
+       <!-- <input type="radio" id="pendientes" name="pendientes" value="pendientes" onclick="pendiente()"> Pendientes de aprobar <br /> -->
         <!--<input type="radio" id="seleccion" name="seleccion" value="seleccion" onclick="showSectors()"> Según sector productivo-->
     </div>
 </form>
@@ -23,7 +24,7 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th> Nombre </th>
+                    <th> Nombre Actividad </th>
                     <th> Fecha </th>
                     <th> Descripción </th>
                     <th> Acción </th>
@@ -34,17 +35,37 @@
 </div>
 
 <script>
-    var more = "<button type='button' class='btn btn-info' onclick='dateClicked()'> <span class='glyphicon glyphicon-zoom-in' aria-hidden='true' onclick='dateClicked()'></span> Ver fecha </button>";
+    var more = "<button type='button' class='btn btn-info' onclick='dateClicked()'> <span class='glyphicon glyphicon-remove' aria-hidden='true' onclick='dateClicked()'></span> Eliminar fecha </button>";
+    function linkToIdFecha(idFecha) {
+        var more = "<button type='button' class='btn btn-info' onclick='dateClicked(" +
+            idFecha + ")'> <span class='glyphicon glyphicon-remove' aria-hidden='true' onclick='dateClicked(" +
+            idFecha + ")'></span> Eliminar fecha </button>";
+        return more;
+    }
 
-    function pendiente() {
-        if ($(".pendientes").click()) {
+    function activate() {
+        if ($(".activa").click()) {
+           /* var x = document.getElementById("pendientes");
+            if (x.checked) {
+                x.checked = false;
+            }*/
             updateTable();
         }
     }
-
+    /*
+    function pendiente() {
+        if ($(".pendientes").click()) {
+            
+            var x = document.getElementById("activa");
+            if (x.checked) {
+                x.checked = false;
+            }
+            updateTable();
+        }
+    }*/
     function createTable() {
         $("#dateTable").append("<thead> <tr> <th> # </th>" +
-                                            "<th> Nombre </th>" +
+                                            "<th> Nombre Actividad </th>" +
                                             "<th> Fecha </th>" +
                                             "<th> Descripción </th>"+
                                             "<th> Acción </th>" +
@@ -53,19 +74,87 @@
 
     function updateTable() {
         $("#dateTable tr").remove();
-
         createTable();
-
+      //  getData();
+        
         for (var i = 0; i < 2; i++) {
             $("#dateTable").append("<tbody><tr>" + "<td>"+i+"</td>"+
                 "<td>"+"Ejemplo"+"</td>"+
                 "<td>"+"2017"+"</td>"+
                 "<td>" + "Descripcion" + "</td>" +
-                "<td>"+ more + "</td>"+
+                "<td>" + linkToIdFecha(1) + "</td>" +
                 "</tr></tbody>");
         }
     }
-    function dateClicked() {
-        window.location = "add_date"
+
+    function getData() {
+
+        $(document).ready(function () {
+            $.ajax({
+                url: "https://talentotec-api.azurewebsites.net/api/GetImportantDates",
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    //  console.log(data);
+                    //var json = $.parseJSON(data);
+                    for (var i = 0; i < 2; i++) {
+
+                    }
+
+                    $("#listDates").append("<li role='presentation' class='divider-line'></li>");
+
+                    for (var i = 0; i < data.length; i++) {
+                        console.log(data);
+                        /*
+                        $("#listDates").append("<a href='#' class='list-group-item " + "active >" +
+                            "<h4 class='list-group-item-heading'>" + data[i].NombreActividad + "</h4>" +
+                            "<p class='list-group-item-text'>" + data[i].FechaActividad + "</p>" +
+                            "<p class='list-group-item-text'>" + data[i].Descripcion + "</p>" +
+                            "</a>");
+                            */
+                        
+                        $("#dateTable").append("<tbody><tr>" + "<td>" + i+1 + "</td>" +
+                            "<td>" + data[i].NombreActividad + "</td>" +
+                            "<td>" + data[i].FechaActividad + "</td>" +
+                            "<td>" + data[i].Descripcion + "</td>" +
+                            "<td>" + linkToIdFecha(data[i].IDFecha) + "</td>" +
+                            "</tr></tbody>");
+                    }
+                },
+                error: function (e1, e2, e3) {
+                    console.log(e3 + " " + e2);
+                }
+            });
+        });
+    }
+
+    function dateClicked(idFecha) {
+        var date = {
+            idFecha: idFecha
+        }
+        var importedData;
+
+        console.log("Delete " + date.idFecha);
+
+        $(document).ready(function () {
+            $.ajax({
+                url: "https://talentotec-api.azurewebsites.net/api/Delete_Date",
+                type: "POST",
+                data: date,
+                dataType: "json",
+                success: function (data) {
+                    for (var i = 0; i < data.length; i++) {
+
+                    }
+                    importedData = data;
+                },
+                error: function (e1, e2, e3) {
+                    console.log(e3 + " " + e2);
+                }
+            });
+        });
+        return importedData;
+
+        //window.location = "add_date"
     }
 </script>

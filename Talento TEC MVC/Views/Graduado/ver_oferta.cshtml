@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = "Ver Oferta";
 }
-
 <h2>Oferta Laboral</h2>
 <h3>Información de la oferta</h3>
 <form>
@@ -72,10 +71,7 @@
         <div class="form-group">
             <div class="col-md-offset-5 col-xs-6 col-sm-4 ">
                 <input type="button" value="Aplicar" onclick="aplicarOferta()" class="btn btn-lg btn-success" />
-
                 <input type="button" value="No Aplicar" onclick="noaplicarOferta()" class="btn btn-lg btn-danger" />
-
-
             </div>
         </div>
         <br />
@@ -85,13 +81,42 @@
 </form>
 
 <script>
+    var applyOffer = {
+        IDOferta: sessionStorage.getItem("IdOferta"), // de la anterior pagina
+        IDAplicante: '@Session["ID"]', // quien inicio sesion 
+    } 
 
     function aplicarOferta() {
+        console.log("aplicar aplicar");
+        console.log(sessionStorage.getItem("IdOferta"));
 
+        // aplicar con los dos datos de arriba
+        setData();
     }
+
+    function setData(){
+        var importedData;
+        $(document).ready(function () {
+            $.ajax({
+                url: "https://talentotec-api.azurewebsites.net/api/Apply_Offer",
+                type: "POST",
+                data: applyOffer,
+                dataType: "json",
+                success: function (data) {
+                    for (var i = 0; i < data.length; i++) {
+
+                    }
+                    importedData = data;
+                },
+                error: function (e1, e2, e3) {
+                    console.log(e3 + " " + e2);
+                }
+            });
+        });
+        return importedData;
+    }
+
     function noaplicarOferta() {
-
+        parent.history.back();
     }
-
-
 </script>

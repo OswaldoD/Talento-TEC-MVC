@@ -41,23 +41,33 @@
 
 <script>
     var enterprise = {
-        nombreEmpresa: ""
+        NombreEstado: "Inactiva"
     }
 
-    var more = "<button type='button' class='btn btn-info' onclick='enterpriseClicked()'> <span class='glyphicon glyphicon-zoom-in' aria-hidden='true' onclick='enterpriseClicked()'></span> Ver empresa </button>";
+    function getLinkEnterprise(idEnterprise) {
+        var more = "<button type='button' class='btn btn-info' onclick='enterpriseClicked(" +
+            idEnterprise + ")'> <span class='glyphicon glyphicon-zoom-in' aria-hidden='true' onclick='enterpriseClicked(" +
+            idEnterprise + ")'></span> Ver empresa </button>";
+
+        return more;
+    }
 
 
     function getData() {
         var importedData;
         $(document).ready(function () {
             $.ajax({
-                url: "",
+                url: "https://talentotec-api.azurewebsites.net/api/State_Enterprise",
                 type: "GET",
                 data: enterprise,
                 dataType: "json",
                 success: function (data) {
                     for (var i = 0; i < data.length; i++) {
                         console.log(data[i]);
+                        $("#enterpriseTable").append("<tbody><tr>" + "<td>" + i + 1 + "</td>" +
+                                                     "<td>" + data[i].NombreEmpresa + "</td>" +
+                                                     "<td>" + getLinkEnterprise(data[i].ID) + "</td>" +
+                                                     "</tr></tbody>");
                     }
                     importedData = data;
                 },
@@ -77,25 +87,13 @@
     function updateTable() {
         $("#enterpriseTable tr").remove();
         createTable();
-        /*
-        var data = getData();
-        console.log(data);*/
-        /*
-        for (var i = 0; i < data.length; i++) {
-            $("#enterpriseTable").append("<tbody><tr>" + "<td>" + i + "</td" +
-                                                         "<td>" + data.NombreEmpresa + "</td>" +
-                                                         "<td>" + more + "Ver Empresa" + "</td>" +
-                                                         "</tr></tbody>");
-        }*/
 
         for (var i = 0; i < 2; i++) {
-            $("#enterpriseTable").append("<tbody><tr>" + "<td>" + i+1 + "</td>" +
+            $("#enterpriseTable").append("<tbody><tr>" + "<td>" + i + 1 + "</td>" +
                                                          "<td>" + "Ejemplo" + "</td>" +
-                                                         "<td>" + more + "</td>" +
+                                                         "<td>" + getLinkEnterprise(i + 1) + "</td>" +
                                                          "</tr></tbody>");
-            console.log("?");
         }
-
     }
 
     function pendiente(){
@@ -108,9 +106,7 @@
             selection.setAttribute("style", "display:none");
 
             updateTable();
-            
         }
-        
     }
 
     function showSectors() {
@@ -123,16 +119,11 @@
 
             var selection = document.getElementById("sectoresSelect");
             selection.setAttribute("style", "display:block");
-            /*
-            if ($('.sectoresSelect option:selected').val() != "sector") {
-                createTable();
-
-                updateTable();
-            }*/
         }
     }
 
-    function enterpriseClicked() {
+    function enterpriseClicked(idEnterprise) {
+        sessionStorage.setItem("IdEmpresa", idEnterprise);
         window.location = 'see_enterprise';
     }
 </script>
