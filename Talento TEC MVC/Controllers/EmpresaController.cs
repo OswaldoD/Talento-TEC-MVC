@@ -25,6 +25,9 @@ namespace Talento_TEC_MVC.Controllers
 
         public ActionResult agregar_oferta()
         {
+            Session["nombre"] = "Prueba Empresa";
+            Session["TipoCuenta"] = "Empresa";
+            Session["ID"] = 1;
             return View();
         }
 
